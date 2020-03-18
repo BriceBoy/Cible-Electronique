@@ -23,14 +23,14 @@ Partial Class FormMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.UtilisateurToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuUserCurrent = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuUserSettings = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuUserDeconnexion = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.UtilisateurToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CourantToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PAramètresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DéconnexionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.SuspendLayout()
@@ -44,6 +44,33 @@ Partial Class FormMain
         Me.MenuStrip1.Size = New System.Drawing.Size(1154, 29)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'UtilisateurToolStripMenuItem
+        '
+        Me.UtilisateurToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.UtilisateurToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuUserCurrent, Me.MenuUserSettings, Me.MenuUserDeconnexion})
+        Me.UtilisateurToolStripMenuItem.Name = "UtilisateurToolStripMenuItem"
+        Me.UtilisateurToolStripMenuItem.Size = New System.Drawing.Size(93, 25)
+        Me.UtilisateurToolStripMenuItem.Text = "Utilisateur"
+        '
+        'MenuUserCurrent
+        '
+        Me.MenuUserCurrent.Enabled = False
+        Me.MenuUserCurrent.Name = "MenuUserCurrent"
+        Me.MenuUserCurrent.Size = New System.Drawing.Size(180, 26)
+        Me.MenuUserCurrent.Text = "Non connecté"
+        '
+        'MenuUserSettings
+        '
+        Me.MenuUserSettings.Name = "MenuUserSettings"
+        Me.MenuUserSettings.Size = New System.Drawing.Size(180, 26)
+        Me.MenuUserSettings.Text = "Paramètres"
+        '
+        'MenuUserDeconnexion
+        '
+        Me.MenuUserDeconnexion.Name = "MenuUserDeconnexion"
+        Me.MenuUserDeconnexion.Size = New System.Drawing.Size(180, 26)
+        Me.MenuUserDeconnexion.Text = "Déconnexion"
         '
         'StatusStrip1
         '
@@ -77,40 +104,13 @@ Partial Class FormMain
         '
         'TabPage2
         '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1146, 671)
+        Me.TabPage2.Size = New System.Drawing.Size(1146, 673)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Statistiques"
         Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'UtilisateurToolStripMenuItem
-        '
-        Me.UtilisateurToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.UtilisateurToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CourantToolStripMenuItem, Me.PAramètresToolStripMenuItem, Me.DéconnexionToolStripMenuItem})
-        Me.UtilisateurToolStripMenuItem.Name = "UtilisateurToolStripMenuItem"
-        Me.UtilisateurToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
-        Me.UtilisateurToolStripMenuItem.Text = "Utilisateur"
-        '
-        'CourantToolStripMenuItem
-        '
-        Me.CourantToolStripMenuItem.Enabled = False
-        Me.CourantToolStripMenuItem.Name = "CourantToolStripMenuItem"
-        Me.CourantToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.CourantToolStripMenuItem.Text = "Courant"
-        '
-        'PAramètresToolStripMenuItem
-        '
-        Me.PAramètresToolStripMenuItem.Name = "PAramètresToolStripMenuItem"
-        Me.PAramètresToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.PAramètresToolStripMenuItem.Text = "Paramètres"
-        '
-        'DéconnexionToolStripMenuItem
-        '
-        Me.DéconnexionToolStripMenuItem.Name = "DéconnexionToolStripMenuItem"
-        Me.DéconnexionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.DéconnexionToolStripMenuItem.Text = "Déconnexion"
         '
         'FormMain
         '
@@ -134,10 +134,10 @@ Partial Class FormMain
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents UtilisateurToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CourantToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MenuUserCurrent As ToolStripMenuItem
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents PAramètresToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DéconnexionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MenuUserSettings As ToolStripMenuItem
+    Friend WithEvents MenuUserDeconnexion As ToolStripMenuItem
 End Class

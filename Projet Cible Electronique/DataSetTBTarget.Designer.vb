@@ -287,7 +287,7 @@ Partial Public Class DataSetTBTarget
         
         Private columnpassword As Global.System.Data.DataColumn
         
-        Private _columne_mail As Global.System.Data.DataColumn
+        Private columne_mail As Global.System.Data.DataColumn
         
         Private columnlevel As Global.System.Data.DataColumn
         
@@ -344,9 +344,9 @@ Partial Public Class DataSetTBTarget
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property _e_mailColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property e_mailColumn() As Global.System.Data.DataColumn
             Get
-                Return Me._columne_mail
+                Return Me.columne_mail
             End Get
         End Property
         
@@ -395,9 +395,9 @@ Partial Public Class DataSetTBTarget
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddusersRow(ByVal username As String, ByVal password As String, ByVal _e_mail As String, ByVal level As Integer) As usersRow
+        Public Overloads Function AddusersRow(ByVal username As String, ByVal password As String, ByVal e_mail As String, ByVal level As Integer) As usersRow
             Dim rowusersRow As usersRow = CType(Me.NewRow,usersRow)
-            Dim columnValuesArray() As Object = New Object() {username, password, _e_mail, level}
+            Dim columnValuesArray() As Object = New Object() {username, password, e_mail, level}
             rowusersRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowusersRow)
             Return rowusersRow
@@ -428,7 +428,7 @@ Partial Public Class DataSetTBTarget
         Friend Sub InitVars()
             Me.columnusername = MyBase.Columns("username")
             Me.columnpassword = MyBase.Columns("password")
-            Me._columne_mail = MyBase.Columns("e-mail")
+            Me.columne_mail = MyBase.Columns("e_mail")
             Me.columnlevel = MyBase.Columns("level")
         End Sub
         
@@ -439,10 +439,8 @@ Partial Public Class DataSetTBTarget
             MyBase.Columns.Add(Me.columnusername)
             Me.columnpassword = New Global.System.Data.DataColumn("password", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnpassword)
-            Me._columne_mail = New Global.System.Data.DataColumn("e-mail", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            Me._columne_mail.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columne_mail")
-            Me._columne_mail.ExtendedProperties.Add("Generator_UserColumnName", "e-mail")
-            MyBase.Columns.Add(Me._columne_mail)
+            Me.columne_mail = New Global.System.Data.DataColumn("e_mail", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columne_mail)
             Me.columnlevel = New Global.System.Data.DataColumn("level", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnlevel)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnusername}, true))
@@ -451,7 +449,7 @@ Partial Public Class DataSetTBTarget
             Me.columnusername.MaxLength = 50
             Me.columnpassword.AllowDBNull = false
             Me.columnpassword.MaxLength = 50
-            Me._columne_mail.MaxLength = 80
+            Me.columne_mail.MaxLength = 80
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -620,16 +618,16 @@ Partial Public Class DataSetTBTarget
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property _e_mail() As String
+        Public Property e_mail() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableusers._e_mailColumn),String)
+                    Return CType(Me(Me.tableusers.e_mailColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("La valeur pour la colonne 'e-mail' dans la table 'users' est DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("La valeur pour la colonne 'e_mail' dans la table 'users' est DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableusers._e_mailColumn) = value
+                Me(Me.tableusers.e_mailColumn) = value
             End Set
         End Property
         
@@ -650,14 +648,14 @@ Partial Public Class DataSetTBTarget
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is_e_mailNull() As Boolean
-            Return Me.IsNull(Me.tableusers._e_mailColumn)
+        Public Function Ise_mailNull() As Boolean
+            Return Me.IsNull(Me.tableusers.e_mailColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set_e_mailNull()
-            Me(Me.tableusers._e_mailColumn) = Global.System.Convert.DBNull
+        Public Sub Sete_mailNull()
+            Me(Me.tableusers.e_mailColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -841,13 +839,13 @@ Namespace DataSetTBTargetTableAdapters
             tableMapping.DataSetTable = "users"
             tableMapping.ColumnMappings.Add("username", "username")
             tableMapping.ColumnMappings.Add("password", "password")
-            tableMapping.ColumnMappings.Add("e-mail", "e-mail")
+            tableMapping.ColumnMappings.Add("e_mail", "e_mail")
             tableMapping.ColumnMappings.Add("level", "level")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `users` WHERE ((`username` = @p1) AND (`password` = @p2) AND ((@p3 = "& _ 
-                "1 AND `e-mail` IS NULL) OR (`e-mail` = @p4)) AND ((@p5 = 1 AND `level` IS NULL) "& _ 
+                "1 AND `e_mail` IS NULL) OR (`e_mail` = @p4)) AND ((@p5 = 1 AND `level` IS NULL) "& _ 
                 "OR (`level` = @p6)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -871,7 +869,7 @@ Namespace DataSetTBTargetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "e-mail"
+            param.SourceColumn = "e_mail"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.DeleteCommand.Parameters.Add(param)
@@ -880,7 +878,7 @@ Namespace DataSetTBTargetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "e-mail"
+            param.SourceColumn = "e_mail"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -902,7 +900,7 @@ Namespace DataSetTBTargetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(param)
             Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `users` (`username`, `password`, `e-mail`, `level`) VALUES (@p1, @p2,"& _ 
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `users` (`username`, `password`, `e_mail`, `level`) VALUES (@p1, @p2,"& _ 
                 " @p3, @p4)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -926,7 +924,7 @@ Namespace DataSetTBTargetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "e-mail"
+            param.SourceColumn = "e_mail"
             param.SourceVersion = Global.System.Data.DataRowVersion.Current
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -939,9 +937,9 @@ Namespace DataSetTBTargetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(param)
             Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `users` SET `username` = @p1, `password` = @p2, `e-mail` = @p3, `level` = "& _ 
-                "@p4 WHERE ((`username` = @p5) AND (`password` = @p6) AND ((@p7 = 1 AND `e-mail` "& _ 
-                "IS NULL) OR (`e-mail` = @p8)) AND ((@p9 = 1 AND `level` IS NULL) OR (`level` = @"& _ 
+            Me._adapter.UpdateCommand.CommandText = "UPDATE `users` SET `username` = @p1, `password` = @p2, `e_mail` = @p3, `level` = "& _ 
+                "@p4 WHERE ((`username` = @p5) AND (`password` = @p6) AND ((@p7 = 1 AND `e_mail` "& _ 
+                "IS NULL) OR (`e_mail` = @p8)) AND ((@p9 = 1 AND `level` IS NULL) OR (`level` = @"& _ 
                 "p10)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -965,7 +963,7 @@ Namespace DataSetTBTargetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "e-mail"
+            param.SourceColumn = "e_mail"
             param.SourceVersion = Global.System.Data.DataRowVersion.Current
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -997,7 +995,7 @@ Namespace DataSetTBTargetTableAdapters
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
-            param.SourceColumn = "e-mail"
+            param.SourceColumn = "e_mail"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             param.SourceColumnNullMapping = true
             Me._adapter.UpdateCommand.Parameters.Add(param)
@@ -1006,7 +1004,7 @@ Namespace DataSetTBTargetTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "e-mail"
+            param.SourceColumn = "e_mail"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -1041,11 +1039,11 @@ Namespace DataSetTBTargetTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(1) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `username`, `password`, `e-mail`, `level` FROM `users`"
+            Me._commandCollection(0).CommandText = "SELECT `username`, `password`, `e_mail`, `level` FROM `users`"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT * FROM users WHERE username = @username"
+            Me._commandCollection(1).CommandText = "SELECT * FROM users WHERE (username = @username)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@username"

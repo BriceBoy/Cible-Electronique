@@ -1,10 +1,14 @@
-﻿Public Class FormLogin
+﻿Imports System.Text
+
+Public Class FormLogin
 
     Private _usersTableAdapter As DataSetTBTargetTableAdapters.usersTableAdapter
     Private _dataSetTBTarget As DataSetTBTarget
+    Private _formMain As FormMain
 
-    Public Sub New()
+    Public Sub New(ByRef formMain As FormMain)
         InitializeComponent()
+        _formMain = formMain
         _usersTableAdapter = New DataSetTBTargetTableAdapters.usersTableAdapter
         _dataSetTBTarget = New DataSetTBTarget
         Me.TabControlMain.ItemSize = New Size(0, 1)
@@ -15,16 +19,30 @@
         Me.TabControlMain.SelectedIndex = 1
     End Sub
 
-    Private Sub ButtonInscriptionConnect_Click(sender As Object, e As EventArgs) Handles ButtonInscriptionConnect.Click
+    Private Sub ButtonRegistrationConnect_Click(sender As Object, e As EventArgs) Handles ButtonRegistrationConnect.Click
         Me.TabControlMain.SelectedIndex = 0
     End Sub
 
     Private Sub ButtonConnexionConnect_Click(sender As Object, e As EventArgs) Handles ButtonConnexionConnect.Click
-        VerifyLogin(Me.TextBoxConnexionUsername.Text, Me.TextBoxConnexionPassword.Text)
+        Dim username As String = Me.TextBoxConnexionUsername.Text
+        Dim password As String = Me.TextBoxConnexionPassword.Text
+        VerifyLogin(username, password)
+        _formMain.ChangeUser(username)
+        Me.Close()
     End Sub
 
-    Private Sub ButtonInscriptionAddUser_Click(sender As Object, e As EventArgs) Handles ButtonInscriptionAddUser.Click
-        VerifyAccountCreation(Me.TextBoxInscriptionUsername.Text, Me.TextBoxInscriptionPassword.Text, Me.TextBoxInscriptionEMail.Text, 0)
+    Private Sub ButtonRegistrationAddUser_Click(sender As Object, e As EventArgs) Handles ButtonRegistrationAddUser.Click
+        Dim username As String = Me.TextBoxRegistrationUsername.Text
+        Dim password As String = Me.TextBoxRegistrationPassword.Text
+        Dim eMail As String = Me.TextBoxRegistrationEMail.Text
+        Dim level As Integer = Me.ComboBoxRegistrationLevel.Items(Me.ComboBoxRegistrationLevel.SelectedIndex)
+        'TODO : Ajout des levels
+        If VerifyAccountCreation(Me.TextBoxRegistrationUsername.Text, Me.TextBoxRegistrationPassword.Text, Me.TextBoxRegistrationEMail.Text, 0) Then
+            If CreateAccount(Me.TextBoxRegistrationUsername.Text, Me.TextBoxRegistrationPassword.Text, Me.TextBoxRegistrationEMail.Text, 0) Then
+                _formMain.ChangeUser(username)
+                Me.Close()
+            End If
+        End If
     End Sub
 
     Private Function VerifyLogin(ByVal username As String, ByVal password As String) As Boolean
@@ -43,8 +61,7 @@
             End If
 
             Dim user As DataSetTBTarget.usersRow = _dataSetTBTarget.users.Rows(0)
-            If user.password = password Then
-                MsgBox("Connexion réussie", MsgBoxStyle.Information, "Connexion")
+            If DecryptPassword(user.password) = password Then
                 Return True
             Else
                 MsgBox("Mot de passe incorrect", MsgBoxStyle.Information, "Connexion")
@@ -62,7 +79,7 @@
         Try
             If username = "" Then
                 MsgBox("Veuillez entrer un nom d'utilisateur", MsgBoxStyle.Information, "Inscription")
-                Me.TextBoxInscriptionUsername.Text = ""
+                Me.TextBoxRegistrationUsername.Text = ""
                 Return False
             End If
 
@@ -127,4 +144,48 @@
             Return True
         End If
     End Function
+
+    Private Function CreateAccount(ByVal username As String, ByVal password As String, ByVal eMail As String, ByVal level As Integer) As Boolean
+        Try
+            Dim newUser As DataSetTBTarget.usersRow = _dataSetTBTarget.users.NewusersRow
+            newUser.username = username
+            newUser.password = EncryptPassword(password)
+            newUser.e_mail = eMail
+            newUser.level = level
+            _dataSetTBTarget.users.AddusersRow(newUser)
+            _usersTableAdapter.Update(_dataSetTBTarget.users)
+            Return True
+        Catch ex As Exception
+            MsgBox("Erreur lors de la création du compte : " & ex.Message, MsgBoxStyle.Critical, "Inscription")
+            Return False
+        End Try
+    End Function
+
+    Private Function EncryptPassword(ByVal uncryptedPassword As String) As String
+        Dim bytes() As Byte = Encoding.UTF8.GetBytes(uncryptedPassword)
+        Return Convert.ToBase64String(bytes)
+    End Function
+
+    Private Function DecryptPassword(ByVal cryptedPassword As String) As String
+        Dim bytes() As Byte = Convert.FromBase64String(cryptedPassword)
+        Return Encoding.UTF8.GetString(bytes)
+    End Function
+
+    Private Sub LabelContinueWithoutConnexion_Click(sender As Object, e As EventArgs) Handles LabelContinueWithoutConnexion.Click
+        Me.Close()
+    End Sub
+
+    Private Sub LabelContinueWithoutConnexion_MouseHover(sender As Object, e As EventArgs) Handles LabelContinueWithoutConnexion.MouseHover
+        Dim standardFont As Font = LabelContinueWithoutConnexion.Font
+        Dim underLinedFont As New Font(standardFont, FontStyle.Underline)
+
+        Me.LabelContinueWithoutConnexion.Font = underLinedFont
+    End Sub
+
+    Private Sub LabelContinueWithoutConnexion_MouseLeave(sender As Object, e As EventArgs) Handles LabelContinueWithoutConnexion.MouseLeave
+        Dim standardFont As Font = LabelContinueWithoutConnexion.Font
+        Dim notUnderlinedFont As New Font(standardFont, FontStyle.Regular)
+
+        Me.LabelContinueWithoutConnexion.Font = notUnderlinedFont
+    End Sub
 End Class
