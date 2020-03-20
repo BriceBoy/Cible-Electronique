@@ -26,9 +26,10 @@ Public Class FormLogin
     Private Sub ButtonConnexionConnect_Click(sender As Object, e As EventArgs) Handles ButtonConnexionConnect.Click
         Dim username As String = Me.TextBoxConnexionUsername.Text
         Dim password As String = Me.TextBoxConnexionPassword.Text
-        VerifyLogin(username, password)
-        _formMain.ChangeUser(username)
-        Me.Close()
+        If VerifyLogin(username, password) Then
+            _formMain.ChangeUser(username)
+            Me.Close()
+        End If
     End Sub
 
     Private Sub ButtonRegistrationAddUser_Click(sender As Object, e As EventArgs) Handles ButtonRegistrationAddUser.Click

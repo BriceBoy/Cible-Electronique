@@ -34,14 +34,18 @@ Partial Class FormLogin
         Me.LabelContinueWithoutConnexion = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.TextBoxRegistrationEMail = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TextBoxRegistrationPassword = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBoxRegistrationUsername = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBoxRegistrationPassword = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBoxRegistrationEMail = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.ComboBoxRegistrationLevel = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TextBoxRegistrationLastname = New System.Windows.Forms.TextBox()
+        Me.TextBoxRegistrationFirstname = New System.Windows.Forms.TextBox()
         Me.ButtonRegistrationConnect = New System.Windows.Forms.Button()
         Me.ButtonRegistrationAddUser = New System.Windows.Forms.Button()
         Me.TabControlMain.SuspendLayout()
@@ -119,7 +123,7 @@ Partial Class FormLogin
         Me.Label1.Location = New System.Drawing.Point(91, 60)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(126, 20)
-        Me.Label1.TabIndex = 0
+        Me.Label1.TabIndex = 5
         Me.Label1.Text = "Utilisateur :"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -130,7 +134,7 @@ Partial Class FormLogin
         Me.TextBoxConnexionUsername.Location = New System.Drawing.Point(223, 59)
         Me.TextBoxConnexionUsername.Name = "TextBoxConnexionUsername"
         Me.TextBoxConnexionUsername.Size = New System.Drawing.Size(126, 26)
-        Me.TextBoxConnexionUsername.TabIndex = 3
+        Me.TextBoxConnexionUsername.TabIndex = 0
         '
         'TextBoxConnexionPassword
         '
@@ -139,7 +143,7 @@ Partial Class FormLogin
         Me.TextBoxConnexionPassword.Location = New System.Drawing.Point(223, 87)
         Me.TextBoxConnexionPassword.Name = "TextBoxConnexionPassword"
         Me.TextBoxConnexionPassword.Size = New System.Drawing.Size(126, 26)
-        Me.TextBoxConnexionPassword.TabIndex = 4
+        Me.TextBoxConnexionPassword.TabIndex = 1
         Me.TextBoxConnexionPassword.UseSystemPasswordChar = True
         '
         'Label2
@@ -150,7 +154,7 @@ Partial Class FormLogin
         Me.Label2.Location = New System.Drawing.Point(91, 88)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(126, 20)
-        Me.Label2.TabIndex = 1
+        Me.Label2.TabIndex = 6
         Me.Label2.Text = "Mot de passe :"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -164,7 +168,7 @@ Partial Class FormLogin
         Me.ButtonConnexionConnect.Name = "ButtonConnexionConnect"
         Me.TableLayoutPanel1.SetRowSpan(Me.ButtonConnexionConnect, 2)
         Me.ButtonConnexionConnect.Size = New System.Drawing.Size(126, 56)
-        Me.ButtonConnexionConnect.TabIndex = 5
+        Me.ButtonConnexionConnect.TabIndex = 4
         Me.ButtonConnexionConnect.Text = "Connexion"
         Me.ButtonConnexionConnect.UseVisualStyleBackColor = True
         '
@@ -178,7 +182,7 @@ Partial Class FormLogin
         Me.ButtonConnexionCreateAccount.Name = "ButtonConnexionCreateAccount"
         Me.TableLayoutPanel1.SetRowSpan(Me.ButtonConnexionCreateAccount, 2)
         Me.ButtonConnexionCreateAccount.Size = New System.Drawing.Size(126, 56)
-        Me.ButtonConnexionCreateAccount.TabIndex = 2
+        Me.ButtonConnexionCreateAccount.TabIndex = 3
         Me.ButtonConnexionCreateAccount.Text = "Créer compte"
         Me.ButtonConnexionCreateAccount.UseVisualStyleBackColor = True
         '
@@ -193,17 +197,17 @@ Partial Class FormLogin
         Me.LabelContinueWithoutConnexion.Location = New System.Drawing.Point(91, 125)
         Me.LabelContinueWithoutConnexion.Name = "LabelContinueWithoutConnexion"
         Me.LabelContinueWithoutConnexion.Size = New System.Drawing.Size(258, 15)
-        Me.LabelContinueWithoutConnexion.TabIndex = 6
+        Me.LabelContinueWithoutConnexion.TabIndex = 2
         Me.LabelContinueWithoutConnexion.Text = "Continuer sans se connnecter"
         Me.LabelContinueWithoutConnexion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.TableLayoutPanel2)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 32)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(453, 243)
+        Me.TabPage2.Size = New System.Drawing.Size(453, 236)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Inscription"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -221,14 +225,18 @@ Partial Class FormLogin
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel2.Controls.Add(Me.Label3, 2, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.TextBoxRegistrationUsername, 5, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label4, 2, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.TextBoxRegistrationPassword, 5, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label5, 2, 4)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label6, 2, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.TextBoxRegistrationEMail, 5, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.ComboBoxRegistrationLevel, 5, 4)
+        Me.TableLayoutPanel2.Controls.Add(Me.TextBoxRegistrationEMail, 5, 4)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label6, 2, 4)
+        Me.TableLayoutPanel2.Controls.Add(Me.TextBoxRegistrationPassword, 5, 3)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label4, 2, 3)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label3, 2, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.TextBoxRegistrationUsername, 5, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label7, 2, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label8, 2, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.ComboBoxRegistrationLevel, 5, 5)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label5, 2, 5)
+        Me.TableLayoutPanel2.Controls.Add(Me.TextBoxRegistrationLastname, 5, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.TextBoxRegistrationFirstname, 5, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.ButtonRegistrationConnect, 2, 6)
         Me.TableLayoutPanel2.Controls.Add(Me.ButtonRegistrationAddUser, 5, 6)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
@@ -244,95 +252,136 @@ Partial Class FormLogin
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(447, 237)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(447, 230)
         Me.TableLayoutPanel2.TabIndex = 2
         '
-        'Label3
+        'TextBoxRegistrationEMail
         '
-        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label3.AutoSize = True
-        Me.TableLayoutPanel2.SetColumnSpan(Me.Label3, 3)
-        Me.Label3.Location = New System.Drawing.Point(91, 33)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(126, 20)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Utilisateur :"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'TextBoxRegistrationUsername
-        '
-        Me.TextBoxRegistrationUsername.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel2.SetColumnSpan(Me.TextBoxRegistrationUsername, 3)
-        Me.TextBoxRegistrationUsername.Location = New System.Drawing.Point(223, 32)
-        Me.TextBoxRegistrationUsername.Name = "TextBoxRegistrationUsername"
-        Me.TextBoxRegistrationUsername.Size = New System.Drawing.Size(126, 26)
-        Me.TextBoxRegistrationUsername.TabIndex = 3
-        '
-        'Label4
-        '
-        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label4.AutoSize = True
-        Me.TableLayoutPanel2.SetColumnSpan(Me.Label4, 3)
-        Me.Label4.Location = New System.Drawing.Point(91, 62)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(126, 20)
-        Me.Label4.TabIndex = 1
-        Me.Label4.Text = "Mot de passe :"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'TextBoxRegistrationPassword
-        '
-        Me.TextBoxRegistrationPassword.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel2.SetColumnSpan(Me.TextBoxRegistrationPassword, 3)
-        Me.TextBoxRegistrationPassword.Location = New System.Drawing.Point(223, 61)
-        Me.TextBoxRegistrationPassword.Name = "TextBoxRegistrationPassword"
-        Me.TextBoxRegistrationPassword.Size = New System.Drawing.Size(126, 26)
-        Me.TextBoxRegistrationPassword.TabIndex = 4
-        Me.TextBoxRegistrationPassword.UseSystemPasswordChar = True
-        '
-        'Label5
-        '
-        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label5.AutoSize = True
-        Me.TableLayoutPanel2.SetColumnSpan(Me.Label5, 3)
-        Me.Label5.Location = New System.Drawing.Point(91, 120)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(126, 20)
-        Me.Label5.TabIndex = 6
-        Me.Label5.Text = "Niveau :"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.TextBoxRegistrationEMail.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel2.SetColumnSpan(Me.TextBoxRegistrationEMail, 4)
+        Me.TextBoxRegistrationEMail.Location = New System.Drawing.Point(223, 115)
+        Me.TextBoxRegistrationEMail.Name = "TextBoxRegistrationEMail"
+        Me.TextBoxRegistrationEMail.Size = New System.Drawing.Size(170, 26)
+        Me.TextBoxRegistrationEMail.TabIndex = 4
         '
         'Label6
         '
         Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label6.AutoSize = True
         Me.TableLayoutPanel2.SetColumnSpan(Me.Label6, 3)
-        Me.Label6.Location = New System.Drawing.Point(91, 91)
+        Me.Label6.Location = New System.Drawing.Point(91, 116)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(126, 20)
-        Me.Label6.TabIndex = 7
+        Me.Label6.TabIndex = 12
         Me.Label6.Text = "E-mail :"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'TextBoxRegistrationEMail
+        'TextBoxRegistrationPassword
         '
-        Me.TextBoxRegistrationEMail.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel2.SetColumnSpan(Me.TextBoxRegistrationEMail, 3)
-        Me.TextBoxRegistrationEMail.Location = New System.Drawing.Point(223, 90)
-        Me.TextBoxRegistrationEMail.Name = "TextBoxRegistrationEMail"
-        Me.TextBoxRegistrationEMail.Size = New System.Drawing.Size(126, 26)
-        Me.TextBoxRegistrationEMail.TabIndex = 8
+        Me.TextBoxRegistrationPassword.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel2.SetColumnSpan(Me.TextBoxRegistrationPassword, 4)
+        Me.TextBoxRegistrationPassword.Location = New System.Drawing.Point(223, 87)
+        Me.TextBoxRegistrationPassword.Name = "TextBoxRegistrationPassword"
+        Me.TextBoxRegistrationPassword.Size = New System.Drawing.Size(170, 26)
+        Me.TextBoxRegistrationPassword.TabIndex = 3
+        Me.TextBoxRegistrationPassword.UseSystemPasswordChar = True
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label4.AutoSize = True
+        Me.TableLayoutPanel2.SetColumnSpan(Me.Label4, 3)
+        Me.Label4.Location = New System.Drawing.Point(91, 88)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(126, 20)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "Mot de passe :"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label3.AutoSize = True
+        Me.TableLayoutPanel2.SetColumnSpan(Me.Label3, 3)
+        Me.Label3.Location = New System.Drawing.Point(91, 60)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(126, 20)
+        Me.Label3.TabIndex = 10
+        Me.Label3.Text = "Utilisateur :"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'TextBoxRegistrationUsername
+        '
+        Me.TextBoxRegistrationUsername.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel2.SetColumnSpan(Me.TextBoxRegistrationUsername, 4)
+        Me.TextBoxRegistrationUsername.Location = New System.Drawing.Point(223, 59)
+        Me.TextBoxRegistrationUsername.Name = "TextBoxRegistrationUsername"
+        Me.TextBoxRegistrationUsername.Size = New System.Drawing.Size(170, 26)
+        Me.TextBoxRegistrationUsername.TabIndex = 2
+        '
+        'Label7
+        '
+        Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label7.AutoSize = True
+        Me.TableLayoutPanel2.SetColumnSpan(Me.Label7, 3)
+        Me.Label7.Location = New System.Drawing.Point(91, 4)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(126, 20)
+        Me.Label7.TabIndex = 8
+        Me.Label7.Text = "Nom :"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label8
+        '
+        Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label8.AutoSize = True
+        Me.TableLayoutPanel2.SetColumnSpan(Me.Label8, 3)
+        Me.Label8.Location = New System.Drawing.Point(91, 32)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(126, 20)
+        Me.Label8.TabIndex = 9
+        Me.Label8.Text = "Prénom :"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'ComboBoxRegistrationLevel
         '
         Me.ComboBoxRegistrationLevel.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel2.SetColumnSpan(Me.ComboBoxRegistrationLevel, 3)
+        Me.TableLayoutPanel2.SetColumnSpan(Me.ComboBoxRegistrationLevel, 4)
         Me.ComboBoxRegistrationLevel.FormattingEnabled = True
-        Me.ComboBoxRegistrationLevel.Location = New System.Drawing.Point(223, 119)
+        Me.ComboBoxRegistrationLevel.Location = New System.Drawing.Point(223, 143)
         Me.ComboBoxRegistrationLevel.Name = "ComboBoxRegistrationLevel"
-        Me.ComboBoxRegistrationLevel.Size = New System.Drawing.Size(126, 28)
-        Me.ComboBoxRegistrationLevel.TabIndex = 9
+        Me.ComboBoxRegistrationLevel.Size = New System.Drawing.Size(170, 28)
+        Me.ComboBoxRegistrationLevel.TabIndex = 5
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label5.AutoSize = True
+        Me.TableLayoutPanel2.SetColumnSpan(Me.Label5, 3)
+        Me.Label5.Location = New System.Drawing.Point(91, 144)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(126, 20)
+        Me.Label5.TabIndex = 13
+        Me.Label5.Text = "Niveau :"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'TextBoxRegistrationLastname
+        '
+        Me.TextBoxRegistrationLastname.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel2.SetColumnSpan(Me.TextBoxRegistrationLastname, 4)
+        Me.TextBoxRegistrationLastname.Location = New System.Drawing.Point(223, 3)
+        Me.TextBoxRegistrationLastname.Name = "TextBoxRegistrationLastname"
+        Me.TextBoxRegistrationLastname.Size = New System.Drawing.Size(170, 26)
+        Me.TextBoxRegistrationLastname.TabIndex = 0
+        '
+        'TextBoxRegistrationFirstname
+        '
+        Me.TextBoxRegistrationFirstname.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel2.SetColumnSpan(Me.TextBoxRegistrationFirstname, 4)
+        Me.TextBoxRegistrationFirstname.Location = New System.Drawing.Point(223, 31)
+        Me.TextBoxRegistrationFirstname.Name = "TextBoxRegistrationFirstname"
+        Me.TextBoxRegistrationFirstname.Size = New System.Drawing.Size(170, 26)
+        Me.TextBoxRegistrationFirstname.TabIndex = 1
         '
         'ButtonRegistrationConnect
         '
@@ -340,11 +389,11 @@ Partial Class FormLogin
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.SetColumnSpan(Me.ButtonRegistrationConnect, 3)
-        Me.ButtonRegistrationConnect.Location = New System.Drawing.Point(91, 177)
+        Me.ButtonRegistrationConnect.Location = New System.Drawing.Point(91, 171)
         Me.ButtonRegistrationConnect.Name = "ButtonRegistrationConnect"
         Me.TableLayoutPanel2.SetRowSpan(Me.ButtonRegistrationConnect, 2)
-        Me.ButtonRegistrationConnect.Size = New System.Drawing.Size(126, 57)
-        Me.ButtonRegistrationConnect.TabIndex = 2
+        Me.ButtonRegistrationConnect.Size = New System.Drawing.Size(126, 56)
+        Me.ButtonRegistrationConnect.TabIndex = 6
         Me.ButtonRegistrationConnect.Text = "Se connecter"
         Me.ButtonRegistrationConnect.UseVisualStyleBackColor = True
         '
@@ -354,11 +403,11 @@ Partial Class FormLogin
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.SetColumnSpan(Me.ButtonRegistrationAddUser, 3)
-        Me.ButtonRegistrationAddUser.Location = New System.Drawing.Point(223, 177)
+        Me.ButtonRegistrationAddUser.Location = New System.Drawing.Point(223, 171)
         Me.ButtonRegistrationAddUser.Name = "ButtonRegistrationAddUser"
         Me.TableLayoutPanel2.SetRowSpan(Me.ButtonRegistrationAddUser, 2)
-        Me.ButtonRegistrationAddUser.Size = New System.Drawing.Size(126, 57)
-        Me.ButtonRegistrationAddUser.TabIndex = 5
+        Me.ButtonRegistrationAddUser.Size = New System.Drawing.Size(126, 56)
+        Me.ButtonRegistrationAddUser.TabIndex = 7
         Me.ButtonRegistrationAddUser.Text = "Créer"
         Me.ButtonRegistrationAddUser.UseVisualStyleBackColor = True
         '
@@ -406,4 +455,8 @@ Partial Class FormLogin
     Friend WithEvents TextBoxRegistrationEMail As TextBox
     Friend WithEvents ComboBoxRegistrationLevel As ComboBox
     Friend WithEvents LabelContinueWithoutConnexion As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents TextBoxRegistrationLastname As TextBox
+    Friend WithEvents TextBoxRegistrationFirstname As TextBox
 End Class
