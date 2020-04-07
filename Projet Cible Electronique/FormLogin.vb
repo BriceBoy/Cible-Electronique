@@ -146,13 +146,13 @@ Public Class FormLogin
         End If
     End Function
 
-    Private Function CreateAccount(ByVal username As String, ByVal password As String, ByVal eMail As String, ByVal level As Integer) As Boolean
+    Private Function CreateAccount(ByVal username As String, ByVal password As String, ByVal eMail As String, ByVal category As String) As Boolean
         Try
             Dim newUser As DataSetTBTarget.usersRow = _dataSetTBTarget.users.NewusersRow
             newUser.username = username
             newUser.password = EncryptPassword(password)
             newUser.e_mail = eMail
-            newUser.level = level
+            newUser.category = category
             _dataSetTBTarget.users.AddusersRow(newUser)
             _usersTableAdapter.Update(_dataSetTBTarget.users)
             Return True

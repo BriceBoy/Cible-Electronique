@@ -1,6 +1,6 @@
 ﻿Public Class FormMain
 
-    Private _currentUser As String
+    Private _currentUser As User
 
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.TabControlMain.Appearance = TabAppearance.FlatButtons
@@ -11,8 +11,7 @@
     End Sub
 
     Public Sub ChangeUser(ByVal username As String)
-        _currentUser = username
-        Me.ButtonUser.Text = username
+        _currentUser = New User(username)
     End Sub
 
     Private Sub FormMain_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
