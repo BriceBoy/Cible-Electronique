@@ -42,7 +42,7 @@ Partial Class FormLogin
         Me.TextBoxRegistrationUsername = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.ComboBoxRegistrationLevel = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxRegistrationCategory = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBoxRegistrationLastname = New System.Windows.Forms.TextBox()
         Me.TextBoxRegistrationFirstname = New System.Windows.Forms.TextBox()
@@ -233,7 +233,7 @@ Partial Class FormLogin
         Me.TableLayoutPanel2.Controls.Add(Me.TextBoxRegistrationUsername, 5, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.Label7, 2, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Label8, 2, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.ComboBoxRegistrationLevel, 5, 5)
+        Me.TableLayoutPanel2.Controls.Add(Me.ComboBoxRegistrationCategory, 5, 5)
         Me.TableLayoutPanel2.Controls.Add(Me.Label5, 2, 5)
         Me.TableLayoutPanel2.Controls.Add(Me.TextBoxRegistrationLastname, 5, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.TextBoxRegistrationFirstname, 5, 1)
@@ -343,15 +343,15 @@ Partial Class FormLogin
         Me.Label8.Text = "Prénom :"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'ComboBoxRegistrationLevel
+        'ComboBoxRegistrationCategory
         '
-        Me.ComboBoxRegistrationLevel.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel2.SetColumnSpan(Me.ComboBoxRegistrationLevel, 4)
-        Me.ComboBoxRegistrationLevel.FormattingEnabled = True
-        Me.ComboBoxRegistrationLevel.Location = New System.Drawing.Point(223, 143)
-        Me.ComboBoxRegistrationLevel.Name = "ComboBoxRegistrationLevel"
-        Me.ComboBoxRegistrationLevel.Size = New System.Drawing.Size(170, 28)
-        Me.ComboBoxRegistrationLevel.TabIndex = 5
+        Me.ComboBoxRegistrationCategory.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel2.SetColumnSpan(Me.ComboBoxRegistrationCategory, 4)
+        Me.ComboBoxRegistrationCategory.FormattingEnabled = True
+        Me.ComboBoxRegistrationCategory.Location = New System.Drawing.Point(223, 143)
+        Me.ComboBoxRegistrationCategory.Name = "ComboBoxRegistrationCategory"
+        Me.ComboBoxRegistrationCategory.Size = New System.Drawing.Size(170, 28)
+        Me.ComboBoxRegistrationCategory.TabIndex = 5
         '
         'Label5
         '
@@ -362,7 +362,7 @@ Partial Class FormLogin
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(126, 20)
         Me.Label5.TabIndex = 13
-        Me.Label5.Text = "Niveau :"
+        Me.Label5.Text = "Catégorie :"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TextBoxRegistrationLastname
@@ -453,7 +453,7 @@ Partial Class FormLogin
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents TextBoxRegistrationEMail As TextBox
-    Friend WithEvents ComboBoxRegistrationLevel As ComboBox
+    Friend WithEvents ComboBoxRegistrationCategory As ComboBox
     Friend WithEvents LabelContinueWithoutConnexion As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label

@@ -10,8 +10,12 @@
         _formLogin.ShowDialog()
     End Sub
 
-    Public Sub ChangeUser(ByVal username As String)
-        _currentUser = New User(username)
+    Public Sub ChangeUser(ByRef user As User)
+        If Not IsNothing(user) Then
+            _currentUser = user
+        Else
+            _currentUser = New User()
+        End If
     End Sub
 
     Private Sub FormMain_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
