@@ -397,7 +397,7 @@ Partial Class FormMain
         Me.ComboBoxUserCategory.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel3.SetColumnSpan(Me.ComboBoxUserCategory, 5)
         Me.ComboBoxUserCategory.FormattingEnabled = True
-        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 453)
+        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 451)
         Me.ComboBoxUserCategory.Name = "ComboBoxUserCategory"
         Me.ComboBoxUserCategory.Size = New System.Drawing.Size(239, 28)
         Me.ComboBoxUserCategory.TabIndex = 6

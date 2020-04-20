@@ -35,12 +35,17 @@ Public Class FormLogin
     End Sub
 
     Private Sub ButtonRegistrationAddUser_Click(sender As Object, e As EventArgs) Handles ButtonRegistrationAddUser.Click
+        Dim firstname As String = Me.TextBoxRegistrationFirstname.Text
+        Dim lastname As String = Me.TextBoxRegistrationLastname.Text
         Dim username As String = Me.TextBoxRegistrationUsername.Text
         Dim password As String = Me.TextBoxRegistrationPassword.Text
         Dim eMail As String = Me.TextBoxRegistrationEMail.Text
-        Dim category As Integer = Me.ComboBoxRegistrationCategory.Items(Me.ComboBoxRegistrationCategory.SelectedIndex).ToString
+        Dim category As String = ""
+        If Me.ComboBoxRegistrationCategory.SelectedIndex >= 0 Then
+            category = Me.ComboBoxRegistrationCategory.Items(Me.ComboBoxRegistrationCategory.SelectedIndex).ToString
+        End If
         ' TODO : Ajouter catergory
-        If VerifyAccountCreation(username, password, eMail, "") Then
+        If VerifyAccountCreation(firstname, lastname, username, password, eMail, category) Then
             _formMain.ChangeUser(_currentUser)
             Me.Close()
         End If
@@ -69,8 +74,8 @@ Public Class FormLogin
         End Select
     End Function
 
-    Private Function VerifyAccountCreation(ByVal username As String, ByVal password As String, ByVal email As String, ByVal category As String) As Boolean
-        Dim result As Integer = _currentUser.SignIn("", "", username, password, email, category)
+    Private Function VerifyAccountCreation(ByVal firstname As String, ByVal lastname As String, ByVal username As String, ByVal password As String, ByVal email As String, ByVal category As String) As Boolean
+        Dim result As Integer = _currentUser.SignIn(firstname, lastname, username, password, email, category)
         Select Case result
             Case 1
                 Return True
@@ -105,5 +110,11 @@ Public Class FormLogin
         Dim notUnderlinedFont As New Font(standardFont, FontStyle.Regular)
 
         Me.LabelContinueWithoutConnexion.Font = notUnderlinedFont
+    End Sub
+
+    Private Sub TextBoxConnexionPassword_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxConnexionPassword.KeyPress
+        If e.KeyChar = vbCr Then
+            Call Me.ButtonConnexionConnect_Click(Nothing, Nothing)
+        End If
     End Sub
 End Class

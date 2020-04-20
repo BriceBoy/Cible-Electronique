@@ -13,6 +13,7 @@
     Public Sub ChangeUser(ByRef user As User)
         If Not IsNothing(user) Then
             _currentUser = user
+            LoadAccountInfos()
         Else
             _currentUser = New User()
         End If
@@ -24,6 +25,7 @@
 
     Private Sub ButtonUser_Click(sender As Object, e As EventArgs) Handles ButtonUser.Click
         Me.TabControlMain.SelectedIndex = 0
+        LoadAccountInfos()
     End Sub
 
     Private Sub ButtonShootingSession_Click(sender As Object, e As EventArgs) Handles ButtonShootingSession.Click
@@ -36,5 +38,22 @@
 
     Private Sub ButtonSettings_Click(sender As Object, e As EventArgs) Handles ButtonSettings.Click
         Me.TabControlMain.SelectedIndex = 3
+    End Sub
+
+    Private Sub LoadAccountInfos()
+        If Not IsNothing(_currentUser) Then
+            With _currentUser
+                Me.ButtonUser.Text = _currentUser.Username
+
+                Me.TextBoxUserFirstname.Text = .FirstName
+                Me.TextBoxUserLastname.Text = .Lastname
+                Me.TextBoxUserUsername.Text = .Username
+                Me.TextBoxUserEmail.Text = .EMail
+                Me.ComboBoxUserCategory.Text = .Category
+                If Not IsNothing(.Picture) Then
+                    Me.PictureBoxUserPicture.Image = .Picture
+                End If
+            End With
+        End If
     End Sub
 End Class

@@ -101,11 +101,11 @@ Public Class User
                 Return -3
             End If
 
-            ' Correct login
-            If LoadUserInfos() = False Then
+            If LoadUserInfos(username) = False Then
                 ' Error while loading user's data
                 Return -4
             Else
+                ' Correct login
                 Return 1
             End If
 
@@ -116,9 +116,9 @@ Public Class User
         End Try
     End Function
 
-    Private Function LoadUserInfos() As Boolean
+    Private Function LoadUserInfos(ByVal username As String) As Boolean
         Try
-            If _usersTableAdapter.FillByUsername(_dataSetTBTarget.users, _username) > 0 Then
+            If _usersTableAdapter.FillByUsername(_dataSetTBTarget.users, username) > 0 Then
                 Dim userRow As DataSetTBTarget.usersRow = _dataSetTBTarget.users.Rows(0)
                 _firstname = userRow.firstname
                 _lastname = userRow.lastname
@@ -126,7 +126,9 @@ Public Class User
                 _password = DecryptPassword(userRow.password)
                 _email = userRow.e_mail
                 _category = userRow.category
-                _picture = byteArrayToImage(userRow.picture)
+                If Not userRow.IspictureNull Then
+                    _picture = byteArrayToImage(userRow.picture)
+                End If
                 Return True
             Else
                 Return False
