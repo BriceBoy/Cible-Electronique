@@ -37,7 +37,7 @@ Partial Class FormMain
         Me.ButtonSettings = New System.Windows.Forms.Button()
         Me.LabelPaint1 = New System.Windows.Forms.Label()
         Me.TabControlMain = New System.Windows.Forms.TabControl()
-        Me.TabPageUser = New System.Windows.Forms.TabPage()
+        Me.TabPageUserConnected = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.ButtonUserSave = New System.Windows.Forms.Button()
         Me.PictureBoxUserPicture = New System.Windows.Forms.PictureBox()
@@ -54,7 +54,7 @@ Partial Class FormMain
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ButtonUserCancel = New System.Windows.Forms.Button()
+        Me.ButtonUserLogOut = New System.Windows.Forms.Button()
         Me.TextBoxUserLastname = New System.Windows.Forms.TextBox()
         Me.TabPageShootingSession = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
@@ -75,11 +75,12 @@ Partial Class FormMain
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.RadioButton4 = New System.Windows.Forms.RadioButton()
         Me.TabPageSettings = New System.Windows.Forms.TabPage()
+        Me.TabPageEmpty = New System.Windows.Forms.TabPage()
         Me.StatusStrip1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TabControlMain.SuspendLayout()
-        Me.TabPageUser.SuspendLayout()
+        Me.TabPageUserConnected.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.PictureBoxUserPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageShootingSession.SuspendLayout()
@@ -201,7 +202,7 @@ Partial Class FormMain
         Me.ButtonUser.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
         Me.ButtonUser.Size = New System.Drawing.Size(244, 157)
         Me.ButtonUser.TabIndex = 0
-        Me.ButtonUser.Text = "Utilisateur"
+        Me.ButtonUser.Text = "Connexion"
         Me.ButtonUser.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ButtonUser.UseVisualStyleBackColor = False
         '
@@ -235,10 +236,11 @@ Partial Class FormMain
         '
         'TabControlMain
         '
-        Me.TabControlMain.Controls.Add(Me.TabPageUser)
+        Me.TabControlMain.Controls.Add(Me.TabPageUserConnected)
         Me.TabControlMain.Controls.Add(Me.TabPageShootingSession)
         Me.TabControlMain.Controls.Add(Me.TabPageStatistics)
         Me.TabControlMain.Controls.Add(Me.TabPageSettings)
+        Me.TabControlMain.Controls.Add(Me.TabPageEmpty)
         Me.TabControlMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControlMain.Location = New System.Drawing.Point(255, 3)
         Me.TabControlMain.Name = "TabControlMain"
@@ -246,15 +248,15 @@ Partial Class FormMain
         Me.TabControlMain.Size = New System.Drawing.Size(1006, 649)
         Me.TabControlMain.TabIndex = 5
         '
-        'TabPageUser
+        'TabPageUserConnected
         '
-        Me.TabPageUser.Controls.Add(Me.TableLayoutPanel3)
-        Me.TabPageUser.Location = New System.Drawing.Point(4, 29)
-        Me.TabPageUser.Name = "TabPageUser"
-        Me.TabPageUser.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageUser.Size = New System.Drawing.Size(998, 616)
-        Me.TabPageUser.TabIndex = 0
-        Me.TabPageUser.UseVisualStyleBackColor = True
+        Me.TabPageUserConnected.Controls.Add(Me.TableLayoutPanel3)
+        Me.TabPageUserConnected.Location = New System.Drawing.Point(4, 29)
+        Me.TabPageUserConnected.Name = "TabPageUserConnected"
+        Me.TabPageUserConnected.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPageUserConnected.Size = New System.Drawing.Size(998, 616)
+        Me.TabPageUserConnected.TabIndex = 0
+        Me.TabPageUserConnected.UseVisualStyleBackColor = True
         '
         'TableLayoutPanel3
         '
@@ -294,7 +296,7 @@ Partial Class FormMain
         Me.TableLayoutPanel3.Controls.Add(Me.Label3, 5, 6)
         Me.TableLayoutPanel3.Controls.Add(Me.Label2, 5, 4)
         Me.TableLayoutPanel3.Controls.Add(Me.Label1, 5, 2)
-        Me.TableLayoutPanel3.Controls.Add(Me.ButtonUserCancel, 5, 16)
+        Me.TableLayoutPanel3.Controls.Add(Me.ButtonUserLogOut, 5, 16)
         Me.TableLayoutPanel3.Controls.Add(Me.TextBoxUserLastname, 10, 6)
         Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel3.Location = New System.Drawing.Point(3, 3)
@@ -486,17 +488,17 @@ Partial Class FormMain
         Me.Label1.Text = "Nom :"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'ButtonUserCancel
+        'ButtonUserLogOut
         '
-        Me.TableLayoutPanel3.SetColumnSpan(Me.ButtonUserCancel, 5)
-        Me.ButtonUserCancel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonUserCancel.Location = New System.Drawing.Point(248, 515)
-        Me.ButtonUserCancel.Name = "ButtonUserCancel"
-        Me.TableLayoutPanel3.SetRowSpan(Me.ButtonUserCancel, 2)
-        Me.ButtonUserCancel.Size = New System.Drawing.Size(239, 58)
-        Me.ButtonUserCancel.TabIndex = 7
-        Me.ButtonUserCancel.Text = "Annuler"
-        Me.ButtonUserCancel.UseVisualStyleBackColor = True
+        Me.TableLayoutPanel3.SetColumnSpan(Me.ButtonUserLogOut, 5)
+        Me.ButtonUserLogOut.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ButtonUserLogOut.Location = New System.Drawing.Point(248, 515)
+        Me.ButtonUserLogOut.Name = "ButtonUserLogOut"
+        Me.TableLayoutPanel3.SetRowSpan(Me.ButtonUserLogOut, 2)
+        Me.ButtonUserLogOut.Size = New System.Drawing.Size(239, 58)
+        Me.ButtonUserLogOut.TabIndex = 7
+        Me.ButtonUserLogOut.Text = "Se déconnecter"
+        Me.ButtonUserLogOut.UseVisualStyleBackColor = True
         '
         'TextBoxUserLastname
         '
@@ -823,6 +825,15 @@ Partial Class FormMain
         Me.TabPageSettings.TabIndex = 3
         Me.TabPageSettings.UseVisualStyleBackColor = True
         '
+        'TabPageEmpty
+        '
+        Me.TabPageEmpty.Location = New System.Drawing.Point(4, 22)
+        Me.TabPageEmpty.Name = "TabPageEmpty"
+        Me.TabPageEmpty.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPageEmpty.Size = New System.Drawing.Size(998, 623)
+        Me.TabPageEmpty.TabIndex = 4
+        Me.TabPageEmpty.UseVisualStyleBackColor = True
+        '
         'FormMain
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -842,7 +853,7 @@ Partial Class FormMain
         Me.TableLayoutPanel2.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TabControlMain.ResumeLayout(False)
-        Me.TabPageUser.ResumeLayout(False)
+        Me.TabPageUserConnected.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
         CType(Me.PictureBoxUserPicture, System.ComponentModel.ISupportInitialize).EndInit()
@@ -871,28 +882,26 @@ Partial Class FormMain
     Friend WithEvents ButtonShootingSession As Button
     Friend WithEvents ButtonUser As Button
     Friend WithEvents TabControlMain As TabControl
-    Friend WithEvents TabPageUser As TabPage
-    Friend WithEvents TabPageShootingSession As TabPage
-    Friend WithEvents TabPageStatistics As TabPage
-    Friend WithEvents TabPageSettings As TabPage
+    Friend WithEvents TabPageUserConnected As TabPage
     Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
+    Friend WithEvents ButtonUserSave As Button
     Friend WithEvents PictureBoxUserPicture As PictureBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
     Friend WithEvents TextBoxUserUsername As TextBox
     Friend WithEvents TextBoxUserFirstname As TextBox
-    Friend WithEvents TextBoxUserLastname As TextBox
     Friend WithEvents TextBoxUserPassword As TextBox
     Friend WithEvents TextBoxUserPasswordConfirm As TextBox
     Friend WithEvents TextBoxUserEmail As TextBox
     Friend WithEvents ComboBoxUserCategory As ComboBox
-    Friend WithEvents ButtonUserSave As Button
-    Friend WithEvents ButtonUserCancel As Button
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents ButtonUserLogOut As Button
+    Friend WithEvents TextBoxUserLastname As TextBox
+    Friend WithEvents TabPageShootingSession As TabPage
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents DataGridView1 As DataGridView
@@ -901,6 +910,7 @@ Partial Class FormMain
     Friend WithEvents ColDistance As DataGridViewTextBoxColumn
     Friend WithEvents ColScore As DataGridViewTextBoxColumn
     Friend WithEvents ColSum As DataGridViewTextBoxColumn
+    Friend WithEvents TabPageStatistics As TabPage
     Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
     Friend WithEvents GroupBox1 As GroupBox
@@ -909,4 +919,6 @@ Partial Class FormMain
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents RadioButton3 As RadioButton
     Friend WithEvents RadioButton4 As RadioButton
+    Friend WithEvents TabPageSettings As TabPage
+    Friend WithEvents TabPageEmpty As TabPage
 End Class

@@ -6,6 +6,7 @@
         Me.TabControlMain.Appearance = TabAppearance.FlatButtons
         Me.TabControlMain.ItemSize = New Size(0, 1)
         Me.TabControlMain.SizeMode = TabSizeMode.Fixed
+        Me.TabControlMain.SelectedIndex = 1
         Dim _formLogin As New FormLogin(Me)
         _formLogin.ShowDialog()
     End Sub
@@ -14,18 +15,25 @@
         If Not IsNothing(user) Then
             _currentUser = user
             LoadAccountInfos()
+            Me.TabControlMain.SelectedIndex = 0
         Else
-            _currentUser = New User()
+            _currentUser = Nothing
         End If
     End Sub
 
-    Private Sub FormMain_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
-        Me.ToolStripStatusLabel1.Text = Me.ButtonSettings.Height
-    End Sub
+    'Private Sub FormMain_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
+    '    Me.ToolStripStatusLabel1.Text = Me.ButtonSettings.Height
+    'End Sub
 
     Private Sub ButtonUser_Click(sender As Object, e As EventArgs) Handles ButtonUser.Click
-        Me.TabControlMain.SelectedIndex = 0
-        LoadAccountInfos()
+        If IsNothing(_currentUser) Then
+            Me.TabControlMain.SelectedIndex = 4
+            Dim _formLogin As New FormLogin(Me)
+            _formLogin.ShowDialog()
+        Else
+            LoadAccountInfos()
+            Me.TabControlMain.SelectedIndex = 0
+        End If
     End Sub
 
     Private Sub ButtonShootingSession_Click(sender As Object, e As EventArgs) Handles ButtonShootingSession.Click
@@ -38,6 +46,24 @@
 
     Private Sub ButtonSettings_Click(sender As Object, e As EventArgs) Handles ButtonSettings.Click
         Me.TabControlMain.SelectedIndex = 3
+    End Sub
+
+    Private Sub ButtonUserLogOut_Click(sender As Object, e As EventArgs) Handles ButtonUserLogOut.Click
+        _currentUser = Nothing
+        ClearUserPage()
+    End Sub
+
+    Private Sub ClearUserPage()
+        Me.ButtonUser.Text = "Connexion"
+
+        Me.TextBoxUserUsername.Text = ""
+        Me.TextBoxUserFirstname.Text = ""
+        Me.TextBoxUserLastname.Text = ""
+        Me.TextBoxUserPassword.Text = ""
+        Me.TextBoxUserPasswordConfirm.Text = ""
+        Me.TextBoxUserEmail.Text = ""
+        Me.ComboBoxUserCategory.Text = ""
+        Me.PictureBoxUserPicture.Image = Nothing
     End Sub
 
     Private Sub LoadAccountInfos()
