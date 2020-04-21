@@ -23,9 +23,9 @@ Partial Class FormMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -59,12 +59,8 @@ Partial Class FormMain
         Me.TabPageShootingSession = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ColShootNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColDirection = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColDistance = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColScore = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColSum = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.TabPageStatistics = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
@@ -76,6 +72,23 @@ Partial Class FormMain
         Me.RadioButton4 = New System.Windows.Forms.RadioButton()
         Me.TabPageSettings = New System.Windows.Forms.TabPage()
         Me.TabPageEmpty = New System.Windows.Forms.TabPage()
+        Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.ColShoot = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColDirection = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColDistance = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColScore = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.LabelLastShootDirection = New System.Windows.Forms.Label()
+        Me.LabelLastShootDistance = New System.Windows.Forms.Label()
+        Me.LabelLastShootScore = New System.Windows.Forms.Label()
+        Me.LabelLastShootTotal = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -86,12 +99,15 @@ Partial Class FormMain
         Me.TabPageShootingSession.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageStatistics.SuspendLayout()
         Me.TableLayoutPanel5.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
+        Me.TableLayoutPanel7.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel8.SuspendLayout()
         Me.SuspendLayout()
         '
         'StatusStrip1
@@ -399,7 +415,7 @@ Partial Class FormMain
         Me.ComboBoxUserCategory.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel3.SetColumnSpan(Me.ComboBoxUserCategory, 5)
         Me.ComboBoxUserCategory.FormattingEnabled = True
-        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 451)
+        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 453)
         Me.ComboBoxUserCategory.Name = "ComboBoxUserCategory"
         Me.ComboBoxUserCategory.Size = New System.Drawing.Size(239, 28)
         Me.ComboBoxUserCategory.TabIndex = 6
@@ -512,10 +528,10 @@ Partial Class FormMain
         'TabPageShootingSession
         '
         Me.TabPageShootingSession.Controls.Add(Me.TableLayoutPanel4)
-        Me.TabPageShootingSession.Location = New System.Drawing.Point(4, 22)
+        Me.TabPageShootingSession.Location = New System.Drawing.Point(4, 29)
         Me.TabPageShootingSession.Name = "TabPageShootingSession"
         Me.TabPageShootingSession.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageShootingSession.Size = New System.Drawing.Size(998, 623)
+        Me.TabPageShootingSession.Size = New System.Drawing.Size(998, 616)
         Me.TabPageShootingSession.TabIndex = 1
         Me.TabPageShootingSession.UseVisualStyleBackColor = True
         '
@@ -542,8 +558,10 @@ Partial Class FormMain
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
-        Me.TableLayoutPanel4.Controls.Add(Me.PictureBox1, 0, 1)
-        Me.TableLayoutPanel4.Controls.Add(Me.DataGridView1, 12, 1)
+        Me.TableLayoutPanel4.Controls.Add(Me.PictureBox1, 0, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.Label8, 0, 18)
+        Me.TableLayoutPanel4.Controls.Add(Me.ComboBox1, 2, 18)
+        Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel7, 12, 0)
         Me.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
@@ -570,7 +588,22 @@ Partial Class FormMain
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(992, 617)
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(992, 610)
         Me.TableLayoutPanel4.TabIndex = 0
         '
         'PictureBox1
@@ -578,60 +611,35 @@ Partial Class FormMain
         Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.PictureBox1.BackColor = System.Drawing.Color.Gray
         Me.TableLayoutPanel4.SetColumnSpan(Me.PictureBox1, 12)
-        Me.PictureBox1.Location = New System.Drawing.Point(44, 50)
+        Me.PictureBox1.Location = New System.Drawing.Point(44, 20)
         Me.PictureBox1.Name = "PictureBox1"
         Me.TableLayoutPanel4.SetRowSpan(Me.PictureBox1, 18)
         Me.PictureBox1.Size = New System.Drawing.Size(500, 500)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
-        'DataGridView1
+        'Label8
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColShootNumber, Me.ColDirection, Me.ColDistance, Me.ColScore, Me.ColSum})
-        Me.TableLayoutPanel4.SetColumnSpan(Me.DataGridView1, 8)
-        Me.DataGridView1.Location = New System.Drawing.Point(604, 50)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.TableLayoutPanel4.SetRowSpan(Me.DataGridView1, 18)
-        Me.DataGridView1.Size = New System.Drawing.Size(355, 500)
-        Me.DataGridView1.TabIndex = 1
+        Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label8.AutoSize = True
+        Me.TableLayoutPanel4.SetColumnSpan(Me.Label8, 2)
+        Me.Label8.Location = New System.Drawing.Point(3, 545)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(92, 20)
+        Me.Label8.TabIndex = 2
+        Me.Label8.Text = "Cible :"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'ColShootNumber
+        'ComboBox1
         '
-        Me.ColShootNumber.HeaderText = "Tir"
-        Me.ColShootNumber.Name = "ColShootNumber"
-        Me.ColShootNumber.ReadOnly = True
-        '
-        'ColDirection
-        '
-        Me.ColDirection.HeaderText = "Direct."
-        Me.ColDirection.Name = "ColDirection"
-        Me.ColDirection.ReadOnly = True
-        '
-        'ColDistance
-        '
-        Me.ColDistance.HeaderText = "Dist."
-        Me.ColDistance.Name = "ColDistance"
-        Me.ColDistance.ReadOnly = True
-        '
-        'ColScore
-        '
-        Me.ColScore.HeaderText = "Score"
-        Me.ColScore.Name = "ColScore"
-        Me.ColScore.ReadOnly = True
-        '
-        'ColSum
-        '
-        Me.ColSum.HeaderText = "Total"
-        Me.ColSum.Name = "ColSum"
-        Me.ColSum.ReadOnly = True
+        Me.ComboBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel4.SetColumnSpan(Me.ComboBox1, 3)
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(101, 543)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(141, 28)
+        Me.ComboBox1.TabIndex = 3
         '
         'TabPageStatistics
         '
@@ -697,19 +705,19 @@ Partial Class FormMain
         '
         'Chart1
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
+        ChartArea2.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea2)
         Me.TableLayoutPanel5.SetColumnSpan(Me.Chart1, 13)
         Me.Chart1.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
+        Legend2.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend2)
         Me.Chart1.Location = New System.Drawing.Point(52, 33)
         Me.Chart1.Name = "Chart1"
         Me.TableLayoutPanel5.SetRowSpan(Me.Chart1, 9)
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.Chart1.Series.Add(Series2)
         Me.Chart1.Size = New System.Drawing.Size(631, 264)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -834,6 +842,196 @@ Partial Class FormMain
         Me.TabPageEmpty.TabIndex = 4
         Me.TabPageEmpty.UseVisualStyleBackColor = True
         '
+        'TableLayoutPanel7
+        '
+        Me.TableLayoutPanel7.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.TableLayoutPanel7.ColumnCount = 1
+        Me.TableLayoutPanel4.SetColumnSpan(Me.TableLayoutPanel7, 8)
+        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel7.Controls.Add(Me.GroupBox2, 0, 0)
+        Me.TableLayoutPanel7.Controls.Add(Me.DataGridView1, 0, 1)
+        Me.TableLayoutPanel7.Location = New System.Drawing.Point(605, 20)
+        Me.TableLayoutPanel7.Margin = New System.Windows.Forms.Padding(0)
+        Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
+        Me.TableLayoutPanel7.RowCount = 2
+        Me.TableLayoutPanel4.SetRowSpan(Me.TableLayoutPanel7, 18)
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.0!))
+        Me.TableLayoutPanel7.Size = New System.Drawing.Size(370, 500)
+        Me.TableLayoutPanel7.TabIndex = 4
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.TableLayoutPanel8)
+        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(0, 0, 0, 3)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(370, 122)
+        Me.GroupBox2.TabIndex = 0
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Dernier tir"
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColShoot, Me.ColDirection, Me.ColDistance, Me.ColScore, Me.ColTotal})
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 128)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(0, 3, 0, 0)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.RowHeadersVisible = False
+        Me.DataGridView1.Size = New System.Drawing.Size(370, 372)
+        Me.DataGridView1.TabIndex = 1
+        '
+        'ColShoot
+        '
+        Me.ColShoot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.ColShoot.HeaderText = "Tir"
+        Me.ColShoot.Name = "ColShoot"
+        Me.ColShoot.ReadOnly = True
+        Me.ColShoot.Width = 51
+        '
+        'ColDirection
+        '
+        Me.ColDirection.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColDirection.HeaderText = "Direction"
+        Me.ColDirection.Name = "ColDirection"
+        Me.ColDirection.ReadOnly = True
+        '
+        'ColDistance
+        '
+        Me.ColDistance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColDistance.HeaderText = "Distance"
+        Me.ColDistance.Name = "ColDistance"
+        Me.ColDistance.ReadOnly = True
+        '
+        'ColScore
+        '
+        Me.ColScore.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColScore.HeaderText = "Score"
+        Me.ColScore.Name = "ColScore"
+        Me.ColScore.ReadOnly = True
+        '
+        'ColTotal
+        '
+        Me.ColTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColTotal.HeaderText = "Total"
+        Me.ColTotal.Name = "ColTotal"
+        Me.ColTotal.ReadOnly = True
+        '
+        'TableLayoutPanel8
+        '
+        Me.TableLayoutPanel8.ColumnCount = 4
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel8.Controls.Add(Me.Label9, 0, 0)
+        Me.TableLayoutPanel8.Controls.Add(Me.Label10, 0, 1)
+        Me.TableLayoutPanel8.Controls.Add(Me.Label11, 2, 0)
+        Me.TableLayoutPanel8.Controls.Add(Me.Label12, 2, 1)
+        Me.TableLayoutPanel8.Controls.Add(Me.LabelLastShootDirection, 1, 0)
+        Me.TableLayoutPanel8.Controls.Add(Me.LabelLastShootDistance, 1, 1)
+        Me.TableLayoutPanel8.Controls.Add(Me.LabelLastShootScore, 3, 0)
+        Me.TableLayoutPanel8.Controls.Add(Me.LabelLastShootTotal, 3, 1)
+        Me.TableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel8.Location = New System.Drawing.Point(3, 22)
+        Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
+        Me.TableLayoutPanel8.RowCount = 2
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel8.Size = New System.Drawing.Size(364, 97)
+        Me.TableLayoutPanel8.TabIndex = 0
+        '
+        'Label9
+        '
+        Me.Label9.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(3, 14)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(85, 20)
+        Me.Label9.TabIndex = 0
+        Me.Label9.Text = "Direction :"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label10
+        '
+        Me.Label10.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(3, 62)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(85, 20)
+        Me.Label10.TabIndex = 1
+        Me.Label10.Text = "Distance :"
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label11
+        '
+        Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(185, 14)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(85, 20)
+        Me.Label11.TabIndex = 2
+        Me.Label11.Text = "Score :"
+        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label12
+        '
+        Me.Label12.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(185, 62)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(85, 20)
+        Me.Label12.TabIndex = 3
+        Me.Label12.Text = "Total :"
+        Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LabelLastShootDirection
+        '
+        Me.LabelLastShootDirection.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelLastShootDirection.AutoSize = True
+        Me.LabelLastShootDirection.Location = New System.Drawing.Point(94, 14)
+        Me.LabelLastShootDirection.Name = "LabelLastShootDirection"
+        Me.LabelLastShootDirection.Size = New System.Drawing.Size(85, 20)
+        Me.LabelLastShootDirection.TabIndex = 4
+        Me.LabelLastShootDirection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LabelLastShootDistance
+        '
+        Me.LabelLastShootDistance.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelLastShootDistance.AutoSize = True
+        Me.LabelLastShootDistance.Location = New System.Drawing.Point(94, 62)
+        Me.LabelLastShootDistance.Name = "LabelLastShootDistance"
+        Me.LabelLastShootDistance.Size = New System.Drawing.Size(85, 20)
+        Me.LabelLastShootDistance.TabIndex = 5
+        Me.LabelLastShootDistance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LabelLastShootScore
+        '
+        Me.LabelLastShootScore.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelLastShootScore.AutoSize = True
+        Me.LabelLastShootScore.Location = New System.Drawing.Point(276, 14)
+        Me.LabelLastShootScore.Name = "LabelLastShootScore"
+        Me.LabelLastShootScore.Size = New System.Drawing.Size(85, 20)
+        Me.LabelLastShootScore.TabIndex = 6
+        Me.LabelLastShootScore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LabelLastShootTotal
+        '
+        Me.LabelLastShootTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelLastShootTotal.AutoSize = True
+        Me.LabelLastShootTotal.Location = New System.Drawing.Point(276, 62)
+        Me.LabelLastShootTotal.Name = "LabelLastShootTotal"
+        Me.LabelLastShootTotal.Size = New System.Drawing.Size(85, 20)
+        Me.LabelLastShootTotal.TabIndex = 7
+        Me.LabelLastShootTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'FormMain
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -859,14 +1057,19 @@ Partial Class FormMain
         CType(Me.PictureBoxUserPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageShootingSession.ResumeLayout(False)
         Me.TableLayoutPanel4.ResumeLayout(False)
+        Me.TableLayoutPanel4.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageStatistics.ResumeLayout(False)
         Me.TableLayoutPanel5.ResumeLayout(False)
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.TableLayoutPanel6.ResumeLayout(False)
         Me.TableLayoutPanel6.PerformLayout()
+        Me.TableLayoutPanel7.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel8.ResumeLayout(False)
+        Me.TableLayoutPanel8.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -904,12 +1107,6 @@ Partial Class FormMain
     Friend WithEvents TabPageShootingSession As TabPage
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ColShootNumber As DataGridViewTextBoxColumn
-    Friend WithEvents ColDirection As DataGridViewTextBoxColumn
-    Friend WithEvents ColDistance As DataGridViewTextBoxColumn
-    Friend WithEvents ColScore As DataGridViewTextBoxColumn
-    Friend WithEvents ColSum As DataGridViewTextBoxColumn
     Friend WithEvents TabPageStatistics As TabPage
     Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
@@ -921,4 +1118,23 @@ Partial Class FormMain
     Friend WithEvents RadioButton4 As RadioButton
     Friend WithEvents TabPageSettings As TabPage
     Friend WithEvents TabPageEmpty As TabPage
+    Friend WithEvents Label8 As Label
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents TableLayoutPanel7 As TableLayoutPanel
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents ColShoot As DataGridViewTextBoxColumn
+    Friend WithEvents ColDirection As DataGridViewTextBoxColumn
+    Friend WithEvents ColDistance As DataGridViewTextBoxColumn
+    Friend WithEvents ColScore As DataGridViewTextBoxColumn
+    Friend WithEvents ColTotal As DataGridViewTextBoxColumn
+    Friend WithEvents TableLayoutPanel8 As TableLayoutPanel
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents LabelLastShootDirection As Label
+    Friend WithEvents LabelLastShootDistance As Label
+    Friend WithEvents LabelLastShootScore As Label
+    Friend WithEvents LabelLastShootTotal As Label
 End Class
