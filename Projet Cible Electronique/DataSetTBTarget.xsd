@@ -2,11 +2,12 @@
 <xs:schema id="DataSetTBTarget" targetNamespace="http://tempuri.org/DataSetTBTarget.xsd" xmlns:mstns="http://tempuri.org/DataSetTBTarget.xsd" xmlns="http://tempuri.org/DataSetTBTarget.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="3" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="tb_targetConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="tb_targetConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Projet_Cible_Electronique.My.MySettings.GlobalReference.Default.tb_targetConnectionString" Provider="MySql.Data.MySqlClient" />
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="tb_targetConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="tb_targetConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Projet_Cible_Electronique.My.MySettings.GlobalReference.Default.tb_targetConnectionString" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="tb_targetConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="tb_targetConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Projet_Cible_Electronique.My.MySettings.GlobalReference.Default.tb_targetConnectionString" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="tb_targetConnectionString1" IsAppSettingsProperty="true" Modifier="Assembly" Name="tb_targetConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Projet_Cible_Electronique.My.MySettings.GlobalReference.Default.tb_targetConnectionString" Provider="MySql.Data.MySqlClient" />
           <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="electronic_targetConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="electronic_targetConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Projet_Cible_Electronique.My.MySettings.GlobalReference.Default.electronic_targetConnectionString" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="electronic_targetConnectionString1" IsAppSettingsProperty="true" Modifier="Assembly" Name="electronic_targetConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Projet_Cible_Electronique.My.MySettings.GlobalReference.Default.electronic_targetConnectionString1" Provider="MySql.Data.MySqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="usersTableAdapter" GeneratorDataComponentClassName="usersTableAdapter" Name="users" UserDataComponentName="usersTableAdapter">
@@ -93,6 +94,81 @@
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="targetsTableAdapter" GeneratorDataComponentClassName="targetsTableAdapter" Name="targets" UserDataComponentName="targetsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="electronic_targetConnectionString (MySettings)" DbObjectName="electronic_target.targets" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM `targets` WHERE ((`name` = @p1) AND (`width_mm` = @p2) AND (`height_mm` = @p3) AND (`width_px` = @p4) AND (`height_px` = @p5))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="width_mm" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="height_mm" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="width_px" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="height_px" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO `targets` (`name`, `width_mm`, `height_mm`, `width_px`, `height_px`, `img`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="width_mm" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="height_mm" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="width_px" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="height_px" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Blob" Scale="0" Size="0" SourceColumn="img" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `name`, `width_mm`, `height_mm`, `width_px`, `height_px`, `img` FROM `targets`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE `targets` SET `name` = @p1, `width_mm` = @p2, `height_mm` = @p3, `width_px` = @p4, `height_px` = @p5, `img` = @p6 WHERE ((`name` = @p7) AND (`width_mm` = @p8) AND (`height_mm` = @p9) AND (`width_px` = @p10) AND (`height_px` = @p11))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="width_mm" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="height_mm" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="width_px" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="height_px" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Blob" Scale="0" Size="0" SourceColumn="img" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="width_mm" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="height_mm" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="width_px" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="height_px" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="width_mm" DataSetColumn="width_mm" />
+              <Mapping SourceColumn="height_mm" DataSetColumn="height_mm" />
+              <Mapping SourceColumn="width_px" DataSetColumn="width_px" />
+              <Mapping SourceColumn="height_px" DataSetColumn="height_px" />
+              <Mapping SourceColumn="img" DataSetColumn="img" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="electronic_targetConnectionString (MySettings)" DbObjectName="electronic_target.targets" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByName" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByName" GeneratorSourceName="FillByName" GetMethodModifier="Public" GetMethodName="GetDataByName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByName" UserSourceName="FillByName">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM targets WHERE name = @name</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="name" ColumnName="name" DataSourceName="electronic_target.targets" DataTypeServer="varchar(50)(50)" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -150,11 +226,33 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="targets" msprop:Generator_TableClassName="targetsDataTable" msprop:Generator_TableVarName="tabletargets" msprop:Generator_RowChangedName="targetsRowChanged" msprop:Generator_TablePropName="targets" msprop:Generator_RowDeletingName="targetsRowDeleting" msprop:Generator_RowChangingName="targetsRowChanging" msprop:Generator_RowEvHandlerName="targetsRowChangeEventHandler" msprop:Generator_RowDeletedName="targetsRowDeleted" msprop:Generator_RowClassName="targetsRow" msprop:Generator_UserTableName="targets" msprop:Generator_RowEvArgName="targetsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="width_mm" msprop:Generator_ColumnVarNameInTable="columnwidth_mm" msprop:Generator_ColumnPropNameInRow="width_mm" msprop:Generator_ColumnPropNameInTable="width_mmColumn" msprop:Generator_UserColumnName="width_mm" type="xs:int" />
+              <xs:element name="height_mm" msprop:Generator_ColumnVarNameInTable="columnheight_mm" msprop:Generator_ColumnPropNameInRow="height_mm" msprop:Generator_ColumnPropNameInTable="height_mmColumn" msprop:Generator_UserColumnName="height_mm" type="xs:int" />
+              <xs:element name="width_px" msprop:Generator_ColumnVarNameInTable="columnwidth_px" msprop:Generator_ColumnPropNameInRow="width_px" msprop:Generator_ColumnPropNameInTable="width_pxColumn" msprop:Generator_UserColumnName="width_px" type="xs:int" />
+              <xs:element name="height_px" msprop:Generator_ColumnVarNameInTable="columnheight_px" msprop:Generator_ColumnPropNameInRow="height_px" msprop:Generator_ColumnPropNameInTable="height_pxColumn" msprop:Generator_UserColumnName="height_px" type="xs:int" />
+              <xs:element name="img" msprop:Generator_ColumnVarNameInTable="columnimg" msprop:Generator_ColumnPropNameInRow="img" msprop:Generator_ColumnPropNameInTable="imgColumn" msprop:Generator_UserColumnName="img" type="xs:base64Binary" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:users" />
       <xs:field xpath="mstns:username" />
+    </xs:unique>
+    <xs:unique name="targets_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:targets" />
+      <xs:field xpath="mstns:name" />
     </xs:unique>
   </xs:element>
 </xs:schema>
