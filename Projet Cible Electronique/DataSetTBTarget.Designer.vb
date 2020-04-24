@@ -672,10 +672,6 @@ Partial Public Class DataSetTBTarget
         
         Private columnheight_mm As Global.System.Data.DataColumn
         
-        Private columnwidth_px As Global.System.Data.DataColumn
-        
-        Private columnheight_px As Global.System.Data.DataColumn
-        
         Private columnimg As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -739,22 +735,6 @@ Partial Public Class DataSetTBTarget
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property width_pxColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnwidth_px
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property height_pxColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnheight_px
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property imgColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnimg
@@ -798,9 +778,9 @@ Partial Public Class DataSetTBTarget
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddtargetsRow(ByVal name As String, ByVal width_mm As Integer, ByVal height_mm As Integer, ByVal width_px As Integer, ByVal height_px As Integer, ByVal img() As Byte) As targetsRow
+        Public Overloads Function AddtargetsRow(ByVal name As String, ByVal width_mm As Integer, ByVal height_mm As Integer, ByVal img() As Byte) As targetsRow
             Dim rowtargetsRow As targetsRow = CType(Me.NewRow,targetsRow)
-            Dim columnValuesArray() As Object = New Object() {name, width_mm, height_mm, width_px, height_px, img}
+            Dim columnValuesArray() As Object = New Object() {name, width_mm, height_mm, img}
             rowtargetsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowtargetsRow)
             Return rowtargetsRow
@@ -832,8 +812,6 @@ Partial Public Class DataSetTBTarget
             Me.columnname = MyBase.Columns("name")
             Me.columnwidth_mm = MyBase.Columns("width_mm")
             Me.columnheight_mm = MyBase.Columns("height_mm")
-            Me.columnwidth_px = MyBase.Columns("width_px")
-            Me.columnheight_px = MyBase.Columns("height_px")
             Me.columnimg = MyBase.Columns("img")
         End Sub
         
@@ -846,10 +824,6 @@ Partial Public Class DataSetTBTarget
             MyBase.Columns.Add(Me.columnwidth_mm)
             Me.columnheight_mm = New Global.System.Data.DataColumn("height_mm", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnheight_mm)
-            Me.columnwidth_px = New Global.System.Data.DataColumn("width_px", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnwidth_px)
-            Me.columnheight_px = New Global.System.Data.DataColumn("height_px", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnheight_px)
             Me.columnimg = New Global.System.Data.DataColumn("img", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnimg)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnname}, true))
@@ -858,8 +832,6 @@ Partial Public Class DataSetTBTarget
             Me.columnname.MaxLength = 50
             Me.columnwidth_mm.AllowDBNull = false
             Me.columnheight_mm.AllowDBNull = false
-            Me.columnwidth_px.AllowDBNull = false
-            Me.columnheight_px.AllowDBNull = false
             Me.columnimg.AllowDBNull = false
         End Sub
         
@@ -1176,28 +1148,6 @@ Partial Public Class DataSetTBTarget
             End Get
             Set
                 Me(Me.tabletargets.height_mmColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property width_px() As Integer
-            Get
-                Return CType(Me(Me.tabletargets.width_pxColumn),Integer)
-            End Get
-            Set
-                Me(Me.tabletargets.width_pxColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property height_px() As Integer
-            Get
-                Return CType(Me(Me.tabletargets.height_pxColumn),Integer)
-            End Get
-            Set
-                Me(Me.tabletargets.height_pxColumn) = value
             End Set
         End Property
         
@@ -2142,14 +2092,12 @@ Namespace DataSetTBTargetTableAdapters
             tableMapping.ColumnMappings.Add("name", "name")
             tableMapping.ColumnMappings.Add("width_mm", "width_mm")
             tableMapping.ColumnMappings.Add("height_mm", "height_mm")
-            tableMapping.ColumnMappings.Add("width_px", "width_px")
-            tableMapping.ColumnMappings.Add("height_px", "height_px")
             tableMapping.ColumnMappings.Add("img", "img")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `targets` WHERE ((`name` = @p1) AND (`width_mm` = @p2) AND (`height_m"& _ 
-                "m` = @p3) AND (`width_px` = @p4) AND (`height_px` = @p5))"
+                "m` = @p3))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -2175,26 +2123,10 @@ Namespace DataSetTBTargetTableAdapters
             param.SourceColumn = "height_mm"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p4"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "width_px"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p5"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "height_px"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
             Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `targets` (`name`, `width_mm`, `height_mm`, `width_px`, `height_px`, "& _ 
-                "`img`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `targets` (`name`, `width_mm`, `height_mm`, `img`) VALUES (@p1, @p2, "& _ 
+                "@p3, @p4)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -2222,22 +2154,6 @@ Namespace DataSetTBTargetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p4"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "width_px"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Current
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p5"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "height_px"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Current
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p6"
             param.DbType = Global.System.Data.DbType.[Object]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
             param.IsNullable = true
@@ -2246,9 +2162,8 @@ Namespace DataSetTBTargetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(param)
             Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `targets` SET `name` = @p1, `width_mm` = @p2, `height_mm` = @p3, `width_px"& _ 
-                "` = @p4, `height_px` = @p5, `img` = @p6 WHERE ((`name` = @p7) AND (`width_mm` = "& _ 
-                "@p8) AND (`height_mm` = @p9) AND (`width_px` = @p10) AND (`height_px` = @p11))"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE `targets` SET `name` = @p1, `width_mm` = @p2, `height_mm` = @p3, `img` = @"& _ 
+                "p4 WHERE ((`name` = @p5) AND (`width_mm` = @p6) AND (`height_mm` = @p7))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -2276,22 +2191,6 @@ Namespace DataSetTBTargetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p4"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "width_px"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Current
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p5"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "height_px"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Current
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p6"
             param.DbType = Global.System.Data.DbType.[Object]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
             param.IsNullable = true
@@ -2299,7 +2198,7 @@ Namespace DataSetTBTargetTableAdapters
             param.SourceVersion = Global.System.Data.DataRowVersion.Current
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p7"
+            param.ParameterName = "@p5"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
@@ -2307,7 +2206,7 @@ Namespace DataSetTBTargetTableAdapters
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p8"
+            param.ParameterName = "@p6"
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
@@ -2315,27 +2214,11 @@ Namespace DataSetTBTargetTableAdapters
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p9"
+            param.ParameterName = "@p7"
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "height_mm"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p10"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "width_px"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p11"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "height_px"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
         End Sub
@@ -2353,8 +2236,7 @@ Namespace DataSetTBTargetTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(1) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `name`, `width_mm`, `height_mm`, `width_px`, `height_px`, `img` FROM `targ"& _ 
-                "ets`"
+            Me._commandCollection(0).CommandText = "SELECT `name`, `width_mm`, `height_mm`, `img` FROM `targets`"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -2461,7 +2343,7 @@ Namespace DataSetTBTargetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal p1 As String, ByVal p2 As Integer, ByVal p3 As Integer, ByVal p4 As Integer, ByVal p5 As Integer) As Integer
+        Public Overloads Overridable Function Delete(ByVal p1 As String, ByVal p2 As Integer, ByVal p3 As Integer) As Integer
             If (p1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("p1")
             Else
@@ -2469,8 +2351,6 @@ Namespace DataSetTBTargetTableAdapters
             End If
             Me.Adapter.DeleteCommand.Parameters(1).Value = CType(p2,Integer)
             Me.Adapter.DeleteCommand.Parameters(2).Value = CType(p3,Integer)
-            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(p4,Integer)
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(p5,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -2490,7 +2370,7 @@ Namespace DataSetTBTargetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal p1 As String, ByVal p2 As Integer, ByVal p3 As Integer, ByVal p4 As Integer, ByVal p5 As Integer, ByVal p6 As Object) As Integer
+        Public Overloads Overridable Function Insert(ByVal p1 As String, ByVal p2 As Integer, ByVal p3 As Integer, ByVal p4 As Object) As Integer
             If (p1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("p1")
             Else
@@ -2498,12 +2378,10 @@ Namespace DataSetTBTargetTableAdapters
             End If
             Me.Adapter.InsertCommand.Parameters(1).Value = CType(p2,Integer)
             Me.Adapter.InsertCommand.Parameters(2).Value = CType(p3,Integer)
-            Me.Adapter.InsertCommand.Parameters(3).Value = CType(p4,Integer)
-            Me.Adapter.InsertCommand.Parameters(4).Value = CType(p5,Integer)
-            If (p6 Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("p6")
+            If (p4 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("p4")
             Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(p6,Object)
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(p4,Object)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -2524,7 +2402,7 @@ Namespace DataSetTBTargetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal p1 As String, ByVal p2 As Integer, ByVal p3 As Integer, ByVal p4 As Integer, ByVal p5 As Integer, ByVal p6 As Object, ByVal p7 As String, ByVal p8 As Integer, ByVal p9 As Integer, ByVal p10 As Integer, ByVal p11 As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal p1 As String, ByVal p2 As Integer, ByVal p3 As Integer, ByVal p4 As Object, ByVal p5 As String, ByVal p6 As Integer, ByVal p7 As Integer) As Integer
             If (p1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("p1")
             Else
@@ -2532,22 +2410,18 @@ Namespace DataSetTBTargetTableAdapters
             End If
             Me.Adapter.UpdateCommand.Parameters(1).Value = CType(p2,Integer)
             Me.Adapter.UpdateCommand.Parameters(2).Value = CType(p3,Integer)
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(p4,Integer)
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(p5,Integer)
-            If (p6 Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("p6")
+            If (p4 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("p4")
             Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p6,Object)
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(p4,Object)
             End If
-            If (p7 Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("p7")
+            If (p5 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("p5")
             Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(p7,String)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(p5,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(p8,Integer)
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(p9,Integer)
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(p10,Integer)
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(p11,Integer)
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p6,Integer)
+            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(p7,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -2567,8 +2441,8 @@ Namespace DataSetTBTargetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal p2 As Integer, ByVal p3 As Integer, ByVal p4 As Integer, ByVal p5 As Integer, ByVal p6 As Object, ByVal p7 As String, ByVal p8 As Integer, ByVal p9 As Integer, ByVal p10 As Integer, ByVal p11 As Integer) As Integer
-            Return Me.Update(p7, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11)
+        Public Overloads Overridable Function Update(ByVal p2 As Integer, ByVal p3 As Integer, ByVal p4 As Object, ByVal p5 As String, ByVal p6 As Integer, ByVal p7 As Integer) As Integer
+            Return Me.Update(p5, p2, p3, p4, p5, p6, p7)
         End Function
     End Class
     

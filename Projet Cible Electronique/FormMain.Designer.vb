@@ -23,9 +23,9 @@ Partial Class FormMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -88,9 +88,9 @@ Partial Class FormMain
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.RadioButton4 = New System.Windows.Forms.RadioButton()
         Me.TabPageSettings = New System.Windows.Forms.TabPage()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.TabPageEmpty = New System.Windows.Forms.TabPage()
         Me.OpenFileDialogImg = New System.Windows.Forms.OpenFileDialog()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -418,7 +418,7 @@ Partial Class FormMain
         Me.ComboBoxUserCategory.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel3.SetColumnSpan(Me.ComboBoxUserCategory, 5)
         Me.ComboBoxUserCategory.FormattingEnabled = True
-        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 451)
+        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 453)
         Me.ComboBoxUserCategory.Name = "ComboBoxUserCategory"
         Me.ComboBoxUserCategory.Size = New System.Drawing.Size(239, 28)
         Me.ComboBoxUserCategory.TabIndex = 6
@@ -531,10 +531,10 @@ Partial Class FormMain
         'TabPageShootingSession
         '
         Me.TabPageShootingSession.Controls.Add(Me.TableLayoutPanel4)
-        Me.TabPageShootingSession.Location = New System.Drawing.Point(4, 29)
+        Me.TabPageShootingSession.Location = New System.Drawing.Point(4, 22)
         Me.TabPageShootingSession.Name = "TabPageShootingSession"
         Me.TabPageShootingSession.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageShootingSession.Size = New System.Drawing.Size(998, 616)
+        Me.TabPageShootingSession.Size = New System.Drawing.Size(998, 623)
         Me.TabPageShootingSession.TabIndex = 1
         Me.TabPageShootingSession.UseVisualStyleBackColor = True
         '
@@ -606,7 +606,7 @@ Partial Class FormMain
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(992, 610)
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(992, 617)
         Me.TableLayoutPanel4.TabIndex = 0
         '
         'PictureBox1
@@ -640,7 +640,7 @@ Partial Class FormMain
         Me.TableLayoutPanel4.SetColumnSpan(Me.ComboBoxShootingTargetSelection, 3)
         Me.ComboBoxShootingTargetSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxShootingTargetSelection.FormattingEnabled = True
-        Me.ComboBoxShootingTargetSelection.Location = New System.Drawing.Point(101, 544)
+        Me.ComboBoxShootingTargetSelection.Location = New System.Drawing.Point(101, 543)
         Me.ComboBoxShootingTargetSelection.Name = "ComboBoxShootingTargetSelection"
         Me.ComboBoxShootingTargetSelection.Size = New System.Drawing.Size(141, 28)
         Me.ComboBoxShootingTargetSelection.TabIndex = 3
@@ -838,10 +838,10 @@ Partial Class FormMain
         'TabPageStatistics
         '
         Me.TabPageStatistics.Controls.Add(Me.TableLayoutPanel5)
-        Me.TabPageStatistics.Location = New System.Drawing.Point(4, 29)
+        Me.TabPageStatistics.Location = New System.Drawing.Point(4, 22)
         Me.TabPageStatistics.Name = "TabPageStatistics"
         Me.TabPageStatistics.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageStatistics.Size = New System.Drawing.Size(998, 616)
+        Me.TabPageStatistics.Size = New System.Drawing.Size(998, 623)
         Me.TabPageStatistics.TabIndex = 2
         Me.TabPageStatistics.UseVisualStyleBackColor = True
         '
@@ -894,24 +894,24 @@ Partial Class FormMain
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
-        Me.TableLayoutPanel5.Size = New System.Drawing.Size(992, 610)
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(992, 617)
         Me.TableLayoutPanel5.TabIndex = 0
         '
         'Chart1
         '
-        ChartArea3.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea3)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
         Me.TableLayoutPanel5.SetColumnSpan(Me.Chart1, 13)
         Me.Chart1.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend3.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend3)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(52, 33)
         Me.Chart1.Name = "Chart1"
         Me.TableLayoutPanel5.SetRowSpan(Me.Chart1, 9)
-        Series3.ChartArea = "ChartArea1"
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series1"
-        Me.Chart1.Series.Add(Series3)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(631, 264)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -1028,19 +1028,6 @@ Partial Class FormMain
         Me.TabPageSettings.TabIndex = 3
         Me.TabPageSettings.UseVisualStyleBackColor = True
         '
-        'TabPageEmpty
-        '
-        Me.TabPageEmpty.Location = New System.Drawing.Point(4, 29)
-        Me.TabPageEmpty.Name = "TabPageEmpty"
-        Me.TabPageEmpty.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageEmpty.Size = New System.Drawing.Size(998, 616)
-        Me.TabPageEmpty.TabIndex = 4
-        Me.TabPageEmpty.UseVisualStyleBackColor = True
-        '
-        'OpenFileDialogImg
-        '
-        Me.OpenFileDialogImg.FileName = "OpenFileDialog1"
-        '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(104, 79)
@@ -1049,6 +1036,19 @@ Partial Class FormMain
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "Ajouter Cible"
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'TabPageEmpty
+        '
+        Me.TabPageEmpty.Location = New System.Drawing.Point(4, 22)
+        Me.TabPageEmpty.Name = "TabPageEmpty"
+        Me.TabPageEmpty.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPageEmpty.Size = New System.Drawing.Size(998, 623)
+        Me.TabPageEmpty.TabIndex = 4
+        Me.TabPageEmpty.UseVisualStyleBackColor = True
+        '
+        'OpenFileDialogImg
+        '
+        Me.OpenFileDialogImg.FileName = "OpenFileDialog1"
         '
         'FormMain
         '

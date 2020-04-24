@@ -89,6 +89,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetTBTarget.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetTBTarget.vb">
+      <DependentUpon>DataSetTBTarget.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.Designer.vb">
       <DependentUpon>FormLogin.vb</DependentUpon>
     </Compile>

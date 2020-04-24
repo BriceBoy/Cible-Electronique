@@ -110,8 +110,6 @@ Public Class FormMain
             Dim name As String = "test"
             Dim widthMM As Integer = 0
             Dim heightMM As Integer = 0
-            Dim widthPX As Integer = 0
-            Dim heightPX As Integer = 0
             Dim img As Image = Nothing
             img = Image.FromFile(Me.OpenFileDialogImg.FileName)
 
@@ -121,8 +119,6 @@ Public Class FormMain
                 .name = name
                 .width_mm = widthMM
                 .height_mm = heightMM
-                .width_px = widthPX
-                .height_px = heightPX
                 .img = imgToByteArray(img)
             End With
             _dataSetElectronicTarget.targets.AddtargetsRow(targetRow)
