@@ -23,9 +23,9 @@ Partial Class FormMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -414,7 +414,7 @@ Partial Class FormMain
         Me.ComboBoxUserCategory.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel3.SetColumnSpan(Me.ComboBoxUserCategory, 5)
         Me.ComboBoxUserCategory.FormattingEnabled = True
-        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 451)
+        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 453)
         Me.ComboBoxUserCategory.Name = "ComboBoxUserCategory"
         Me.ComboBoxUserCategory.Size = New System.Drawing.Size(239, 28)
         Me.ComboBoxUserCategory.TabIndex = 6
@@ -636,7 +636,7 @@ Partial Class FormMain
         Me.TableLayoutPanel4.SetColumnSpan(Me.ComboBoxShootingTargetSelection, 4)
         Me.ComboBoxShootingTargetSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxShootingTargetSelection.FormattingEnabled = True
-        Me.ComboBoxShootingTargetSelection.Location = New System.Drawing.Point(101, 543)
+        Me.ComboBoxShootingTargetSelection.Location = New System.Drawing.Point(101, 544)
         Me.ComboBoxShootingTargetSelection.Name = "ComboBoxShootingTargetSelection"
         Me.ComboBoxShootingTargetSelection.Size = New System.Drawing.Size(190, 28)
         Me.ComboBoxShootingTargetSelection.TabIndex = 3
@@ -654,8 +654,8 @@ Partial Class FormMain
         Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
         Me.TableLayoutPanel7.RowCount = 2
         Me.TableLayoutPanel4.SetRowSpan(Me.TableLayoutPanel7, 18)
-        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.0!))
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.0!))
         Me.TableLayoutPanel7.Size = New System.Drawing.Size(370, 500)
         Me.TableLayoutPanel7.TabIndex = 4
         '
@@ -666,7 +666,7 @@ Partial Class FormMain
         Me.GroupBox2.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(0, 0, 0, 3)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(370, 122)
+        Me.GroupBox2.Size = New System.Drawing.Size(370, 97)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Dernier tir"
@@ -679,24 +679,23 @@ Partial Class FormMain
         Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel8.Controls.Add(Me.Label10, 0, 1)
         Me.TableLayoutPanel8.Controls.Add(Me.Label11, 2, 0)
         Me.TableLayoutPanel8.Controls.Add(Me.LabelLastShootDistance, 1, 0)
         Me.TableLayoutPanel8.Controls.Add(Me.LabelLastShootScore, 3, 0)
+        Me.TableLayoutPanel8.Controls.Add(Me.Label10, 0, 0)
         Me.TableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel8.Location = New System.Drawing.Point(3, 22)
         Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
-        Me.TableLayoutPanel8.RowCount = 2
+        Me.TableLayoutPanel8.RowCount = 1
         Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel8.Size = New System.Drawing.Size(364, 97)
+        Me.TableLayoutPanel8.Size = New System.Drawing.Size(364, 72)
         Me.TableLayoutPanel8.TabIndex = 0
         '
         'Label10
         '
         Me.Label10.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(3, 62)
+        Me.Label10.Location = New System.Drawing.Point(3, 26)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(85, 20)
         Me.Label10.TabIndex = 1
@@ -707,7 +706,7 @@ Partial Class FormMain
         '
         Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(185, 14)
+        Me.Label11.Location = New System.Drawing.Point(185, 26)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(85, 20)
         Me.Label11.TabIndex = 2
@@ -718,7 +717,7 @@ Partial Class FormMain
         '
         Me.LabelLastShootDistance.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LabelLastShootDistance.AutoSize = True
-        Me.LabelLastShootDistance.Location = New System.Drawing.Point(94, 14)
+        Me.LabelLastShootDistance.Location = New System.Drawing.Point(94, 26)
         Me.LabelLastShootDistance.Name = "LabelLastShootDistance"
         Me.LabelLastShootDistance.Size = New System.Drawing.Size(85, 20)
         Me.LabelLastShootDistance.TabIndex = 4
@@ -728,7 +727,7 @@ Partial Class FormMain
         '
         Me.LabelLastShootScore.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LabelLastShootScore.AutoSize = True
-        Me.LabelLastShootScore.Location = New System.Drawing.Point(276, 14)
+        Me.LabelLastShootScore.Location = New System.Drawing.Point(276, 26)
         Me.LabelLastShootScore.Name = "LabelLastShootScore"
         Me.LabelLastShootScore.Size = New System.Drawing.Size(85, 20)
         Me.LabelLastShootScore.TabIndex = 6
@@ -741,12 +740,12 @@ Partial Class FormMain
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColShoot, Me.ColDirection, Me.ColDistance, Me.ColScore, Me.ColTotal})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 128)
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 103)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(0, 3, 0, 0)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(370, 372)
+        Me.DataGridView1.Size = New System.Drawing.Size(370, 397)
         Me.DataGridView1.TabIndex = 1
         '
         'ColShoot
@@ -849,19 +848,19 @@ Partial Class FormMain
         '
         'Chart1
         '
-        ChartArea3.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea3)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
         Me.TableLayoutPanel5.SetColumnSpan(Me.Chart1, 13)
         Me.Chart1.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend3.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend3)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(52, 33)
         Me.Chart1.Name = "Chart1"
         Me.TableLayoutPanel5.SetRowSpan(Me.Chart1, 9)
-        Series3.ChartArea = "ChartArea1"
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series1"
-        Me.Chart1.Series.Add(Series3)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(631, 264)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
