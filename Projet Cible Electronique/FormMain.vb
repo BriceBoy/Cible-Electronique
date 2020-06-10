@@ -3,19 +3,21 @@
 Public Class FormMain
 
     Private _currentUser As User
+    Private _currentTarget As Target
 
-    Private _dataSetElectronicTarget As DataSetTBTarget
-    Private _targetsTableAdapter As DataSetTBTargetTableAdapters.targetsTableAdapter
+    Private _dataSetElectronicTarget As DataSetElectronicTarget
+    Private _targetsTableAdapter As DataSetElectronicTargetTableAdapters.targetsTableAdapter
 
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.TabControlMain.Appearance = TabAppearance.FlatButtons
         Me.TabControlMain.ItemSize = New Size(0, 1)
         Me.TabControlMain.SizeMode = TabSizeMode.Fixed
-        Me.TabControlMain.SelectedIndex = 1
-        _dataSetElectronicTarget = New DataSetTBTarget
-        _targetsTableAdapter = New DataSetTBTargetTableAdapters.targetsTableAdapter
+        _dataSetElectronicTarget = New DataSetElectronicTarget
+        _targetsTableAdapter = New DataSetElectronicTargetTableAdapters.targetsTableAdapter
         Dim _formLogin As New FormLogin(Me)
         _formLogin.ShowDialog()
+        FillComboboxTargets()
+        Me.TabControlMain.SelectedIndex = 1
     End Sub
 
     Public Sub ChangeUser(ByRef user As User)
@@ -27,10 +29,6 @@ Public Class FormMain
             _currentUser = Nothing
         End If
     End Sub
-
-    'Private Sub FormMain_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
-    '    Me.ToolStripStatusLabel1.Text = Me.ButtonSettings.Height
-    'End Sub
 
     Private Sub ButtonUser_Click(sender As Object, e As EventArgs) Handles ButtonUser.Click
         If IsNothing(_currentUser) Then
@@ -104,45 +102,46 @@ Public Class FormMain
         End Using
     End Function
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.OpenFileDialogImg.FileName = ""
-        If Me.OpenFileDialogImg.ShowDialog = DialogResult.OK Then
-            Dim name As String = "test"
-            Dim widthMM As Integer = 0
-            Dim heightMM As Integer = 0
-            Dim img As Image = Nothing
-            img = Image.FromFile(Me.OpenFileDialogImg.FileName)
-
-            Dim targetRow As DataSetTBTarget.targetsRow
-            targetRow = _dataSetElectronicTarget.targets.NewtargetsRow
-            With targetRow
-                .name = name
-                .width_mm = widthMM
-                .height_mm = heightMM
-                .img = imgToByteArray(img)
-            End With
-            _dataSetElectronicTarget.targets.AddtargetsRow(targetRow)
-            _targetsTableAdapter.Update(_dataSetElectronicTarget.targets)
-        End If
-    End Sub
-
     Private Sub FillComboboxTargets()
         Me.ComboBoxShootingTargetSelection.Items.Clear()
         _targetsTableAdapter.Fill(_dataSetElectronicTarget.targets)
-        For Each target As DataSetTBTarget.targetsRow In _dataSetElectronicTarget.targets
+        For Each target As DataSetElectronicTarget.targetsRow In _dataSetElectronicTarget.targets
             Me.ComboBoxShootingTargetSelection.Items.Add(target.name)
         Next
     End Sub
 
     Private Sub ComboBoxShootingTargetSelection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxShootingTargetSelection.SelectedIndexChanged
         If Me.ComboBoxShootingTargetSelection.SelectedIndex >= 0 Then
-            LoadTargetImage(Me.ComboBoxShootingTargetSelection.Items(Me.ComboBoxShootingTargetSelection.SelectedIndex))
+            _currentTarget = New Target
+            _currentTarget.LoadTarget(Me.ComboBoxShootingTargetSelection.Items(Me.ComboBoxShootingTargetSelection.SelectedIndex))
+            LoadTargetImage(_currentTarget.Img)
         End If
     End Sub
 
     Private Sub LoadTargetImage(ByVal targetName As String)
         _targetsTableAdapter.FillByName(_dataSetElectronicTarget.targets, targetName)
-        Dim targetRow As DataSetTBTarget.targetsRow = _dataSetElectronicTarget.targets.Rows(0)
-        Me.PictureBox1.Image = byteArrayToImage(targetRow.img)
+        Dim targetRow As DataSetElectronicTarget.targetsRow = _dataSetElectronicTarget.targets.Rows(0)
+        Me.PictureBoxTarget.Image = byteArrayToImage(targetRow.img)
+    End Sub
+
+    Private Sub LoadTargetImage(ByVal img As Image)
+        Me.PictureBoxTarget.Image = img
+    End Sub
+
+    Private Sub ButtonSettingsAddTarget_Click(sender As Object, e As EventArgs) Handles ButtonSettingsAddTarget.Click
+        Dim _formAddTarget As New FormAddTarget()
+        _formAddTarget.ShowDialog()
+    End Sub
+
+    Private Sub PictureBoxTarget_Click(sender As Object, e As EventArgs) Handles PictureBoxTarget.Click
+        Dim mousePos As Point = PictureBoxTarget.PointToClient(MousePosition)
+        Dim img As Image = Me.PictureBoxTarget.Image
+        Dim g As Graphics = Graphics.FromImage(img)
+        With g
+            .PageUnit = GraphicsUnit.Pixel
+            .FillEllipse(Brushes.Red, mousePos.X - 5, mousePos.Y - 5, 10, 10)
+            .Save()
+        End With
+        Me.PictureBoxTarget.Image = img
     End Sub
 End Class

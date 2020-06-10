@@ -2,16 +2,16 @@
 
 Public Class FormLogin
 
-    Private _usersTableAdapter As DataSetTBTargetTableAdapters.usersTableAdapter
-    Private _dataSetTBTarget As DataSetTBTarget
+    Private _usersTableAdapter As DataSetElectronicTargetTableAdapters.usersTableAdapter
+    Private _dataSetElectronicTarget As DataSetElectronicTarget
     Private _formMain As FormMain
     Private _currentUser As User
 
     Public Sub New(ByRef formMain As FormMain)
         InitializeComponent()
         _formMain = formMain
-        _usersTableAdapter = New DataSetTBTargetTableAdapters.usersTableAdapter
-        _dataSetTBTarget = New DataSetTBTarget
+        _usersTableAdapter = New DataSetElectronicTargetTableAdapters.usersTableAdapter
+        _dataSetElectronicTarget = New DataSetElectronicTarget
         _currentUser = New User()
         Me.TabControlMain.ItemSize = New Size(0, 1)
         Me.TabControlMain.SizeMode = TabSizeMode.Fixed

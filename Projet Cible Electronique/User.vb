@@ -2,8 +2,8 @@
 Imports System.Text
 
 Public Class User
-    Private _dataSetTBTarget As DataSetTBTarget
-    Private _usersTableAdapter As DataSetTBTargetTableAdapters.usersTableAdapter
+    Private _dataSetEletronicTarget As DataSetElectronicTarget
+    Private _usersTableAdapter As DataSetElectronicTargetTableAdapters.usersTableAdapter
 
 #Region "Properties"
     Private _firstname As String
@@ -78,8 +78,8 @@ Public Class User
 #End Region
 
     Public Sub New()
-        _dataSetTBTarget = New DataSetTBTarget
-        _usersTableAdapter = New DataSetTBTargetTableAdapters.usersTableAdapter
+        _dataSetEletronicTarget = New DataSetElectronicTarget
+        _usersTableAdapter = New DataSetElectronicTargetTableAdapters.usersTableAdapter
         ResetUsersProperties()
     End Sub
 
@@ -90,12 +90,12 @@ Public Class User
                 Return -1
             End If
 
-            If _usersTableAdapter.FillByUsername(_dataSetTBTarget.users, username) = 0 Then
+            If _usersTableAdapter.FillByUsername(_dataSetEletronicTarget.users, username) = 0 Then
                 ' Incorrect username
                 Return -2
             End If
 
-            Dim user As DataSetTBTarget.usersRow = _dataSetTBTarget.users.Rows(0)
+            Dim user As DataSetElectronicTarget.usersRow = _dataSetEletronicTarget.users.Rows(0)
             If DecryptPassword(user.password) <> password Then
                 ' Incorrect password
                 Return -3
@@ -118,8 +118,8 @@ Public Class User
 
     Private Function LoadUserInfos(ByVal username As String) As Boolean
         Try
-            If _usersTableAdapter.FillByUsername(_dataSetTBTarget.users, username) > 0 Then
-                Dim userRow As DataSetTBTarget.usersRow = _dataSetTBTarget.users.Rows(0)
+            If _usersTableAdapter.FillByUsername(_dataSetEletronicTarget.users, username) > 0 Then
+                Dim userRow As DataSetElectronicTarget.usersRow = _dataSetEletronicTarget.users.Rows(0)
                 _firstname = userRow.firstname
                 _lastname = userRow.lastname
                 _username = userRow.username
@@ -147,7 +147,7 @@ Public Class User
                 Return -1
             End If
 
-            If _usersTableAdapter.FillByUsername(_dataSetTBTarget.users, username) > 0 Then
+            If _usersTableAdapter.FillByUsername(_dataSetEletronicTarget.users, username) > 0 Then
                 ' Username already exists
                 Return -2
             End If
@@ -182,7 +182,7 @@ Public Class User
 
     Private Function AddAccountToDatabase() As Boolean
         Try
-            Dim newUser As DataSetTBTarget.usersRow = _dataSetTBTarget.users.NewusersRow
+            Dim newUser As DataSetElectronicTarget.usersRow = _dataSetEletronicTarget.users.NewusersRow
             newUser.firstname = _firstname
             newUser.lastname = _lastname
             newUser.username = _username
@@ -192,8 +192,8 @@ Public Class User
             If Not IsNothing(_picture) Then
                 newUser.picture = imgToByteArray(_picture)
             End If
-            _dataSetTBTarget.users.AddusersRow(newUser)
-            _usersTableAdapter.Update(_dataSetTBTarget.users)
+            _dataSetEletronicTarget.users.AddusersRow(newUser)
+            _usersTableAdapter.Update(_dataSetEletronicTarget.users)
             Return True
         Catch ex As Exception
             MsgBox("Erreur lors de la création du compte : " & ex.Message, MsgBoxStyle.Critical, "Inscription")
