@@ -118,50 +118,30 @@ Public Class Target
                 .width_mm = _widthMM
                 .height_mm = _heightMM
                 .img = imgToByteArray(_img)
-                If _listZonesRadius(0) > 0 And _listZonesScore(0) > 0 Then
-                    .radius_zone_1 = _listZonesRadius(0)
-                    .score_zone_1 = _listZonesScore(0)
-                End If
-                If _listZonesRadius(1) > 0 And _listZonesScore(1) > 0 Then
-                    .radius_zone_2 = _listZonesRadius(1)
-                    .score_zone_2 = _listZonesScore(1)
-                End If
-                If _listZonesRadius(2) > 0 And _listZonesScore(2) > 0 Then
-                    .radius_zone_3 = _listZonesRadius(2)
-                    .score_zone_3 = _listZonesScore(2)
-                End If
-                If _listZonesRadius(3) > 0 And _listZonesScore(3) > 0 Then
-                    .radius_zone_4 = _listZonesRadius(3)
-                    .score_zone_4 = _listZonesScore(3)
-                End If
-                If _listZonesRadius(4) > 0 And _listZonesScore(4) > 0 Then
-                    .radius_zone_5 = _listZonesRadius(4)
-                    .score_zone_5 = _listZonesScore(4)
-                End If
-                If _listZonesRadius(5) > 0 And _listZonesScore(5) > 0 Then
-                    .radius_zone_6 = _listZonesRadius(5)
-                    .score_zone_6 = _listZonesScore(5)
-                End If
-                If _listZonesRadius(6) > 0 And _listZonesScore(6) > 0 Then
-                    .radius_zone_7 = _listZonesRadius(6)
-                    .score_zone_7 = _listZonesScore(6)
-                End If
-                If _listZonesRadius(7) > 0 And _listZonesScore(7) > 0 Then
-                    .radius_zone_8 = _listZonesRadius(7)
-                    .score_zone_8 = _listZonesScore(7)
-                End If
-                If _listZonesRadius(8) > 0 And _listZonesScore(8) > 0 Then
-                    .radius_zone_9 = _listZonesRadius(8)
-                    .score_zone_9 = _listZonesScore(8)
-                End If
-                If _listZonesRadius(9) > 0 And _listZonesScore(9) > 0 Then
-                    .radius_zone_10 = _listZonesRadius(9)
-                    .score_zone_10 = _listZonesScore(9)
-                End If
-                If _listZonesRadius(10) > 0 And _listZonesScore(10) > 0 Then
-                    .radius_zone_11 = _listZonesRadius(10)
-                    .score_zone_11 = _listZonesScore(10)
-                End If
+
+                .radius_zone_1 = _listZonesRadius(0)
+                .score_zone_1 = _listZonesScore(0)
+                .radius_zone_2 = _listZonesRadius(1)
+                .score_zone_2 = _listZonesScore(1)
+                .radius_zone_3 = _listZonesRadius(2)
+                .score_zone_3 = _listZonesScore(2)
+                .radius_zone_4 = _listZonesRadius(3)
+                .score_zone_4 = _listZonesScore(3)
+                .radius_zone_5 = _listZonesRadius(4)
+                .score_zone_5 = _listZonesScore(4)
+                .radius_zone_6 = _listZonesRadius(5)
+                .score_zone_6 = _listZonesScore(5)
+                .radius_zone_7 = _listZonesRadius(6)
+                .score_zone_7 = _listZonesScore(6)
+                .radius_zone_8 = _listZonesRadius(7)
+                .score_zone_8 = _listZonesScore(7)
+                .radius_zone_9 = _listZonesRadius(8)
+                .score_zone_9 = _listZonesScore(8)
+                .radius_zone_10 = _listZonesRadius(9)
+                .score_zone_10 = _listZonesScore(9)
+                .radius_zone_11 = _listZonesRadius(10)
+                .score_zone_11 = _listZonesScore(10)
+
             End With
             _dataSetElectronicTarget.targets.AddtargetsRow(newTargetRow)
             _targetsTableAdapter.Update(_dataSetElectronicTarget.targets)
@@ -182,5 +162,47 @@ Public Class Target
         Using mStream As New MemoryStream(byteArrayIn)
             Return Image.FromStream(mStream)
         End Using
+    End Function
+
+    Public Function getScore(ByVal x As Decimal, ByVal y As Decimal) As Integer
+        Dim distance As Decimal = getDistance(x, y)
+        If distance < (_listZonesRadius(0) / 2) And _listZonesRadius(0) <> 0 Then
+            Return _listZonesScore(0)
+        End If
+        If distance < (_listZonesRadius(1) / 2) And _listZonesRadius(1) <> 0 Then
+            Return _listZonesScore(1)
+        End If
+        If distance < (_listZonesRadius(2) / 2) And _listZonesRadius(2) <> 0 Then
+            Return _listZonesScore(2)
+        End If
+        If distance < (_listZonesRadius(3) / 2) And _listZonesRadius(3) <> 0 Then
+            Return _listZonesScore(3)
+        End If
+        If distance < (_listZonesRadius(4) / 2) And _listZonesRadius(4) <> 0 Then
+            Return _listZonesScore(4)
+        End If
+        If distance < (_listZonesRadius(5) / 2) And _listZonesRadius(5) <> 0 Then
+            Return _listZonesScore(5)
+        End If
+        If distance < (_listZonesRadius(6) / 2) And _listZonesRadius(6) <> 0 Then
+            Return _listZonesScore(6)
+        End If
+        If distance < (_listZonesRadius(7) / 2) And _listZonesRadius(7) <> 0 Then
+            Return _listZonesScore(7)
+        End If
+        If distance < (_listZonesRadius(8) / 2) And _listZonesRadius(8) <> 0 Then
+            Return _listZonesScore(8)
+        End If
+        If distance < (_listZonesRadius(9) / 2) And _listZonesRadius(9) <> 0 Then
+            Return _listZonesScore(9)
+        End If
+        If distance < (_listZonesRadius(10) / 2) And _listZonesRadius(10) <> 0 Then
+            Return _listZonesScore(10)
+        End If
+        Return 0
+    End Function
+
+    Public Function getDistance(ByVal x As Decimal, y As Decimal) As Decimal
+        Return Math.Sqrt((x ^ 2) + (y ^ 2))
     End Function
 End Class

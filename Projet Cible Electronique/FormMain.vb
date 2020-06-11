@@ -4,6 +4,7 @@ Public Class FormMain
 
     Private _currentUser As User
     Private _currentTarget As Target
+    Private _currentShootingSession As ShootingSession
 
     Private _dataSetElectronicTarget As DataSetElectronicTarget
     Private _targetsTableAdapter As DataSetElectronicTargetTableAdapters.targetsTableAdapter
@@ -110,7 +111,7 @@ Public Class FormMain
         Next
     End Sub
 
-    Private Sub ComboBoxShootingTargetSelection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxShootingTargetSelection.SelectedIndexChanged
+    Private Sub ComboBoxShootingTargetSelection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxShootingTargetSelection.SelectedIndexChanged, ComboBoxShotsCount.SelectedIndexChanged
         If Me.ComboBoxShootingTargetSelection.SelectedIndex >= 0 Then
             _currentTarget = New Target
             _currentTarget.LoadTarget(Me.ComboBoxShootingTargetSelection.Items(Me.ComboBoxShootingTargetSelection.SelectedIndex))
@@ -143,5 +144,15 @@ Public Class FormMain
             .Save()
         End With
         Me.PictureBoxTarget.Image = img
+    End Sub
+
+    Private Sub ButtonStartShootingSession_Click(sender As Object, e As EventArgs) Handles ButtonStartShootingSession.Click
+        Console.WriteLine(_currentTarget.getDistance(10, 10) & " : " & _currentTarget.getScore(10, 10))
+        Console.WriteLine(_currentTarget.getDistance(5, 3) & " : " & _currentTarget.getScore(5, 3))
+        Console.WriteLine(_currentTarget.getDistance(2, -4) & " : " & _currentTarget.getScore(2, -4))
+        Console.WriteLine(_currentTarget.getDistance(-4, 9) & " : " & _currentTarget.getScore(-4, 9))
+        Console.WriteLine(_currentTarget.getDistance(-18, 10) & " : " & _currentTarget.getScore(-18, 10))
+        Console.WriteLine(_currentTarget.getDistance(2, 33) & " : " & _currentTarget.getScore(2, 33))
+        Console.WriteLine(_currentTarget.getDistance(-20, 25) & " : " & _currentTarget.getScore(-20, 25))
     End Sub
 End Class
