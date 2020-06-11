@@ -64,16 +64,11 @@ Partial Class FormMain
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.LabelLastShootDistance = New System.Windows.Forms.Label()
         Me.LabelLastShootScore = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ColShoot = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColDirection = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColDistance = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColScore = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabPageStatistics = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
@@ -87,6 +82,10 @@ Partial Class FormMain
         Me.ButtonSettingsAddTarget = New System.Windows.Forms.Button()
         Me.TabPageEmpty = New System.Windows.Forms.TabPage()
         Me.OpenFileDialogImg = New System.Windows.Forms.OpenFileDialog()
+        Me.ColShoot = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColDistance = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColScore = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StatusStrip1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -414,7 +413,7 @@ Partial Class FormMain
         Me.ComboBoxUserCategory.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel3.SetColumnSpan(Me.ComboBoxUserCategory, 5)
         Me.ComboBoxUserCategory.FormattingEnabled = True
-        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 453)
+        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 451)
         Me.ComboBoxUserCategory.Name = "ComboBoxUserCategory"
         Me.ComboBoxUserCategory.Size = New System.Drawing.Size(239, 28)
         Me.ComboBoxUserCategory.TabIndex = 6
@@ -636,7 +635,7 @@ Partial Class FormMain
         Me.TableLayoutPanel4.SetColumnSpan(Me.ComboBoxShootingTargetSelection, 4)
         Me.ComboBoxShootingTargetSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxShootingTargetSelection.FormattingEnabled = True
-        Me.ComboBoxShootingTargetSelection.Location = New System.Drawing.Point(101, 544)
+        Me.ComboBoxShootingTargetSelection.Location = New System.Drawing.Point(101, 543)
         Me.ComboBoxShootingTargetSelection.Name = "ComboBoxShootingTargetSelection"
         Me.ComboBoxShootingTargetSelection.Size = New System.Drawing.Size(190, 28)
         Me.ComboBoxShootingTargetSelection.TabIndex = 3
@@ -691,17 +690,6 @@ Partial Class FormMain
         Me.TableLayoutPanel8.Size = New System.Drawing.Size(364, 72)
         Me.TableLayoutPanel8.TabIndex = 0
         '
-        'Label10
-        '
-        Me.Label10.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(3, 26)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(85, 20)
-        Me.Label10.TabIndex = 1
-        Me.Label10.Text = "Distance :"
-        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'Label11
         '
         Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -733,12 +721,23 @@ Partial Class FormMain
         Me.LabelLastShootScore.TabIndex = 6
         Me.LabelLastShootScore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'Label10
+        '
+        Me.Label10.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(3, 26)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(85, 20)
+        Me.Label10.TabIndex = 1
+        Me.Label10.Text = "Distance :"
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColShoot, Me.ColDirection, Me.ColDistance, Me.ColScore, Me.ColTotal})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColShoot, Me.ColDistance, Me.ColScore, Me.ColTotal})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 103)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(0, 3, 0, 0)
@@ -747,42 +746,6 @@ Partial Class FormMain
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.Size = New System.Drawing.Size(370, 397)
         Me.DataGridView1.TabIndex = 1
-        '
-        'ColShoot
-        '
-        Me.ColShoot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.ColShoot.HeaderText = "Tir"
-        Me.ColShoot.Name = "ColShoot"
-        Me.ColShoot.ReadOnly = True
-        Me.ColShoot.Width = 51
-        '
-        'ColDirection
-        '
-        Me.ColDirection.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColDirection.HeaderText = "Direction"
-        Me.ColDirection.Name = "ColDirection"
-        Me.ColDirection.ReadOnly = True
-        '
-        'ColDistance
-        '
-        Me.ColDistance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColDistance.HeaderText = "Distance"
-        Me.ColDistance.Name = "ColDistance"
-        Me.ColDistance.ReadOnly = True
-        '
-        'ColScore
-        '
-        Me.ColScore.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColScore.HeaderText = "Score"
-        Me.ColScore.Name = "ColScore"
-        Me.ColScore.ReadOnly = True
-        '
-        'ColTotal
-        '
-        Me.ColTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ColTotal.HeaderText = "Total"
-        Me.ColTotal.Name = "ColTotal"
-        Me.ColTotal.ReadOnly = True
         '
         'TabPageStatistics
         '
@@ -999,6 +962,35 @@ Partial Class FormMain
         '
         Me.OpenFileDialogImg.FileName = "OpenFileDialog1"
         '
+        'ColShoot
+        '
+        Me.ColShoot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.ColShoot.HeaderText = "Tir"
+        Me.ColShoot.Name = "ColShoot"
+        Me.ColShoot.ReadOnly = True
+        Me.ColShoot.Width = 51
+        '
+        'ColDistance
+        '
+        Me.ColDistance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColDistance.HeaderText = "Distance"
+        Me.ColDistance.Name = "ColDistance"
+        Me.ColDistance.ReadOnly = True
+        '
+        'ColScore
+        '
+        Me.ColScore.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColScore.HeaderText = "Score"
+        Me.ColScore.Name = "ColScore"
+        Me.ColScore.ReadOnly = True
+        '
+        'ColTotal
+        '
+        Me.ColTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ColTotal.HeaderText = "Total"
+        Me.ColTotal.Name = "ColTotal"
+        Me.ColTotal.ReadOnly = True
+        '
         'FormMain
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -1091,11 +1083,6 @@ Partial Class FormMain
     Friend WithEvents TableLayoutPanel7 As TableLayoutPanel
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ColShoot As DataGridViewTextBoxColumn
-    Friend WithEvents ColDirection As DataGridViewTextBoxColumn
-    Friend WithEvents ColDistance As DataGridViewTextBoxColumn
-    Friend WithEvents ColScore As DataGridViewTextBoxColumn
-    Friend WithEvents ColTotal As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel8 As TableLayoutPanel
     Friend WithEvents Label10 As Label
     Friend WithEvents Label11 As Label
@@ -1103,4 +1090,8 @@ Partial Class FormMain
     Friend WithEvents LabelLastShootScore As Label
     Friend WithEvents OpenFileDialogImg As OpenFileDialog
     Friend WithEvents ButtonSettingsAddTarget As Button
+    Friend WithEvents ColShoot As DataGridViewTextBoxColumn
+    Friend WithEvents ColDistance As DataGridViewTextBoxColumn
+    Friend WithEvents ColScore As DataGridViewTextBoxColumn
+    Friend WithEvents ColTotal As DataGridViewTextBoxColumn
 End Class
