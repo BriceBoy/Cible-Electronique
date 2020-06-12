@@ -45,6 +45,7 @@
             If Not result = "OK" Then
                 MsgBox(result, MsgBoxStyle.Information, "Erreur")
             Else
+                MsgBox("La cible " & _target.Name & " a bien été sauvegardée", MsgBoxStyle.Information, "Sauvegarde réussie")
                 Me.Close()
             End If
         Catch ex As Exception

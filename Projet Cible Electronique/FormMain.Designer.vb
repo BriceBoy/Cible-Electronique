@@ -59,8 +59,6 @@ Partial Class FormMain
         Me.TabPageShootingSession = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.PictureBoxTarget = New System.Windows.Forms.PictureBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.ComboBoxShootingTargetSelection = New System.Windows.Forms.ComboBox()
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
@@ -73,6 +71,12 @@ Partial Class FormMain
         Me.ColDistance = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColScore = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.ComboBoxShootingTargetSelection = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.ComboBoxShotsCount = New System.Windows.Forms.ComboBox()
+        Me.ButtonStartShootingSession = New System.Windows.Forms.Button()
+        Me.ButtonCloseShootingSession = New System.Windows.Forms.Button()
         Me.TabPageStatistics = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
@@ -86,9 +90,6 @@ Partial Class FormMain
         Me.ButtonSettingsAddTarget = New System.Windows.Forms.Button()
         Me.TabPageEmpty = New System.Windows.Forms.TabPage()
         Me.OpenFileDialogImg = New System.Windows.Forms.OpenFileDialog()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.ComboBoxShotsCount = New System.Windows.Forms.ComboBox()
-        Me.ButtonStartShootingSession = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -416,7 +417,7 @@ Partial Class FormMain
         Me.ComboBoxUserCategory.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel3.SetColumnSpan(Me.ComboBoxUserCategory, 5)
         Me.ComboBoxUserCategory.FormattingEnabled = True
-        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 453)
+        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 451)
         Me.ComboBoxUserCategory.Name = "ComboBoxUserCategory"
         Me.ComboBoxUserCategory.Size = New System.Drawing.Size(239, 28)
         Me.ComboBoxUserCategory.TabIndex = 6
@@ -566,6 +567,7 @@ Partial Class FormMain
         Me.TableLayoutPanel4.Controls.Add(Me.Label8, 1, 18)
         Me.TableLayoutPanel4.Controls.Add(Me.ComboBoxShotsCount, 3, 19)
         Me.TableLayoutPanel4.Controls.Add(Me.ButtonStartShootingSession, 8, 18)
+        Me.TableLayoutPanel4.Controls.Add(Me.ButtonCloseShootingSession, 11, 18)
         Me.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
@@ -622,29 +624,6 @@ Partial Class FormMain
         Me.PictureBoxTarget.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBoxTarget.TabIndex = 0
         Me.PictureBoxTarget.TabStop = False
-        '
-        'Label8
-        '
-        Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label8.AutoSize = True
-        Me.TableLayoutPanel4.SetColumnSpan(Me.Label8, 2)
-        Me.Label8.Location = New System.Drawing.Point(52, 545)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(92, 20)
-        Me.Label8.TabIndex = 2
-        Me.Label8.Text = "Cible :"
-        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'ComboBoxShootingTargetSelection
-        '
-        Me.ComboBoxShootingTargetSelection.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel4.SetColumnSpan(Me.ComboBoxShootingTargetSelection, 4)
-        Me.ComboBoxShootingTargetSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxShootingTargetSelection.FormattingEnabled = True
-        Me.ComboBoxShootingTargetSelection.Location = New System.Drawing.Point(150, 544)
-        Me.ComboBoxShootingTargetSelection.Name = "ComboBoxShootingTargetSelection"
-        Me.ComboBoxShootingTargetSelection.Size = New System.Drawing.Size(190, 28)
-        Me.ComboBoxShootingTargetSelection.TabIndex = 3
         '
         'TableLayoutPanel7
         '
@@ -781,6 +760,78 @@ Partial Class FormMain
         Me.ColTotal.HeaderText = "Total"
         Me.ColTotal.Name = "ColTotal"
         Me.ColTotal.ReadOnly = True
+        '
+        'Label9
+        '
+        Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Label9.AutoSize = True
+        Me.TableLayoutPanel4.SetColumnSpan(Me.Label9, 3)
+        Me.Label9.Location = New System.Drawing.Point(24, 580)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(120, 20)
+        Me.Label9.TabIndex = 5
+        Me.Label9.Text = "Nombre de tirs :"
+        '
+        'ComboBoxShootingTargetSelection
+        '
+        Me.ComboBoxShootingTargetSelection.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel4.SetColumnSpan(Me.ComboBoxShootingTargetSelection, 4)
+        Me.ComboBoxShootingTargetSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxShootingTargetSelection.FormattingEnabled = True
+        Me.ComboBoxShootingTargetSelection.Location = New System.Drawing.Point(150, 543)
+        Me.ComboBoxShootingTargetSelection.Name = "ComboBoxShootingTargetSelection"
+        Me.ComboBoxShootingTargetSelection.Size = New System.Drawing.Size(190, 28)
+        Me.ComboBoxShootingTargetSelection.TabIndex = 3
+        '
+        'Label8
+        '
+        Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label8.AutoSize = True
+        Me.TableLayoutPanel4.SetColumnSpan(Me.Label8, 2)
+        Me.Label8.Location = New System.Drawing.Point(52, 545)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(92, 20)
+        Me.Label8.TabIndex = 2
+        Me.Label8.Text = "Cible :"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'ComboBoxShotsCount
+        '
+        Me.ComboBoxShotsCount.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel4.SetColumnSpan(Me.ComboBoxShotsCount, 4)
+        Me.ComboBoxShotsCount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxShotsCount.FormattingEnabled = True
+        Me.ComboBoxShotsCount.Items.AddRange(New Object() {"10", "20", "30", "40", "50", "60", "libre"})
+        Me.ComboBoxShotsCount.Location = New System.Drawing.Point(150, 576)
+        Me.ComboBoxShotsCount.Name = "ComboBoxShotsCount"
+        Me.ComboBoxShotsCount.Size = New System.Drawing.Size(190, 28)
+        Me.ComboBoxShotsCount.TabIndex = 3
+        '
+        'ButtonStartShootingSession
+        '
+        Me.ButtonStartShootingSession.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel4.SetColumnSpan(Me.ButtonStartShootingSession, 3)
+        Me.ButtonStartShootingSession.Enabled = False
+        Me.ButtonStartShootingSession.Location = New System.Drawing.Point(395, 553)
+        Me.ButtonStartShootingSession.Name = "ButtonStartShootingSession"
+        Me.TableLayoutPanel4.SetRowSpan(Me.ButtonStartShootingSession, 2)
+        Me.ButtonStartShootingSession.Size = New System.Drawing.Size(141, 44)
+        Me.ButtonStartShootingSession.TabIndex = 6
+        Me.ButtonStartShootingSession.Text = "Commencer"
+        Me.ButtonStartShootingSession.UseVisualStyleBackColor = True
+        '
+        'ButtonCloseShootingSession
+        '
+        Me.ButtonCloseShootingSession.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel4.SetColumnSpan(Me.ButtonCloseShootingSession, 3)
+        Me.ButtonCloseShootingSession.Enabled = False
+        Me.ButtonCloseShootingSession.Location = New System.Drawing.Point(542, 553)
+        Me.ButtonCloseShootingSession.Name = "ButtonCloseShootingSession"
+        Me.TableLayoutPanel4.SetRowSpan(Me.ButtonCloseShootingSession, 2)
+        Me.ButtonCloseShootingSession.Size = New System.Drawing.Size(141, 44)
+        Me.ButtonCloseShootingSession.TabIndex = 6
+        Me.ButtonCloseShootingSession.Text = "Terminer"
+        Me.ButtonCloseShootingSession.UseVisualStyleBackColor = True
         '
         'TabPageStatistics
         '
@@ -997,40 +1048,6 @@ Partial Class FormMain
         '
         Me.OpenFileDialogImg.FileName = "OpenFileDialog1"
         '
-        'Label9
-        '
-        Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.Label9.AutoSize = True
-        Me.TableLayoutPanel4.SetColumnSpan(Me.Label9, 3)
-        Me.Label9.Location = New System.Drawing.Point(24, 580)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(120, 20)
-        Me.Label9.TabIndex = 5
-        Me.Label9.Text = "Nombre de tirs :"
-        '
-        'ComboBoxShotsCount
-        '
-        Me.ComboBoxShotsCount.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel4.SetColumnSpan(Me.ComboBoxShotsCount, 4)
-        Me.ComboBoxShotsCount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxShotsCount.FormattingEnabled = True
-        Me.ComboBoxShotsCount.Location = New System.Drawing.Point(150, 576)
-        Me.ComboBoxShotsCount.Name = "ComboBoxShotsCount"
-        Me.ComboBoxShotsCount.Size = New System.Drawing.Size(190, 28)
-        Me.ComboBoxShotsCount.TabIndex = 3
-        '
-        'ButtonStartShootingSession
-        '
-        Me.ButtonStartShootingSession.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel4.SetColumnSpan(Me.ButtonStartShootingSession, 3)
-        Me.ButtonStartShootingSession.Location = New System.Drawing.Point(395, 553)
-        Me.ButtonStartShootingSession.Name = "ButtonStartShootingSession"
-        Me.TableLayoutPanel4.SetRowSpan(Me.ButtonStartShootingSession, 2)
-        Me.ButtonStartShootingSession.Size = New System.Drawing.Size(141, 44)
-        Me.ButtonStartShootingSession.TabIndex = 6
-        Me.ButtonStartShootingSession.Text = "Commencer"
-        Me.ButtonStartShootingSession.UseVisualStyleBackColor = True
-        '
         'FormMain
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -1137,4 +1154,5 @@ Partial Class FormMain
     Friend WithEvents Label9 As Label
     Friend WithEvents ComboBoxShotsCount As ComboBox
     Friend WithEvents ButtonStartShootingSession As Button
+    Friend WithEvents ButtonCloseShootingSession As Button
 End Class

@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports System.Runtime.Remoting.Metadata.W3cXsd2001
+Imports Microsoft.VisualBasic.Devices
 
 Public Class FormMain
 
@@ -111,11 +113,12 @@ Public Class FormMain
         Next
     End Sub
 
-    Private Sub ComboBoxShootingTargetSelection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxShootingTargetSelection.SelectedIndexChanged, ComboBoxShotsCount.SelectedIndexChanged
+    Private Sub ComboBoxShootingTargetSelection_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxShootingTargetSelection.SelectedIndexChanged
         If Me.ComboBoxShootingTargetSelection.SelectedIndex >= 0 Then
             _currentTarget = New Target
             _currentTarget.LoadTarget(Me.ComboBoxShootingTargetSelection.Items(Me.ComboBoxShootingTargetSelection.SelectedIndex))
             LoadTargetImage(_currentTarget.Img)
+            EnableDisableButtonStart()
         End If
     End Sub
 
@@ -135,24 +138,106 @@ Public Class FormMain
     End Sub
 
     Private Sub PictureBoxTarget_Click(sender As Object, e As EventArgs) Handles PictureBoxTarget.Click
-        Dim mousePos As Point = PictureBoxTarget.PointToClient(MousePosition)
-        Dim img As Image = Me.PictureBoxTarget.Image
+        Dim img = Me.PictureBoxTarget.Image
+        Dim mousePos = Me.PictureBoxTarget.PointToClient(Cursor.Position)
+        Dim newPoint = TranslateZoomMousePosition(mousePos)
+        Dim centerPoint As New Point(img.Width / 2, img.Height / 2)
         Dim g As Graphics = Graphics.FromImage(img)
         With g
             .PageUnit = GraphicsUnit.Pixel
-            .FillEllipse(Brushes.Red, mousePos.X - 5, mousePos.Y - 5, 10, 10)
+            .FillEllipse(Brushes.Red, newPoint.X - 5, newPoint.Y - 5, 10, 10)
             .Save()
         End With
         Me.PictureBoxTarget.Image = img
+        Dim pointAxis = newPoint - centerPoint
+        pointAxis = getRealCoord(pointAxis, img, _currentTarget.WidthMM, _currentTarget.HeightMM)
+        Console.WriteLine(newPoint.ToString & "/" & Me.PictureBoxTarget.Image.Size.ToString)
+        Console.WriteLine(newPoint.ToString & "-" & centerPoint.ToString & "=" & pointAxis.ToString)
+        Console.WriteLine(_currentTarget.getDistance(pointAxis.X, pointAxis.Y))
     End Sub
 
     Private Sub ButtonStartShootingSession_Click(sender As Object, e As EventArgs) Handles ButtonStartShootingSession.Click
-        Console.WriteLine(_currentTarget.getDistance(10, 10) & " : " & _currentTarget.getScore(10, 10))
-        Console.WriteLine(_currentTarget.getDistance(5, 3) & " : " & _currentTarget.getScore(5, 3))
-        Console.WriteLine(_currentTarget.getDistance(2, -4) & " : " & _currentTarget.getScore(2, -4))
-        Console.WriteLine(_currentTarget.getDistance(-4, 9) & " : " & _currentTarget.getScore(-4, 9))
-        Console.WriteLine(_currentTarget.getDistance(-18, 10) & " : " & _currentTarget.getScore(-18, 10))
-        Console.WriteLine(_currentTarget.getDistance(2, 33) & " : " & _currentTarget.getScore(2, 33))
-        Console.WriteLine(_currentTarget.getDistance(-20, 25) & " : " & _currentTarget.getScore(-20, 25))
+        Dim shotsCount As Integer
+        If Me.ComboBoxShotsCount.SelectedIndex < 0 Then
+            MsgBox("Veuillez sélectionner le nombre de tirs avant de lancer la session", MsgBoxStyle.Information, "Erreur")
+            Exit Sub
+        End If
+
+        If Not Integer.TryParse(Me.ComboBoxShotsCount.Items(Me.ComboBoxShotsCount.SelectedIndex), shotsCount) Then
+            shotsCount = 0
+        End If
+        _currentShootingSession = New ShootingSession(_currentUser, _currentTarget, shotsCount)
+        Me.ButtonCloseShootingSession.Enabled = True
+        Me.ButtonStartShootingSession.Enabled = False
     End Sub
+
+    Private Sub ButtonCloseShootingSession_Click(sender As Object, e As EventArgs) Handles ButtonCloseShootingSession.Click
+        If Not IsNothing(_currentShootingSession.User) Then
+            _currentShootingSession.ImageResult = Me.PictureBoxTarget.Image
+            _currentShootingSession.SaveToDatabase()
+        End If
+        Me.ButtonStartShootingSession.Enabled = True
+        Me.ButtonCloseShootingSession.Enabled = False
+    End Sub
+
+    Private Sub EnableDisableButtonStart()
+        Me.ButtonStartShootingSession.Enabled = Me.ComboBoxShootingTargetSelection.SelectedIndex >= 0 And Me.ComboBoxShotsCount.SelectedIndex >= 0
+    End Sub
+
+    Private Sub ComboBoxShotsCount_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxShotsCount.SelectedIndexChanged
+        EnableDisableButtonStart()
+    End Sub
+
+    Private Function TranslateZoomMousePosition(ByVal coordinates As Point) As Point
+        With Me.PictureBoxTarget
+            Dim img As Image = .Image
+            If (Me.PictureBoxTarget.Image Is Nothing) Then
+                Return coordinates
+            End If
+
+            If ((.Width = 0) OrElse ((.Height = 0) OrElse ((img.Width = 0) OrElse (img.Height = 0)))) Then
+                Return coordinates
+            End If
+
+            Dim imageAspect As Single = (CType(img.Width, Single) / img.Height)
+            Dim controlAspect As Single = (CType(.Width, Single) / .Height)
+            Dim newX As Single = coordinates.X
+            Dim newY As Single = coordinates.Y
+            If (imageAspect > controlAspect) Then
+                ' Limité en largeur
+                Dim ratioWidth As Single = (CType(img.Width, Single) / .Width)
+                newX = (newX * ratioWidth)
+                Dim scale As Single = (CType(.Width, Single) / img.Width)
+                Dim displayHeight As Single = (scale * img.Height)
+                Dim diffHeight As Single = (.Height - displayHeight)
+                diffHeight /= 2
+                newY -= diffHeight
+                newY /= scale
+            Else
+                'Limité en hauteur
+                Dim ratioHeight As Single = (CType(img.Height, Single) / .Height)
+                newY = (newY * ratioHeight)
+                Dim scale As Single = (CType(.Height, Single) / img.Height)
+                Dim displayWidth As Single = (scale * img.Width)
+                Dim diffWidth As Single = (.Width - displayWidth)
+                diffWidth /= 2
+                newX -= diffWidth
+                newX /= scale
+            End If
+
+            Return New Point(CType(newX, Integer), CType(newY, Integer))
+        End With
+    End Function
+
+    Private Function getRealCoord(ByVal pxPoint As Point, ByVal img As Image, ByVal realWidth As Decimal, ByVal realHeight As Decimal) As Point
+        Dim imgWidthMM As Decimal = img.Width / img.HorizontalResolution * 25.4
+        Dim imgHeightMM As Decimal = img.Height / img.VerticalResolution * 25.4
+        Dim horizontalRatio As Decimal = imgWidthMM / realWidth
+        Dim verticalRatio As Decimal = imgHeightMM / realHeight
+        Dim x As Decimal = pxPoint.X * horizontalRatio / img.HorizontalResolution * 25.4
+        Dim y As Decimal = pxPoint.Y * verticalRatio / img.HorizontalResolution * 25.4
+        Dim realPoint As New Point(x, y)
+        Return realPoint
+    End Function
+
 End Class

@@ -1321,11 +1321,13 @@ Partial Public Class DataSetElectronicTarget
         
         Private columnuser As Global.System.Data.DataColumn
         
-        Private columndate As Global.System.Data.DataColumn
+        Private columnsession_date As Global.System.Data.DataColumn
         
         Private columnshots As Global.System.Data.DataColumn
         
         Private columntarget As Global.System.Data.DataColumn
+        
+        Private columnimage_result As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -1380,9 +1382,9 @@ Partial Public Class DataSetElectronicTarget
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property dateColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property session_dateColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columndate
+                Return Me.columnsession_date
             End Get
         End Property
         
@@ -1399,6 +1401,14 @@ Partial Public Class DataSetElectronicTarget
         Public ReadOnly Property targetColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columntarget
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property image_resultColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnimage_result
             End Get
         End Property
         
@@ -1439,9 +1449,9 @@ Partial Public Class DataSetElectronicTarget
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addshooting_sessionsRow(ByVal user As String, ByVal _date As Date, ByVal shots As String, ByVal target As String) As shooting_sessionsRow
+        Public Overloads Function Addshooting_sessionsRow(ByVal user As String, ByVal session_date As Date, ByVal shots As String, ByVal target As String, ByVal image_result() As Byte) As shooting_sessionsRow
             Dim rowshooting_sessionsRow As shooting_sessionsRow = CType(Me.NewRow,shooting_sessionsRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, user, _date, shots, target}
+            Dim columnValuesArray() As Object = New Object() {Nothing, user, session_date, shots, target, image_result}
             rowshooting_sessionsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowshooting_sessionsRow)
             Return rowshooting_sessionsRow
@@ -1472,9 +1482,10 @@ Partial Public Class DataSetElectronicTarget
         Friend Sub InitVars()
             Me.columnid = MyBase.Columns("id")
             Me.columnuser = MyBase.Columns("user")
-            Me.columndate = MyBase.Columns("date")
+            Me.columnsession_date = MyBase.Columns("session_date")
             Me.columnshots = MyBase.Columns("shots")
             Me.columntarget = MyBase.Columns("target")
+            Me.columnimage_result = MyBase.Columns("image_result")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1484,15 +1495,14 @@ Partial Public Class DataSetElectronicTarget
             MyBase.Columns.Add(Me.columnid)
             Me.columnuser = New Global.System.Data.DataColumn("user", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnuser)
-            Me.columndate = New Global.System.Data.DataColumn("date", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            Me.columndate.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "dateColumn")
-            Me.columndate.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columndate")
-            Me.columndate.ExtendedProperties.Add("Generator_UserColumnName", "date")
-            MyBase.Columns.Add(Me.columndate)
+            Me.columnsession_date = New Global.System.Data.DataColumn("session_date", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsession_date)
             Me.columnshots = New Global.System.Data.DataColumn("shots", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnshots)
             Me.columntarget = New Global.System.Data.DataColumn("target", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntarget)
+            Me.columnimage_result = New Global.System.Data.DataColumn("image_result", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnimage_result)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid}, true))
             Me.columnid.AutoIncrement = true
             Me.columnid.AutoIncrementSeed = -1
@@ -1501,10 +1511,9 @@ Partial Public Class DataSetElectronicTarget
             Me.columnid.Unique = true
             Me.columnuser.AllowDBNull = false
             Me.columnuser.MaxLength = 50
-            Me.columndate.AllowDBNull = false
+            Me.columnsession_date.AllowDBNull = false
             Me.columnshots.AllowDBNull = false
             Me.columnshots.MaxLength = 16777215
-            Me.columntarget.AllowDBNull = false
             Me.columntarget.MaxLength = 50
         End Sub
         
@@ -2469,12 +2478,12 @@ Partial Public Class DataSetElectronicTarget
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property _date() As Date
+        Public Property session_date() As Date
             Get
-                Return CType(Me(Me.tableshooting_sessions.dateColumn),Date)
+                Return CType(Me(Me.tableshooting_sessions.session_dateColumn),Date)
             End Get
             Set
-                Me(Me.tableshooting_sessions.dateColumn) = value
+                Me(Me.tableshooting_sessions.session_dateColumn) = value
             End Set
         End Property
         
@@ -2493,12 +2502,56 @@ Partial Public Class DataSetElectronicTarget
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property target() As String
             Get
-                Return CType(Me(Me.tableshooting_sessions.targetColumn),String)
+                Try 
+                    Return CType(Me(Me.tableshooting_sessions.targetColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("La valeur pour la colonne 'target' dans la table 'shooting_sessions' est DBNull.", e)
+                End Try
             End Get
             Set
                 Me(Me.tableshooting_sessions.targetColumn) = value
             End Set
         End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property image_result() As Byte()
+            Get
+                Try 
+                    Return CType(Me(Me.tableshooting_sessions.image_resultColumn),Byte())
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("La valeur pour la colonne 'image_result' dans la table 'shooting_sessions' est DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableshooting_sessions.image_resultColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IstargetNull() As Boolean
+            Return Me.IsNull(Me.tableshooting_sessions.targetColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SettargetNull()
+            Me(Me.tableshooting_sessions.targetColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isimage_resultNull() As Boolean
+            Return Me.IsNull(Me.tableshooting_sessions.image_resultColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setimage_resultNull()
+            Me(Me.tableshooting_sessions.image_resultColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -5808,14 +5861,15 @@ Namespace DataSetElectronicTargetTableAdapters
             tableMapping.DataSetTable = "shooting_sessions"
             tableMapping.ColumnMappings.Add("id", "id")
             tableMapping.ColumnMappings.Add("user", "user")
-            tableMapping.ColumnMappings.Add("date", "date")
+            tableMapping.ColumnMappings.Add("session_date", "session_date")
             tableMapping.ColumnMappings.Add("shots", "shots")
             tableMapping.ColumnMappings.Add("target", "target")
+            tableMapping.ColumnMappings.Add("image_result", "image_result")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM `shooting_sessions` WHERE ((`id` = @p1) AND (`user` = @p2) AND (`date"& _ 
-                "` = @p3) AND (`target` = @p4))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM `shooting_sessions` WHERE ((`id` = @p1) AND (`user` = @p2) AND (`sess"& _ 
+                "ion_date` = @p3) AND ((@p4 = 1 AND `target` IS NULL) OR (`target` = @p5)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -5838,11 +5892,20 @@ Namespace DataSetElectronicTargetTableAdapters
             param.DbType = Global.System.Data.DbType.[Date]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
             param.IsNullable = true
-            param.SourceColumn = "date"
+            param.SourceColumn = "session_date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p4"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "target"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p5"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
@@ -5851,8 +5914,8 @@ Namespace DataSetElectronicTargetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(param)
             Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `shooting_sessions` (`user`, `date`, `shots`, `target`) VALUES (@p1, "& _ 
-                "@p2, @p3, @p4)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `shooting_sessions` (`user`, `session_date`, `shots`, `target`, `imag"& _ 
+                "e_result`) VALUES (@p1, @p2, @p3, @p4, @p5)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -5867,7 +5930,7 @@ Namespace DataSetElectronicTargetTableAdapters
             param.DbType = Global.System.Data.DbType.[Date]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
             param.IsNullable = true
-            param.SourceColumn = "date"
+            param.SourceColumn = "session_date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Current
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -5885,11 +5948,20 @@ Namespace DataSetElectronicTargetTableAdapters
             param.SourceColumn = "target"
             param.SourceVersion = Global.System.Data.DataRowVersion.Current
             Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p5"
+            param.DbType = Global.System.Data.DbType.[Object]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
+            param.IsNullable = true
+            param.SourceColumn = "image_result"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Current
+            Me._adapter.InsertCommand.Parameters.Add(param)
             Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `shooting_sessions` SET `user` = @p1, `date` = @p2, `shots` = @p3, `target"& _ 
-                "` = @p4 WHERE ((`id` = @p5) AND (`user` = @p6) AND (`date` = @p7) AND (`target` "& _ 
-                "= @p8))"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE `shooting_sessions` SET `user` = @p1, `session_date` = @p2, `shots` = @p3,"& _ 
+                " `target` = @p4, `image_result` = @p5 WHERE ((`id` = @p6) AND (`user` = @p7) AND"& _ 
+                " (`session_date` = @p8) AND ((@p9 = 1 AND `target` IS NULL) OR (`target` = @p10)"& _ 
+                "))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -5904,7 +5976,7 @@ Namespace DataSetElectronicTargetTableAdapters
             param.DbType = Global.System.Data.DbType.[Date]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
             param.IsNullable = true
-            param.SourceColumn = "date"
+            param.SourceColumn = "session_date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Current
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
@@ -5924,6 +5996,14 @@ Namespace DataSetElectronicTargetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p5"
+            param.DbType = Global.System.Data.DbType.[Object]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
+            param.IsNullable = true
+            param.SourceColumn = "image_result"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Current
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p6"
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
@@ -5931,7 +6011,7 @@ Namespace DataSetElectronicTargetTableAdapters
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p6"
+            param.ParameterName = "@p7"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
@@ -5939,15 +6019,24 @@ Namespace DataSetElectronicTargetTableAdapters
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p7"
+            param.ParameterName = "@p8"
             param.DbType = Global.System.Data.DbType.[Date]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
             param.IsNullable = true
-            param.SourceColumn = "date"
+            param.SourceColumn = "session_date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p8"
+            param.ParameterName = "@p9"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "target"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p10"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
@@ -5969,7 +6058,8 @@ Namespace DataSetElectronicTargetTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `id`, `user`, `date`, `shots`, `target` FROM `shooting_sessions`"
+            Me._commandCollection(0).CommandText = "SELECT `id`, `user`, `session_date`, `shots`, `target`, `image_result` FROM `shoo"& _ 
+                "ting_sessions`"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -6029,7 +6119,7 @@ Namespace DataSetElectronicTargetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal p1 As Integer, ByVal p2 As String, ByVal p3 As Date, ByVal p4 As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal p1 As Integer, ByVal p2 As String, ByVal p3 As Date, ByVal p5 As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(p1,Integer)
             If (p2 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("p2")
@@ -6037,10 +6127,12 @@ Namespace DataSetElectronicTargetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(p2,String)
             End If
             Me.Adapter.DeleteCommand.Parameters(2).Value = CType(p3,Date)
-            If (p4 Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("p4")
+            If (p5 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(p4,String)
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(p5,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -6061,7 +6153,7 @@ Namespace DataSetElectronicTargetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal p1 As String, ByVal p2 As Date, ByVal p3 As String, ByVal p4 As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal p1 As String, ByVal p2 As Date, ByVal p3 As String, ByVal p4 As String, ByVal p5 As Object) As Integer
             If (p1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("p1")
             Else
@@ -6074,9 +6166,14 @@ Namespace DataSetElectronicTargetTableAdapters
                 Me.Adapter.InsertCommand.Parameters(2).Value = CType(p3,String)
             End If
             If (p4 Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("p4")
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.InsertCommand.Parameters(3).Value = CType(p4,String)
+            End If
+            If (p5 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(p5,Object)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -6097,7 +6194,7 @@ Namespace DataSetElectronicTargetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal p1 As String, ByVal p2 As Date, ByVal p3 As String, ByVal p4 As String, ByVal p5 As Integer, ByVal p6 As String, ByVal p7 As Date, ByVal p8 As String) As Integer
+        Public Overloads Overridable Function Update(ByVal p1 As String, ByVal p2 As Date, ByVal p3 As String, ByVal p4 As String, ByVal p5 As Object, ByVal p6 As Integer, ByVal p7 As String, ByVal p8 As Date, ByVal p10 As String) As Integer
             If (p1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("p1")
             Else
@@ -6110,21 +6207,28 @@ Namespace DataSetElectronicTargetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(2).Value = CType(p3,String)
             End If
             If (p4 Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("p4")
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(3).Value = CType(p4,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(p5,Integer)
-            If (p6 Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("p6")
+            If (p5 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p6,String)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(p5,Object)
             End If
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(p7,Date)
-            If (p8 Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("p8")
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p6,Integer)
+            If (p7 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("p7")
             Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(p8,String)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(p7,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(p8,Date)
+            If (p10 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(p10,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
