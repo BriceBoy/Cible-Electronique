@@ -122,4 +122,8 @@ Public Class ShootingSession
             Return Image.FromStream(mStream)
         End Using
     End Function
+
+    Public Function GetStr() As String
+        Return _strShots
+    End Function
 End Class
