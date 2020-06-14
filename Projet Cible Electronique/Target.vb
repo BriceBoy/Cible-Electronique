@@ -55,7 +55,7 @@ Public Class Target
     End Property
 
     Private _listZonesScore As List(Of Integer)
-    Public Property listZonesScore() As List(Of Integer)
+    Public Property ListZonesScore() As List(Of Integer)
         Get
             Return _listZonesScore
         End Get
@@ -85,9 +85,23 @@ Public Class Target
                     _name = .name
                     _widthMM = .width_mm
                     _heightMM = .height_mm
-                    _img = byteArrayToImage(.img)
+                    _img = ByteArrayToImage(.img)
                     _listZonesRadius = New List(Of Decimal) From { .radius_zone_1, .radius_zone_2, .radius_zone_3, .radius_zone_4, .radius_zone_5, .radius_zone_6, .radius_zone_7, .radius_zone_8, .radius_zone_9, .radius_zone_10, .radius_zone_11}
                     _listZonesScore = New List(Of Integer) From { .score_zone_1, .score_zone_2, .score_zone_3, .score_zone_4, .score_zone_5, .score_zone_6, .score_zone_7, .score_zone_8, .score_zone_9, .score_zone_10, .score_zone_11}
+                End With
+            End If
+        Catch ex As Exception
+            MsgBox("Erreur : " & ex.Message, MsgBoxStyle.Critical, "Erreur")
+        End Try
+    End Sub
+
+    Public Sub ReloadImg()
+        Try
+            _targetsTableAdapter.FillByName(_dataSetElectronicTarget.targets, _name)
+            If _dataSetElectronicTarget.targets.Rows.Count > 0 Then
+                Dim targetRow As DataSetElectronicTarget.targetsRow = _dataSetElectronicTarget.targets.Rows(0)
+                With targetRow
+                    _img = ByteArrayToImage(.img)
                 End With
             End If
         Catch ex As Exception
@@ -117,7 +131,7 @@ Public Class Target
                 .name = _name
                 .width_mm = _widthMM
                 .height_mm = _heightMM
-                .img = imgToByteArray(_img)
+                .img = ImgToByteArray(_img)
 
                 .radius_zone_1 = _listZonesRadius(0)
                 .score_zone_1 = _listZonesScore(0)
@@ -151,21 +165,21 @@ Public Class Target
         End Try
     End Function
 
-    Private Function imgToByteArray(ByVal img As Image) As Byte()
+    Private Function ImgToByteArray(ByVal img As Image) As Byte()
         Using mStream As New MemoryStream()
             img.Save(mStream, img.RawFormat)
             Return mStream.ToArray()
         End Using
     End Function
 
-    Private Function byteArrayToImage(ByVal byteArrayIn As Byte()) As Image
+    Private Function ByteArrayToImage(ByVal byteArrayIn As Byte()) As Image
         Using mStream As New MemoryStream(byteArrayIn)
             Return Image.FromStream(mStream)
         End Using
     End Function
 
-    Public Function getScore(ByVal x As Decimal, ByVal y As Decimal) As Integer
-        Dim distance As Decimal = getDistance(x, y)
+    Public Function GetScore(ByVal x As Decimal, ByVal y As Decimal) As Integer
+        Dim distance As Decimal = GetDistance(x, y)
         If distance < (_listZonesRadius(0) / 2) And _listZonesRadius(0) <> 0 Then
             Return _listZonesScore(0)
         End If
@@ -202,7 +216,7 @@ Public Class Target
         Return 0
     End Function
 
-    Public Function getDistance(ByVal x As Decimal, y As Decimal) As Decimal
+    Public Function GetDistance(ByVal x As Decimal, y As Decimal) As Decimal
         Return Math.Sqrt((x ^ 2) + (y ^ 2))
     End Function
 End Class

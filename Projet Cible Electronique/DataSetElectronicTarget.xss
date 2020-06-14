@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:users" ZOrder="3" X="177" Y="142" Height="229" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
     <Shape ID="DesignTable:targets" ZOrder="2" X="886" Y="134" Height="590" Width="247" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="520" />
-    <Shape ID="DesignTable:shooting_sessions" ZOrder="1" X="547" Y="173" Height="191" Width="248" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
+    <Shape ID="DesignTable:shooting_sessions" ZOrder="1" X="550" Y="197" Height="248" Width="248" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

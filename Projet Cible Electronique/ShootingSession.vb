@@ -7,8 +7,6 @@ Public Class ShootingSession
     Private _usersTableAdapter As DataSetElectronicTargetTableAdapters.usersTableAdapter
     Private _shootingSessionsTableAdapter As DataSetElectronicTargetTableAdapters.shooting_sessionsTableAdapter
 
-    Private _strShots As String
-
     Private _user As User
     Public Property User() As User
         Get
@@ -40,7 +38,7 @@ Public Class ShootingSession
     End Property
 
     Private _shotsToDo As Integer
-    Public Property ShotToDo() As Integer
+    Public Property ShotsToDo() As Integer
         Get
             Return _shotsToDo
         End Get
@@ -59,13 +57,53 @@ Public Class ShootingSession
         End Set
     End Property
 
-    Private _imageResult As Image
-    Public Property ImageResult() As Image
+    Private _finalPicture As Image
+    Public Property FinalPicture() As Image
         Get
-            Return _imageResult
+            Return _finalPicture
         End Get
         Set(ByVal value As Image)
-            _imageResult = value
+            _finalPicture = value
+        End Set
+    End Property
+
+    Private _weapon As String
+    Public Property Weapon() As String
+        Get
+            Return _weapon
+        End Get
+        Set(ByVal value As String)
+            _weapon = value
+        End Set
+    End Property
+
+    Private _distance As Integer
+    Public Property Distance() As Integer
+        Get
+            Return _distance
+        End Get
+        Set(ByVal value As Integer)
+            _distance = value
+        End Set
+    End Property
+
+    Private _comments As String
+    Public Property Comments() As String
+        Get
+            Return _comments
+        End Get
+        Set(ByVal value As String)
+            _comments = value
+        End Set
+    End Property
+
+    Private _strShots As String
+    Public Property StrShots() As String
+        Get
+            Return _strShots
+        End Get
+        Set(ByVal value As String)
+            _strShots = value
         End Set
     End Property
 
@@ -76,11 +114,12 @@ Public Class ShootingSession
         _shootingSessionsTableAdapter = New DataSetElectronicTargetTableAdapters.shooting_sessionsTableAdapter
 
         _strShots = ""
-
         _user = currentUser
         _target = currentTarget
+        _target.ReloadImg()
         _shotsToDo = shotsToDo
         _shotsDone = 0
+        _finalPicture = _target.Img
     End Sub
 
     Public Function SaveToDatabase() As String
@@ -92,8 +131,12 @@ Public Class ShootingSession
                 .session_date = DateTime.Now
                 .shots = _strShots
                 .target = _target.Name
-                .image_result = imgToByteArray(_imageResult)
+                .image_result = ImgToByteArray(_finalPicture)
+                .weapon = _weapon
+                .distance = _distance
+                .comments = _comments
             End With
+
             _dataSetElectronicTarget.shooting_sessions.Addshooting_sessionsRow(newShootingSessionRow)
             _shootingSessionsTableAdapter.Update(_dataSetElectronicTarget.shooting_sessions)
             Return "OK"
@@ -102,28 +145,34 @@ Public Class ShootingSession
         End Try
     End Function
 
-    Public Function GetShotsRemaining() As Integer
+    Public Function ShotsRemaining() As Integer
         Return _shotsToDo - _shotsDone
     End Function
 
     Public Sub AddAShot(ByVal x As Decimal, y As Decimal)
         _strShots += x & ":" & y & ";"
+        _shotsDone += 1
     End Sub
 
-    Private Function imgToByteArray(ByVal img As Image) As Byte()
+    Private Function ImgToByteArray(ByVal img As Image) As Byte()
         Using mStream As New MemoryStream()
             img.Save(mStream, img.RawFormat)
             Return mStream.ToArray()
         End Using
     End Function
 
-    Private Function byteArrayToImage(ByVal byteArrayIn As Byte()) As Image
+    Private Function ByteArrayToImage(ByVal byteArrayIn As Byte()) As Image
         Using mStream As New MemoryStream(byteArrayIn)
             Return Image.FromStream(mStream)
         End Using
     End Function
 
-    Public Function GetStr() As String
-        Return _strShots
+    Public Function ShowAdvices() As Boolean
+        If _shotsDone Mod 10 = 0 And _shotsDone > 0 Then
+            _target.ReloadImg()
+            Return True
+        Else
+            Return False
+        End If
     End Function
 End Class

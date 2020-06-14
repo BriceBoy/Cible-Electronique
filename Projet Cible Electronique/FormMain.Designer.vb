@@ -23,9 +23,9 @@ Partial Class FormMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -270,7 +270,7 @@ Partial Class FormMain
         Me.TabPageUserConnected.Location = New System.Drawing.Point(4, 29)
         Me.TabPageUserConnected.Name = "TabPageUserConnected"
         Me.TabPageUserConnected.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageUserConnected.Size = New System.Drawing.Size(998, 616)
+        Me.TabPageUserConnected.Size = New System.Drawing.Size(998, 620)
         Me.TabPageUserConnected.TabIndex = 0
         Me.TabPageUserConnected.UseVisualStyleBackColor = True
         '
@@ -337,7 +337,7 @@ Partial Class FormMain
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(992, 610)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(992, 614)
         Me.TableLayoutPanel3.TabIndex = 0
         '
         'ButtonUserSave
@@ -415,6 +415,7 @@ Partial Class FormMain
         Me.ComboBoxUserCategory.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel3.SetColumnSpan(Me.ComboBoxUserCategory, 5)
         Me.ComboBoxUserCategory.FormattingEnabled = True
+        Me.ComboBoxUserCategory.Items.AddRange(New Object() {"Débutant", "Amateur", "Professionnel"})
         Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 453)
         Me.ComboBoxUserCategory.Name = "ComboBoxUserCategory"
         Me.ComboBoxUserCategory.Size = New System.Drawing.Size(239, 28)
@@ -837,7 +838,7 @@ Partial Class FormMain
         Me.TabPageStatistics.Location = New System.Drawing.Point(4, 22)
         Me.TabPageStatistics.Name = "TabPageStatistics"
         Me.TabPageStatistics.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageStatistics.Size = New System.Drawing.Size(998, 623)
+        Me.TabPageStatistics.Size = New System.Drawing.Size(998, 627)
         Me.TabPageStatistics.TabIndex = 2
         Me.TabPageStatistics.UseVisualStyleBackColor = True
         '
@@ -890,25 +891,25 @@ Partial Class FormMain
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
-        Me.TableLayoutPanel5.Size = New System.Drawing.Size(992, 617)
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(992, 621)
         Me.TableLayoutPanel5.TabIndex = 0
         '
         'Chart1
         '
-        ChartArea3.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea3)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
         Me.TableLayoutPanel5.SetColumnSpan(Me.Chart1, 13)
         Me.Chart1.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend3.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend3)
-        Me.Chart1.Location = New System.Drawing.Point(52, 33)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
+        Me.Chart1.Location = New System.Drawing.Point(52, 34)
         Me.Chart1.Name = "Chart1"
         Me.TableLayoutPanel5.SetRowSpan(Me.Chart1, 9)
-        Series3.ChartArea = "ChartArea1"
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series1"
-        Me.Chart1.Series.Add(Series3)
-        Me.Chart1.Size = New System.Drawing.Size(631, 264)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Size = New System.Drawing.Size(631, 273)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
         '
@@ -917,10 +918,10 @@ Partial Class FormMain
         Me.TableLayoutPanel5.SetColumnSpan(Me.GroupBox1, 18)
         Me.GroupBox1.Controls.Add(Me.TableLayoutPanel6)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox1.Location = New System.Drawing.Point(52, 333)
+        Me.GroupBox1.Location = New System.Drawing.Point(52, 344)
         Me.GroupBox1.Name = "GroupBox1"
         Me.TableLayoutPanel5.SetRowSpan(Me.GroupBox1, 8)
-        Me.GroupBox1.Size = New System.Drawing.Size(876, 234)
+        Me.GroupBox1.Size = New System.Drawing.Size(876, 242)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Sélection"
@@ -951,7 +952,7 @@ Partial Class FormMain
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel6.Size = New System.Drawing.Size(870, 209)
+        Me.TableLayoutPanel6.Size = New System.Drawing.Size(870, 217)
         Me.TableLayoutPanel6.TabIndex = 0
         '
         'RadioButton1
@@ -963,7 +964,7 @@ Partial Class FormMain
         Me.TableLayoutPanel6.SetColumnSpan(Me.RadioButton1, 3)
         Me.RadioButton1.Location = New System.Drawing.Point(3, 3)
         Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(255, 35)
+        Me.RadioButton1.Size = New System.Drawing.Size(255, 37)
         Me.RadioButton1.TabIndex = 0
         Me.RadioButton1.TabStop = True
         Me.RadioButton1.Text = "Période"
@@ -976,9 +977,9 @@ Partial Class FormMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButton2.AutoSize = True
         Me.TableLayoutPanel6.SetColumnSpan(Me.RadioButton2, 3)
-        Me.RadioButton2.Location = New System.Drawing.Point(3, 44)
+        Me.RadioButton2.Location = New System.Drawing.Point(3, 46)
         Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(255, 35)
+        Me.RadioButton2.Size = New System.Drawing.Size(255, 37)
         Me.RadioButton2.TabIndex = 1
         Me.RadioButton2.TabStop = True
         Me.RadioButton2.Text = "Session"
@@ -991,9 +992,9 @@ Partial Class FormMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButton3.AutoSize = True
         Me.TableLayoutPanel6.SetColumnSpan(Me.RadioButton3, 3)
-        Me.RadioButton3.Location = New System.Drawing.Point(3, 85)
+        Me.RadioButton3.Location = New System.Drawing.Point(3, 89)
         Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(255, 35)
+        Me.RadioButton3.Size = New System.Drawing.Size(255, 37)
         Me.RadioButton3.TabIndex = 2
         Me.RadioButton3.TabStop = True
         Me.RadioButton3.Text = "Meilleurs scores"
@@ -1006,9 +1007,9 @@ Partial Class FormMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButton4.AutoSize = True
         Me.TableLayoutPanel6.SetColumnSpan(Me.RadioButton4, 3)
-        Me.RadioButton4.Location = New System.Drawing.Point(3, 126)
+        Me.RadioButton4.Location = New System.Drawing.Point(3, 132)
         Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.Size = New System.Drawing.Size(255, 35)
+        Me.RadioButton4.Size = New System.Drawing.Size(255, 37)
         Me.RadioButton4.TabIndex = 3
         Me.RadioButton4.TabStop = True
         Me.RadioButton4.Text = "Sélection manuelle"
@@ -1020,7 +1021,7 @@ Partial Class FormMain
         Me.TabPageSettings.Location = New System.Drawing.Point(4, 22)
         Me.TabPageSettings.Name = "TabPageSettings"
         Me.TabPageSettings.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageSettings.Size = New System.Drawing.Size(998, 623)
+        Me.TabPageSettings.Size = New System.Drawing.Size(998, 627)
         Me.TabPageSettings.TabIndex = 3
         Me.TabPageSettings.UseVisualStyleBackColor = True
         '
@@ -1035,10 +1036,10 @@ Partial Class FormMain
         '
         'TabPageEmpty
         '
-        Me.TabPageEmpty.Location = New System.Drawing.Point(4, 29)
+        Me.TabPageEmpty.Location = New System.Drawing.Point(4, 22)
         Me.TabPageEmpty.Name = "TabPageEmpty"
         Me.TabPageEmpty.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageEmpty.Size = New System.Drawing.Size(998, 620)
+        Me.TabPageEmpty.Size = New System.Drawing.Size(998, 627)
         Me.TabPageEmpty.TabIndex = 4
         Me.TabPageEmpty.UseVisualStyleBackColor = True
         '

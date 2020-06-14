@@ -127,7 +127,7 @@ Public Class User
                 _email = userRow.e_mail
                 _category = userRow.category
                 If Not userRow.IspictureNull Then
-                    _picture = byteArrayToImage(userRow.picture)
+                    _picture = ByteArrayToImage(userRow.picture)
                 End If
                 Return True
             Else
@@ -190,7 +190,7 @@ Public Class User
             newUser.e_mail = _email
             newUser.category = _category
             If Not IsNothing(_picture) Then
-                newUser.picture = imgToByteArray(_picture)
+                newUser.picture = ImgToByteArray(_picture)
             End If
             _dataSetEletronicTarget.users.AddusersRow(newUser)
             _usersTableAdapter.Update(_dataSetEletronicTarget.users)
@@ -211,14 +211,14 @@ Public Class User
         Return Encoding.UTF8.GetString(bytes)
     End Function
 
-    Private Function imgToByteArray(ByVal img As Image) As Byte()
+    Private Function ImgToByteArray(ByVal img As Image) As Byte()
         Using mStream As New MemoryStream()
             img.Save(mStream, img.RawFormat)
             Return mStream.ToArray()
         End Using
     End Function
 
-    Private Function byteArrayToImage(ByVal byteArrayIn As Byte()) As Image
+    Private Function ByteArrayToImage(ByVal byteArrayIn As Byte()) As Image
         Using mStream As New MemoryStream(byteArrayIn)
             Return Image.FromStream(mStream)
         End Using

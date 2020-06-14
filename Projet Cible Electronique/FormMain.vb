@@ -1,12 +1,13 @@
 ﻿Imports System.IO
-Imports System.Runtime.Remoting.Metadata.W3cXsd2001
-Imports Microsoft.VisualBasic.Devices
 
 Public Class FormMain
 
     Private _currentUser As User
     Private _currentTarget As Target
     Private _currentShootingSession As ShootingSession
+
+
+    Private _sessionInProgress As Boolean
     Private _currentShotNumber As Integer
     Private _currentScore As Integer
 
@@ -16,6 +17,7 @@ Public Class FormMain
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _dataSetElectronicTarget = New DataSetElectronicTarget
         _targetsTableAdapter = New DataSetElectronicTargetTableAdapters.targetsTableAdapter
+        _sessionInProgress = False
 
         Me.TabControlMain.Appearance = TabAppearance.FlatButtons
         Me.TabControlMain.ItemSize = New Size(0, 1)
@@ -48,7 +50,7 @@ Public Class FormMain
             Dim _formLogin As New FormLogin(Me)
             _formLogin.ShowDialog()
         Else
-            LoadAccountInfos() '
+            LoadAccountInfos()
             Me.TabControlMain.SelectedIndex = 0
         End If
     End Sub
@@ -101,14 +103,14 @@ Public Class FormMain
         End If
     End Sub
 
-    Private Function imgToByteArray(ByVal img As Image) As Byte()
+    Private Function ImgToByteArray(ByVal img As Image) As Byte()
         Using mStream As New MemoryStream()
             img.Save(mStream, img.RawFormat)
             Return mStream.ToArray()
         End Using
     End Function
 
-    Private Function byteArrayToImage(ByVal byteArrayIn As Byte()) As Image
+    Private Function ByteArrayToImage(ByVal byteArrayIn As Byte()) As Image
         Using mStream As New MemoryStream(byteArrayIn)
             Return Image.FromStream(mStream)
         End Using
@@ -134,7 +136,7 @@ Public Class FormMain
     Private Sub LoadTargetImage(ByVal targetName As String)
         _targetsTableAdapter.FillByName(_dataSetElectronicTarget.targets, targetName)
         Dim targetRow As DataSetElectronicTarget.targetsRow = _dataSetElectronicTarget.targets.Rows(0)
-        Me.PictureBoxTarget.Image = byteArrayToImage(targetRow.img)
+        Me.PictureBoxTarget.Image = ByteArrayToImage(targetRow.img)
     End Sub
 
     Private Sub LoadTargetImage(ByVal img As Image)
@@ -147,11 +149,20 @@ Public Class FormMain
     End Sub
 
     Private Sub PictureBoxTarget_Click(sender As Object, e As EventArgs) Handles PictureBoxTarget.Click
-        AddAShotByMouse()
+        If IsNothing(_currentShootingSession) Then
+            MsgBox("Lancer une session de tir pour commencer", MsgBoxStyle.Information, "Démarrage")
+        ElseIf _currentShootingSession.ShotsRemaining > 0 Then
+            AddAShotByMouse()
+        Else
+            MsgBox("Vous avez terminé la session")
+        End If
     End Sub
 
     Private Sub AddAShotByMouse()
-        Dim img = Me.PictureBoxTarget.Image
+        If _currentShootingSession.ShowAdvices Then
+            Me.PictureBoxTarget.Image = _currentTarget.Img
+        End If
+        Dim img As Image = Me.PictureBoxTarget.Image
         Dim mousePosition = Me.PictureBoxTarget.PointToClient(Cursor.Position)
         Dim imgPosition = TranslateZoomMousePosition(mousePosition)
         Dim centerPosition As New Point(img.Width / 2, img.Height / 2)
@@ -165,6 +176,9 @@ Public Class FormMain
     End Sub
 
     Private Sub AddAShot(ByVal xGraph As Decimal, ByVal yGraph As Decimal)
+        If _currentShootingSession.ShowAdvices Then
+            Me.PictureBoxTarget.Image = _currentTarget.Img
+        End If
         Dim ImgPosition As Point = GraphPositionToImgPosition(xGraph, yGraph)
         PrintPointOnImg(ImgPosition.X, ImgPosition.Y)
         UpdateShootingSessionValuesOnDisplay(xGraph, yGraph)
@@ -172,51 +186,72 @@ Public Class FormMain
     End Sub
 
     Private Sub PrintPointOnImg(ByVal xImg As Decimal, ByVal yImg As Decimal)
-        Dim img = Me.PictureBoxTarget.Image
-        Dim g As Graphics = Graphics.FromImage(img)
-        With g
+        Dim img As Image = Me.PictureBoxTarget.Image
+        Dim g1 As Graphics = Graphics.FromImage(img)
+        With g1
             .PageUnit = GraphicsUnit.Pixel
             .FillEllipse(Brushes.Red, xImg - 5, yImg - 5, 10, 10)
             .Save()
         End With
         Me.PictureBoxTarget.Image = img
+
+        Dim finalImg As Image = _currentShootingSession.FinalPicture
+        Dim g2 As Graphics = Graphics.FromImage(finalImg)
+        With g2
+            .PageUnit = GraphicsUnit.Pixel
+            .FillEllipse(Brushes.Red, xImg - 5, yImg - 5, 10, 10)
+            .Save()
+        End With
+        _currentShootingSession.FinalPicture = finalImg
     End Sub
 
     Private Sub UpdateShootingSessionValuesOnDisplay(ByVal xGraph As Decimal, ByVal yGraph As Decimal)
-        Dim distance As Decimal = Decimal.Round(_currentTarget.getDistance(xGraph, yGraph), 2)
-        Dim score As Decimal = _currentTarget.getScore(xGraph, yGraph)
+        Dim distance As Decimal = Decimal.Round(_currentTarget.GetDistance(xGraph, yGraph), 2)
+        Dim score As Decimal = _currentTarget.GetScore(xGraph, yGraph)
         _currentScore += score
         Me.LabelLastShootDistance.Text = distance & " mm"
         Me.LabelLastShootScore.Text = score & " points"
         _currentShotNumber += 1
         Me.DataGridViewResults.Rows.Add(_currentShotNumber.ToString, distance.ToString, score.ToString, _currentScore.ToString)
-        UpdateShotsCounter()
+        Me.ToolStripStatusLabel2.Text = "Tir n°" & _currentShotNumber
     End Sub
 
     Private Sub ButtonStartShootingSession_Click(sender As Object, e As EventArgs) Handles ButtonStartShootingSession.Click
-        _currentShotNumber = 0
-        UpdateShotsCounter()
-        Dim shotsCount As Integer
         If Me.ComboBoxShotsCount.SelectedIndex < 0 Then
             MsgBox("Veuillez sélectionner le nombre de tirs avant de lancer la session", MsgBoxStyle.Information, "Erreur")
             Exit Sub
         End If
 
-        If Not Integer.TryParse(Me.ComboBoxShotsCount.Items(Me.ComboBoxShotsCount.SelectedIndex), shotsCount) Then
-            shotsCount = 0
+        _sessionInProgress = True
+        _currentShotNumber = 0
+        Me.ToolStripStatusLabel2.Text = "Tir n°" & _currentShotNumber
+
+        Dim shotsToDo As Integer
+        If Not Integer.TryParse(Me.ComboBoxShotsCount.Items(Me.ComboBoxShotsCount.SelectedIndex), shotsToDo) Then
+            shotsToDo = 10000
         End If
-        _currentShootingSession = New ShootingSession(_currentUser, _currentTarget, shotsCount)
+
+        _currentShootingSession = New ShootingSession(_currentUser, _currentTarget, shotsToDo)
+        Me.PictureBoxTarget.Image = _currentTarget.Img
+        Me.DataGridViewResults.Rows.Clear()
         Me.ButtonCloseShootingSession.Enabled = True
         Me.ButtonStartShootingSession.Enabled = False
+        Me.ComboBoxShootingTargetSelection.Enabled = False
+        Me.ComboBoxShotsCount.Enabled = False
     End Sub
 
     Private Sub ButtonCloseShootingSession_Click(sender As Object, e As EventArgs) Handles ButtonCloseShootingSession.Click
         If Not IsNothing(_currentShootingSession.User) Then
-            _currentShootingSession.ImageResult = Me.PictureBoxTarget.Image
+            _currentShootingSession.FinalPicture = Me.PictureBoxTarget.Image
+            Dim formEnd As New FormEndingShootingSession(_currentShootingSession)
+            formEnd.ShowDialog()
             _currentShootingSession.SaveToDatabase()
         End If
+
         Me.ButtonStartShootingSession.Enabled = True
         Me.ButtonCloseShootingSession.Enabled = False
+        Me.ComboBoxShootingTargetSelection.Enabled = True
+        Me.ComboBoxShotsCount.Enabled = True
     End Sub
 
     Private Sub EnableDisableButtonStart()
@@ -245,7 +280,7 @@ Public Class FormMain
             If (imageAspect > controlAspect) Then
                 ' Limité en largeur
                 Dim ratioWidth As Single = (CType(img.Width, Single) / .Width)
-                newX = (newX * ratioWidth)
+                newX *= ratioWidth
                 Dim scale As Single = (CType(.Width, Single) / img.Width)
                 Dim displayHeight As Single = (scale * img.Height)
                 Dim diffHeight As Single = (.Height - displayHeight)
@@ -255,7 +290,7 @@ Public Class FormMain
             Else
                 'Limité en hauteur
                 Dim ratioHeight As Single = (CType(img.Height, Single) / .Height)
-                newY = (newY * ratioHeight)
+                newY *= ratioHeight
                 Dim scale As Single = (CType(.Height, Single) / img.Height)
                 Dim displayWidth As Single = (scale * img.Width)
                 Dim diffWidth As Single = (.Width - displayWidth)
@@ -308,10 +343,5 @@ Public Class FormMain
             Next
         Next
     End Sub
-
-    Private Sub UpdateShotsCounter()
-        Me.ToolStripStatusLabel2.Text = "Tir n°" & _currentShotNumber
-    End Sub
-
 
 End Class

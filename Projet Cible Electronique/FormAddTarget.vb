@@ -40,7 +40,8 @@
             _target.HeightMM = NumericUpDownHeight.Value
             _target.Img = Image.FromFile(TextBoxImgPath.Text)
             _target.ListZonesRadius = New List(Of Decimal) From {Rad1.Value, Rad2.Value, Rad3.Value, Rad4.Value, Rad5.Value, Rad6.Value, Rad7.Value, Rad8.Value, Rad9.Value, Rad10.Value, Rad11.Value}
-            _target.listZonesScore = New List(Of Integer) From {Score1.Value, Score2.Value, Score3.Value, Score4.Value, Score5.Value, Score6.Value, Score7.Value, Score8.Value, Score9.Value, Score10.Value, Score11.Value}
+            _target.ListZonesScore = New List(Of Integer) From {Score1.Value, Score2.Value, Score3.Value, Score4.Value, Score5.Value, Score6.Value, Score7.Value, Score8.Value, Score9.Value, Score10.Value, Score11.Value}
+
             Dim result As String = _target.SaveToDatabase
             If Not result = "OK" Then
                 MsgBox(result, MsgBoxStyle.Information, "Erreur")
