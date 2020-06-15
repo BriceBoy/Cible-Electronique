@@ -107,19 +107,45 @@ Public Class ShootingSession
         End Set
     End Property
 
-    Public Sub New(ByRef currentUser As User, ByRef currentTarget As Target, ByVal shotsToDo As Integer)
+    Public Sub New(ByRef user As User, ByRef target As Target, ByVal shotsToDo As Integer)
         _dataSetElectronicTarget = New DataSetElectronicTarget
         _targetsTableAdapter = New DataSetElectronicTargetTableAdapters.targetsTableAdapter
         _usersTableAdapter = New DataSetElectronicTargetTableAdapters.usersTableAdapter
         _shootingSessionsTableAdapter = New DataSetElectronicTargetTableAdapters.shooting_sessionsTableAdapter
 
         _strShots = ""
-        _user = currentUser
-        _target = currentTarget
+        _user = user
+        _target = target
         _target.ReloadImg()
         _shotsToDo = shotsToDo
         _shotsDone = 0
         _finalPicture = _target.Img
+    End Sub
+
+    Public Sub New(ByVal ID As Integer)
+        _dataSetElectronicTarget = New DataSetElectronicTarget
+        _targetsTableAdapter = New DataSetElectronicTargetTableAdapters.targetsTableAdapter
+        _usersTableAdapter = New DataSetElectronicTargetTableAdapters.usersTableAdapter
+        _shootingSessionsTableAdapter = New DataSetElectronicTargetTableAdapters.shooting_sessionsTableAdapter
+
+        _shootingSessionsTableAdapter.FillByID(_dataSetElectronicTarget.shooting_sessions, ID)
+        Dim shootingSessionRow As DataSetElectronicTarget.shooting_sessionsRow = _dataSetElectronicTarget.shooting_sessions.Rows(0)
+        Dim username As String
+        Dim targetname As String
+        With shootingSessionRow
+            username = .user
+            targetname = .target
+            _strShots = .shots
+            _finalPicture = ByteArrayToImage(.image_result)
+            _comments = .comments
+        End With
+
+        _user = New User
+        _user.LoadUserInfos(username)
+
+        _target = New Target
+        _target.LoadTarget(targetname)
+
     End Sub
 
     Public Function SaveToDatabase() As String
@@ -167,12 +193,23 @@ Public Class ShootingSession
         End Using
     End Function
 
-    Public Function ShowAdvices() As Boolean
+    Public Function TenLastShots() As String
+        Dim testArray() As String = Split(_strShots, ";")
+        Dim shotsCount = testArray.GetUpperBound(0)
+        Dim tenShots As String = ""
+        For i As Integer = (testArray.GetUpperBound(0) - 9) To testArray.GetUpperBound(0) - 1
+            tenShots += testArray(i) + ";"
+        Next
+        Return tenShots
+    End Function
+
+    Public Function ShowAdvices() As String
         If _shotsDone Mod 10 = 0 And _shotsDone > 0 Then
+            Dim stats As New Stats(TenLastShots, _target)
             _target.ReloadImg()
-            Return True
+            Return stats.SmartSystem()
         Else
-            Return False
+            Return ""
         End If
     End Function
 End Class

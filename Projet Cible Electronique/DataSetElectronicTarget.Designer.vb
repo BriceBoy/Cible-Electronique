@@ -6018,8 +6018,8 @@ Namespace DataSetElectronicTargetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p3"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
+            param.DbType = Global.System.Data.DbType.DateTime
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
             param.IsNullable = true
             param.SourceColumn = "session_date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -6091,8 +6091,8 @@ Namespace DataSetElectronicTargetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p2"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
+            param.DbType = Global.System.Data.DbType.DateTime
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
             param.IsNullable = true
             param.SourceColumn = "session_date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Current
@@ -6162,8 +6162,8 @@ Namespace DataSetElectronicTargetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p2"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
+            param.DbType = Global.System.Data.DbType.DateTime
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
             param.IsNullable = true
             param.SourceColumn = "session_date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Current
@@ -6232,8 +6232,8 @@ Namespace DataSetElectronicTargetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p11"
-            param.DbType = Global.System.Data.DbType.[Date]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
+            param.DbType = Global.System.Data.DbType.DateTime
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.DateTime
             param.IsNullable = true
             param.SourceColumn = "session_date"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
@@ -6301,12 +6301,36 @@ Namespace DataSetElectronicTargetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(2) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT `id`, `user`, `session_date`, `shots`, `target`, `image_result`, `weapon`,"& _ 
                 " `distance`, `comments` FROM `shooting_sessions`"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT * FROM shooting_sessions WHERE id =@ID"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@ID"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "id"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Current
+            Me._commandCollection(1).Parameters.Add(param)
+            Me._commandCollection(2) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT * FROM shooting_sessions WHERE (user = @username)ORDER BY session_date DES"& _ 
+                "C"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@username"
+            param.Size = 1024
+            param.IsNullable = true
+            param.SourceColumn = ""
+            param.SourceVersion = Global.System.Data.DataRowVersion.Current
+            Me._commandCollection(2).Parameters.Add(param)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6328,6 +6352,66 @@ Namespace DataSetElectronicTargetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetData() As DataSetElectronicTarget.shooting_sessionsDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As DataSetElectronicTarget.shooting_sessionsDataTable = New DataSetElectronicTarget.shooting_sessionsDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByID(ByVal dataTable As DataSetElectronicTarget.shooting_sessionsDataTable, ByVal ID As Integer) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID,Integer)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByID(ByVal ID As Integer) As DataSetElectronicTarget.shooting_sessionsDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID,Integer)
+            Dim dataTable As DataSetElectronicTarget.shooting_sessionsDataTable = New DataSetElectronicTarget.shooting_sessionsDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByUsername(ByVal dataTable As DataSetElectronicTarget.shooting_sessionsDataTable, ByVal username As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (username Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("username")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(username,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByUsername(ByVal username As String) As DataSetElectronicTarget.shooting_sessionsDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (username Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("username")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(username,String)
+            End If
             Dim dataTable As DataSetElectronicTarget.shooting_sessionsDataTable = New DataSetElectronicTarget.shooting_sessionsDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable

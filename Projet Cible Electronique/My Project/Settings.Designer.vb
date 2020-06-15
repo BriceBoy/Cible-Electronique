@@ -64,17 +64,6 @@ Namespace My
                 Return CType(Me("electronic_targetConnectionString"),String)
             End Get
         End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;persistsecurityinfo=True;database=electronic_target"& _ 
-            "")>  _
-        Public ReadOnly Property electronic_targetConnectionString1() As String
-            Get
-                Return CType(Me("electronic_targetConnectionString1"),String)
-            End Get
-        End Property
     End Class
 End Namespace
 

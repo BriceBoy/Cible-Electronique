@@ -5,7 +5,8 @@ Public Class FormMain
     Private _currentUser As User
     Private _currentTarget As Target
     Private _currentShootingSession As ShootingSession
-
+    Private _currentStats As Stats
+    Private _shootingSessionStats As ShootingSession
 
     Private _sessionInProgress As Boolean
     Private _currentShotNumber As Integer
@@ -13,10 +14,12 @@ Public Class FormMain
 
     Private _dataSetElectronicTarget As DataSetElectronicTarget
     Private _targetsTableAdapter As DataSetElectronicTargetTableAdapters.targetsTableAdapter
+    Private _sessionsTableAdapter As DataSetElectronicTargetTableAdapters.shooting_sessionsTableAdapter
 
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _dataSetElectronicTarget = New DataSetElectronicTarget
         _targetsTableAdapter = New DataSetElectronicTargetTableAdapters.targetsTableAdapter
+        _sessionsTableAdapter = New DataSetElectronicTargetTableAdapters.shooting_sessionsTableAdapter
         _sessionInProgress = False
 
         Me.TabControlMain.Appearance = TabAppearance.FlatButtons
@@ -61,6 +64,7 @@ Public Class FormMain
     End Sub
 
     Private Sub ButtonStatistics_Click(sender As Object, e As EventArgs) Handles ButtonStatistics.Click
+        FillComboboxSessions()
         Me.TabControlMain.SelectedIndex = 2
     End Sub
 
@@ -159,9 +163,12 @@ Public Class FormMain
     End Sub
 
     Private Sub AddAShotByMouse()
-        If _currentShootingSession.ShowAdvices Then
+        Dim msg As String = _currentShootingSession.ShowAdvices
+        If msg <> "" Then
             Me.PictureBoxTarget.Image = _currentTarget.Img
+            Me.LabelShootingSessionAdvices.Text = msg
         End If
+
         Dim img As Image = Me.PictureBoxTarget.Image
         Dim mousePosition = Me.PictureBoxTarget.PointToClient(Cursor.Position)
         Dim imgPosition = TranslateZoomMousePosition(mousePosition)
@@ -176,9 +183,12 @@ Public Class FormMain
     End Sub
 
     Private Sub AddAShot(ByVal xGraph As Decimal, ByVal yGraph As Decimal)
-        If _currentShootingSession.ShowAdvices Then
+        Dim msg As String = _currentShootingSession.ShowAdvices
+        If msg <> "" Then
             Me.PictureBoxTarget.Image = _currentTarget.Img
+            Me.LabelShootingSessionAdvices.Text = msg
         End If
+
         Dim ImgPosition As Point = GraphPositionToImgPosition(xGraph, yGraph)
         PrintPointOnImg(ImgPosition.X, ImgPosition.Y)
         UpdateShootingSessionValuesOnDisplay(xGraph, yGraph)
@@ -327,21 +337,27 @@ Public Class FormMain
         Return New Point(xOnImgPX, yOnImgPX)
     End Function
 
-    Private Sub Test(ByVal str As String)
-        Dim testArray() As String = Split(str, ";")
-        Dim shotsCount = testArray.GetUpperBound(0) - 1
-        Dim volee(shotsCount, 1) As Decimal
-        For i As Integer = 0 To testArray.GetUpperBound(0) - 1
-            Dim coord() As String = Split(testArray(i), ":")
-            volee(i, 0) = coord(0)
-            volee(i, 1) = coord(1)
-        Next
-
-        For i As Integer = 0 To volee.GetUpperBound(0)
-            For j As Integer = 0 To volee.GetUpperBound(1)
-                Console.WriteLine("Volee[{0};{1}] = {2}", i, j, volee(i, j))
-            Next
+    Private Sub FillComboboxSessions()
+        Me.ComboBoxStatsSession.Items.Clear()
+        If IsNothing(_currentUser) Then
+            MsgBox("Veuillez vous connecter pour accéder à vos statistiques", MsgBoxStyle.Information, "connexion nécessaire")
+            Exit Sub
+        End If
+        _sessionsTableAdapter.FillByUsername(_dataSetElectronicTarget.shooting_sessions, _currentUser.Username)
+        For Each session As DataSetElectronicTarget.shooting_sessionsRow In _dataSetElectronicTarget.shooting_sessions
+            Me.ComboBoxStatsSession.Items.Add(session.session_date.ToString & "_" & session.id)
         Next
     End Sub
 
+    Private Sub ComboBoxStatsSession_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxStatsSession.SelectedIndexChanged
+        Dim text As String = Me.ComboBoxStatsSession.Items(Me.ComboBoxStatsSession.SelectedIndex).ToString
+        text = text.Split("_")(1)
+        Dim id As Integer = CInt(text)
+        Dim session As New ShootingSession(id)
+        Dim stats As New Stats(session.StrShots, session.Target)
+        Me.LabelStatsAverageScore.Text = stats.AverageScore.ToString("0.00")
+        Me.RichTextBoxStatsComments.Text = session.Comments()
+        Me.RichTextBoxStatsAdvices.Text = stats.SmartSystem()
+        Me.PictureBoxStats.Image = session.FinalPicture
+    End Sub
 End Class

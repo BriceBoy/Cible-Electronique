@@ -116,7 +116,7 @@ Public Class User
         End Try
     End Function
 
-    Private Function LoadUserInfos(ByVal username As String) As Boolean
+    Public Function LoadUserInfos(ByVal username As String) As Boolean
         Try
             If _usersTableAdapter.FillByUsername(_dataSetEletronicTarget.users, username) > 0 Then
                 Dim userRow As DataSetElectronicTarget.usersRow = _dataSetEletronicTarget.users.Rows(0)
