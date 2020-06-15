@@ -22,25 +22,20 @@ Partial Class FormMain
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
         Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Title2 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.ButtonStatistics = New System.Windows.Forms.Button()
-        Me.ButtonShootingSession = New System.Windows.Forms.Button()
-        Me.ButtonUser = New System.Windows.Forms.Button()
-        Me.ButtonSettings = New System.Windows.Forms.Button()
         Me.LabelPaint1 = New System.Windows.Forms.Label()
         Me.TabControlMain = New System.Windows.Forms.TabControl()
         Me.TabPageUserConnected = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.ButtonUserSave = New System.Windows.Forms.Button()
-        Me.PictureBoxUserPicture = New System.Windows.Forms.PictureBox()
         Me.TextBoxUserUsername = New System.Windows.Forms.TextBox()
         Me.TextBoxUserFirstname = New System.Windows.Forms.TextBox()
         Me.TextBoxUserPassword = New System.Windows.Forms.TextBox()
@@ -58,7 +53,6 @@ Partial Class FormMain
         Me.TextBoxUserLastname = New System.Windows.Forms.TextBox()
         Me.TabPageShootingSession = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
-        Me.PictureBoxTarget = New System.Windows.Forms.PictureBox()
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
@@ -71,6 +65,7 @@ Partial Class FormMain
         Me.ColDistance = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColScore = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LabelShootingSessionAdvices = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.ComboBoxShootingTargetSelection = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -79,42 +74,47 @@ Partial Class FormMain
         Me.ButtonCloseShootingSession = New System.Windows.Forms.Button()
         Me.TabPageStatistics = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.ChartStats = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
-        Me.PictureBoxStats = New System.Windows.Forms.PictureBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.ComboBoxStatsSession = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.LabelStatsAverageScore = New System.Windows.Forms.Label()
+        Me.RichTextBoxStatsAdvices = New System.Windows.Forms.RichTextBox()
+        Me.RichTextBoxStatsComments = New System.Windows.Forms.RichTextBox()
         Me.TabPageSettings = New System.Windows.Forms.TabPage()
         Me.ButtonSettingsAddTarget = New System.Windows.Forms.Button()
         Me.TabPageEmpty = New System.Windows.Forms.TabPage()
         Me.OpenFileDialogImg = New System.Windows.Forms.OpenFileDialog()
-        Me.LabelShootingSessionAdvices = New System.Windows.Forms.Label()
-        Me.RichTextBoxStatsAdvices = New System.Windows.Forms.RichTextBox()
-        Me.RichTextBoxStatsComments = New System.Windows.Forms.RichTextBox()
+        Me.ButtonStatistics = New System.Windows.Forms.Button()
+        Me.ButtonShootingSession = New System.Windows.Forms.Button()
+        Me.ButtonUser = New System.Windows.Forms.Button()
+        Me.ButtonSettings = New System.Windows.Forms.Button()
+        Me.PictureBoxUserPicture = New System.Windows.Forms.PictureBox()
+        Me.PictureBoxTarget = New System.Windows.Forms.PictureBox()
+        Me.PictureBoxStats = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TabControlMain.SuspendLayout()
         Me.TabPageUserConnected.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
-        CType(Me.PictureBoxUserPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageShootingSession.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
-        CType(Me.PictureBoxTarget, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel7.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.TableLayoutPanel8.SuspendLayout()
         CType(Me.DataGridViewResults, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageStatistics.SuspendLayout()
         Me.TableLayoutPanel5.SuspendLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ChartStats, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
-        CType(Me.PictureBoxStats, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageSettings.SuspendLayout()
+        CType(Me.PictureBoxUserPicture, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBoxTarget, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBoxStats, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StatusStrip1
@@ -175,74 +175,6 @@ Partial Class FormMain
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(250, 659)
         Me.TableLayoutPanel1.TabIndex = 3
-        '
-        'ButtonStatistics
-        '
-        Me.ButtonStatistics.BackColor = System.Drawing.Color.White
-        Me.ButtonStatistics.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonStatistics.FlatAppearance.BorderSize = 0
-        Me.ButtonStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonStatistics.Image = CType(resources.GetObject("ButtonStatistics.Image"), System.Drawing.Image)
-        Me.ButtonStatistics.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButtonStatistics.Location = New System.Drawing.Point(3, 329)
-        Me.ButtonStatistics.Name = "ButtonStatistics"
-        Me.ButtonStatistics.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
-        Me.ButtonStatistics.Size = New System.Drawing.Size(244, 157)
-        Me.ButtonStatistics.TabIndex = 2
-        Me.ButtonStatistics.Text = "Statistiques"
-        Me.ButtonStatistics.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ButtonStatistics.UseVisualStyleBackColor = False
-        '
-        'ButtonShootingSession
-        '
-        Me.ButtonShootingSession.BackColor = System.Drawing.Color.White
-        Me.ButtonShootingSession.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonShootingSession.FlatAppearance.BorderSize = 0
-        Me.ButtonShootingSession.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonShootingSession.Image = CType(resources.GetObject("ButtonShootingSession.Image"), System.Drawing.Image)
-        Me.ButtonShootingSession.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButtonShootingSession.Location = New System.Drawing.Point(3, 166)
-        Me.ButtonShootingSession.Name = "ButtonShootingSession"
-        Me.ButtonShootingSession.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
-        Me.ButtonShootingSession.Size = New System.Drawing.Size(244, 157)
-        Me.ButtonShootingSession.TabIndex = 1
-        Me.ButtonShootingSession.Text = "Session de tir"
-        Me.ButtonShootingSession.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ButtonShootingSession.UseVisualStyleBackColor = False
-        '
-        'ButtonUser
-        '
-        Me.ButtonUser.BackColor = System.Drawing.Color.White
-        Me.ButtonUser.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonUser.FlatAppearance.BorderSize = 0
-        Me.ButtonUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonUser.Image = CType(resources.GetObject("ButtonUser.Image"), System.Drawing.Image)
-        Me.ButtonUser.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButtonUser.Location = New System.Drawing.Point(3, 3)
-        Me.ButtonUser.Name = "ButtonUser"
-        Me.ButtonUser.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
-        Me.ButtonUser.Size = New System.Drawing.Size(244, 157)
-        Me.ButtonUser.TabIndex = 0
-        Me.ButtonUser.Text = "Connexion"
-        Me.ButtonUser.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ButtonUser.UseVisualStyleBackColor = False
-        '
-        'ButtonSettings
-        '
-        Me.ButtonSettings.BackColor = System.Drawing.Color.White
-        Me.ButtonSettings.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonSettings.FlatAppearance.BorderSize = 0
-        Me.ButtonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonSettings.Image = CType(resources.GetObject("ButtonSettings.Image"), System.Drawing.Image)
-        Me.ButtonSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.ButtonSettings.Location = New System.Drawing.Point(3, 492)
-        Me.ButtonSettings.Name = "ButtonSettings"
-        Me.ButtonSettings.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
-        Me.ButtonSettings.Size = New System.Drawing.Size(244, 157)
-        Me.ButtonSettings.TabIndex = 3
-        Me.ButtonSettings.Text = "Paramètres"
-        Me.ButtonSettings.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ButtonSettings.UseVisualStyleBackColor = False
         '
         'LabelPaint1
         '
@@ -357,19 +289,6 @@ Partial Class FormMain
         Me.ButtonUserSave.Text = "Sauvegarder"
         Me.ButtonUserSave.UseVisualStyleBackColor = True
         '
-        'PictureBoxUserPicture
-        '
-        Me.PictureBoxUserPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TableLayoutPanel3.SetColumnSpan(Me.PictureBoxUserPicture, 3)
-        Me.PictureBoxUserPicture.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBoxUserPicture.Location = New System.Drawing.Point(52, 35)
-        Me.PictureBoxUserPicture.Name = "PictureBoxUserPicture"
-        Me.TableLayoutPanel3.SetRowSpan(Me.PictureBoxUserPicture, 5)
-        Me.PictureBoxUserPicture.Size = New System.Drawing.Size(141, 154)
-        Me.PictureBoxUserPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBoxUserPicture.TabIndex = 0
-        Me.PictureBoxUserPicture.TabStop = False
-        '
         'TextBoxUserUsername
         '
         Me.TextBoxUserUsername.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -421,7 +340,7 @@ Partial Class FormMain
         Me.TableLayoutPanel3.SetColumnSpan(Me.ComboBoxUserCategory, 5)
         Me.ComboBoxUserCategory.FormattingEnabled = True
         Me.ComboBoxUserCategory.Items.AddRange(New Object() {"Débutant", "Amateur", "Professionnel"})
-        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 453)
+        Me.ComboBoxUserCategory.Location = New System.Drawing.Point(493, 451)
         Me.ComboBoxUserCategory.Name = "ComboBoxUserCategory"
         Me.ComboBoxUserCategory.Size = New System.Drawing.Size(239, 28)
         Me.ComboBoxUserCategory.TabIndex = 6
@@ -534,10 +453,10 @@ Partial Class FormMain
         'TabPageShootingSession
         '
         Me.TabPageShootingSession.Controls.Add(Me.TableLayoutPanel4)
-        Me.TabPageShootingSession.Location = New System.Drawing.Point(4, 29)
+        Me.TabPageShootingSession.Location = New System.Drawing.Point(4, 22)
         Me.TabPageShootingSession.Name = "TabPageShootingSession"
         Me.TabPageShootingSession.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageShootingSession.Size = New System.Drawing.Size(998, 620)
+        Me.TabPageShootingSession.Size = New System.Drawing.Size(998, 627)
         Me.TabPageShootingSession.TabIndex = 1
         Me.TabPageShootingSession.UseVisualStyleBackColor = True
         '
@@ -613,21 +532,8 @@ Partial Class FormMain
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(992, 614)
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(992, 621)
         Me.TableLayoutPanel4.TabIndex = 0
-        '
-        'PictureBoxTarget
-        '
-        Me.PictureBoxTarget.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.PictureBoxTarget.BackColor = System.Drawing.Color.Gray
-        Me.TableLayoutPanel4.SetColumnSpan(Me.PictureBoxTarget, 12)
-        Me.PictureBoxTarget.Location = New System.Drawing.Point(44, 20)
-        Me.PictureBoxTarget.Name = "PictureBoxTarget"
-        Me.TableLayoutPanel4.SetRowSpan(Me.PictureBoxTarget, 18)
-        Me.PictureBoxTarget.Size = New System.Drawing.Size(500, 500)
-        Me.PictureBoxTarget.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBoxTarget.TabIndex = 0
-        Me.PictureBoxTarget.TabStop = False
         '
         'TableLayoutPanel7
         '
@@ -638,7 +544,7 @@ Partial Class FormMain
         Me.TableLayoutPanel7.Controls.Add(Me.GroupBox2, 0, 0)
         Me.TableLayoutPanel7.Controls.Add(Me.DataGridViewResults, 0, 1)
         Me.TableLayoutPanel7.Controls.Add(Me.LabelShootingSessionAdvices, 0, 2)
-        Me.TableLayoutPanel7.Location = New System.Drawing.Point(605, 20)
+        Me.TableLayoutPanel7.Location = New System.Drawing.Point(605, 29)
         Me.TableLayoutPanel7.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
         Me.TableLayoutPanel7.RowCount = 3
@@ -768,12 +674,22 @@ Partial Class FormMain
         Me.ColTotal.Name = "ColTotal"
         Me.ColTotal.ReadOnly = True
         '
+        'LabelShootingSessionAdvices
+        '
+        Me.LabelShootingSessionAdvices.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelShootingSessionAdvices.AutoSize = True
+        Me.LabelShootingSessionAdvices.Location = New System.Drawing.Point(3, 427)
+        Me.LabelShootingSessionAdvices.Name = "LabelShootingSessionAdvices"
+        Me.LabelShootingSessionAdvices.Size = New System.Drawing.Size(364, 20)
+        Me.LabelShootingSessionAdvices.TabIndex = 2
+        Me.LabelShootingSessionAdvices.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Label9
         '
         Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label9.AutoSize = True
         Me.TableLayoutPanel4.SetColumnSpan(Me.Label9, 3)
-        Me.Label9.Location = New System.Drawing.Point(24, 582)
+        Me.Label9.Location = New System.Drawing.Point(24, 595)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(120, 20)
         Me.Label9.TabIndex = 5
@@ -785,7 +701,7 @@ Partial Class FormMain
         Me.TableLayoutPanel4.SetColumnSpan(Me.ComboBoxShootingTargetSelection, 4)
         Me.ComboBoxShootingTargetSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxShootingTargetSelection.FormattingEnabled = True
-        Me.ComboBoxShootingTargetSelection.Location = New System.Drawing.Point(150, 544)
+        Me.ComboBoxShootingTargetSelection.Location = New System.Drawing.Point(150, 561)
         Me.ComboBoxShootingTargetSelection.Name = "ComboBoxShootingTargetSelection"
         Me.ComboBoxShootingTargetSelection.Size = New System.Drawing.Size(190, 28)
         Me.ComboBoxShootingTargetSelection.TabIndex = 3
@@ -795,7 +711,7 @@ Partial Class FormMain
         Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label8.AutoSize = True
         Me.TableLayoutPanel4.SetColumnSpan(Me.Label8, 2)
-        Me.Label8.Location = New System.Drawing.Point(52, 545)
+        Me.Label8.Location = New System.Drawing.Point(52, 563)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(92, 20)
         Me.Label8.TabIndex = 2
@@ -809,7 +725,7 @@ Partial Class FormMain
         Me.ComboBoxShotsCount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxShotsCount.FormattingEnabled = True
         Me.ComboBoxShotsCount.Items.AddRange(New Object() {"10", "20", "30", "40", "50", "60", "libre"})
-        Me.ComboBoxShotsCount.Location = New System.Drawing.Point(150, 581)
+        Me.ComboBoxShotsCount.Location = New System.Drawing.Point(150, 592)
         Me.ComboBoxShotsCount.Name = "ComboBoxShotsCount"
         Me.ComboBoxShotsCount.Size = New System.Drawing.Size(190, 28)
         Me.ComboBoxShotsCount.TabIndex = 3
@@ -819,7 +735,7 @@ Partial Class FormMain
         Me.ButtonStartShootingSession.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel4.SetColumnSpan(Me.ButtonStartShootingSession, 3)
         Me.ButtonStartShootingSession.Enabled = False
-        Me.ButtonStartShootingSession.Location = New System.Drawing.Point(395, 555)
+        Me.ButtonStartShootingSession.Location = New System.Drawing.Point(395, 567)
         Me.ButtonStartShootingSession.Name = "ButtonStartShootingSession"
         Me.TableLayoutPanel4.SetRowSpan(Me.ButtonStartShootingSession, 2)
         Me.ButtonStartShootingSession.Size = New System.Drawing.Size(141, 44)
@@ -832,7 +748,7 @@ Partial Class FormMain
         Me.ButtonCloseShootingSession.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel4.SetColumnSpan(Me.ButtonCloseShootingSession, 3)
         Me.ButtonCloseShootingSession.Enabled = False
-        Me.ButtonCloseShootingSession.Location = New System.Drawing.Point(542, 555)
+        Me.ButtonCloseShootingSession.Location = New System.Drawing.Point(542, 567)
         Me.ButtonCloseShootingSession.Name = "ButtonCloseShootingSession"
         Me.TableLayoutPanel4.SetRowSpan(Me.ButtonCloseShootingSession, 2)
         Me.ButtonCloseShootingSession.Size = New System.Drawing.Size(141, 44)
@@ -843,10 +759,10 @@ Partial Class FormMain
         'TabPageStatistics
         '
         Me.TabPageStatistics.Controls.Add(Me.TableLayoutPanel5)
-        Me.TabPageStatistics.Location = New System.Drawing.Point(4, 29)
+        Me.TabPageStatistics.Location = New System.Drawing.Point(4, 22)
         Me.TabPageStatistics.Name = "TabPageStatistics"
         Me.TabPageStatistics.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageStatistics.Size = New System.Drawing.Size(998, 620)
+        Me.TabPageStatistics.Size = New System.Drawing.Size(998, 627)
         Me.TabPageStatistics.TabIndex = 2
         Me.TabPageStatistics.UseVisualStyleBackColor = True
         '
@@ -873,7 +789,7 @@ Partial Class FormMain
         Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
-        Me.TableLayoutPanel5.Controls.Add(Me.Chart1, 0, 0)
+        Me.TableLayoutPanel5.Controls.Add(Me.ChartStats, 0, 0)
         Me.TableLayoutPanel5.Controls.Add(Me.GroupBox1, 0, 10)
         Me.TableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel5.Location = New System.Drawing.Point(3, 3)
@@ -899,37 +815,37 @@ Partial Class FormMain
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
-        Me.TableLayoutPanel5.Size = New System.Drawing.Size(992, 614)
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(992, 621)
         Me.TableLayoutPanel5.TabIndex = 0
         '
-        'Chart1
+        'ChartStats
         '
         ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Me.TableLayoutPanel5.SetColumnSpan(Me.Chart1, 20)
-        Me.Chart1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ChartStats.ChartAreas.Add(ChartArea2)
+        Me.TableLayoutPanel5.SetColumnSpan(Me.ChartStats, 20)
+        Me.ChartStats.Dock = System.Windows.Forms.DockStyle.Fill
         Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
-        Me.Chart1.Location = New System.Drawing.Point(3, 3)
-        Me.Chart1.Name = "Chart1"
-        Me.TableLayoutPanel5.SetRowSpan(Me.Chart1, 10)
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
-        Me.Chart1.Size = New System.Drawing.Size(986, 294)
-        Me.Chart1.TabIndex = 0
-        Me.Chart1.Text = "Chart1"
+        Legend2.Title = "Légende"
+        Me.ChartStats.Legends.Add(Legend2)
+        Me.ChartStats.Location = New System.Drawing.Point(3, 3)
+        Me.ChartStats.Name = "ChartStats"
+        Me.TableLayoutPanel5.SetRowSpan(Me.ChartStats, 10)
+        Me.ChartStats.Size = New System.Drawing.Size(986, 304)
+        Me.ChartStats.TabIndex = 0
+        Me.ChartStats.Text = "Chart1"
+        Title2.Name = "Title1"
+        Title2.Text = "Dernières sessions"
+        Me.ChartStats.Titles.Add(Title2)
         '
         'GroupBox1
         '
         Me.TableLayoutPanel5.SetColumnSpan(Me.GroupBox1, 20)
         Me.GroupBox1.Controls.Add(Me.TableLayoutPanel6)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 303)
+        Me.GroupBox1.Location = New System.Drawing.Point(3, 313)
         Me.GroupBox1.Name = "GroupBox1"
         Me.TableLayoutPanel5.SetRowSpan(Me.GroupBox1, 10)
-        Me.GroupBox1.Size = New System.Drawing.Size(986, 308)
+        Me.GroupBox1.Size = New System.Drawing.Size(986, 305)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Statistiques Session"
@@ -955,19 +871,8 @@ Partial Class FormMain
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel6.Size = New System.Drawing.Size(980, 283)
+        Me.TableLayoutPanel6.Size = New System.Drawing.Size(980, 280)
         Me.TableLayoutPanel6.TabIndex = 0
-        '
-        'PictureBoxStats
-        '
-        Me.PictureBoxStats.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBoxStats.Location = New System.Drawing.Point(493, 3)
-        Me.PictureBoxStats.Name = "PictureBoxStats"
-        Me.TableLayoutPanel6.SetRowSpan(Me.PictureBoxStats, 4)
-        Me.PictureBoxStats.Size = New System.Drawing.Size(484, 277)
-        Me.PictureBoxStats.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBoxStats.TabIndex = 0
-        Me.PictureBoxStats.TabStop = False
         '
         'Label12
         '
@@ -1012,6 +917,28 @@ Partial Class FormMain
         Me.LabelStatsAverageScore.Size = New System.Drawing.Size(239, 20)
         Me.LabelStatsAverageScore.TabIndex = 4
         '
+        'RichTextBoxStatsAdvices
+        '
+        Me.TableLayoutPanel6.SetColumnSpan(Me.RichTextBoxStatsAdvices, 2)
+        Me.RichTextBoxStatsAdvices.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RichTextBoxStatsAdvices.Location = New System.Drawing.Point(3, 182)
+        Me.RichTextBoxStatsAdvices.Margin = New System.Windows.Forms.Padding(3, 10, 3, 3)
+        Me.RichTextBoxStatsAdvices.Name = "RichTextBoxStatsAdvices"
+        Me.RichTextBoxStatsAdvices.Size = New System.Drawing.Size(484, 95)
+        Me.RichTextBoxStatsAdvices.TabIndex = 5
+        Me.RichTextBoxStatsAdvices.Text = ""
+        '
+        'RichTextBoxStatsComments
+        '
+        Me.TableLayoutPanel6.SetColumnSpan(Me.RichTextBoxStatsComments, 2)
+        Me.RichTextBoxStatsComments.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RichTextBoxStatsComments.Location = New System.Drawing.Point(3, 74)
+        Me.RichTextBoxStatsComments.Margin = New System.Windows.Forms.Padding(3, 10, 3, 3)
+        Me.RichTextBoxStatsComments.Name = "RichTextBoxStatsComments"
+        Me.RichTextBoxStatsComments.Size = New System.Drawing.Size(484, 95)
+        Me.RichTextBoxStatsComments.TabIndex = 6
+        Me.RichTextBoxStatsComments.Text = ""
+        '
         'TabPageSettings
         '
         Me.TabPageSettings.Controls.Add(Me.ButtonSettingsAddTarget)
@@ -1044,37 +971,110 @@ Partial Class FormMain
         '
         Me.OpenFileDialogImg.FileName = "OpenFileDialog1"
         '
-        'LabelShootingSessionAdvices
+        'ButtonStatistics
         '
-        Me.LabelShootingSessionAdvices.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LabelShootingSessionAdvices.AutoSize = True
-        Me.LabelShootingSessionAdvices.Location = New System.Drawing.Point(3, 427)
-        Me.LabelShootingSessionAdvices.Name = "LabelShootingSessionAdvices"
-        Me.LabelShootingSessionAdvices.Size = New System.Drawing.Size(364, 20)
-        Me.LabelShootingSessionAdvices.TabIndex = 2
-        Me.LabelShootingSessionAdvices.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ButtonStatistics.BackColor = System.Drawing.Color.White
+        Me.ButtonStatistics.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ButtonStatistics.FlatAppearance.BorderSize = 0
+        Me.ButtonStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonStatistics.Image = CType(resources.GetObject("ButtonStatistics.Image"), System.Drawing.Image)
+        Me.ButtonStatistics.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButtonStatistics.Location = New System.Drawing.Point(3, 329)
+        Me.ButtonStatistics.Name = "ButtonStatistics"
+        Me.ButtonStatistics.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
+        Me.ButtonStatistics.Size = New System.Drawing.Size(244, 157)
+        Me.ButtonStatistics.TabIndex = 2
+        Me.ButtonStatistics.Text = "Statistiques"
+        Me.ButtonStatistics.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ButtonStatistics.UseVisualStyleBackColor = False
         '
-        'RichTextBoxStatsAdvices
+        'ButtonShootingSession
         '
-        Me.TableLayoutPanel6.SetColumnSpan(Me.RichTextBoxStatsAdvices, 2)
-        Me.RichTextBoxStatsAdvices.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RichTextBoxStatsAdvices.Location = New System.Drawing.Point(3, 183)
-        Me.RichTextBoxStatsAdvices.Margin = New System.Windows.Forms.Padding(3, 10, 3, 3)
-        Me.RichTextBoxStatsAdvices.Name = "RichTextBoxStatsAdvices"
-        Me.RichTextBoxStatsAdvices.Size = New System.Drawing.Size(484, 97)
-        Me.RichTextBoxStatsAdvices.TabIndex = 5
-        Me.RichTextBoxStatsAdvices.Text = ""
+        Me.ButtonShootingSession.BackColor = System.Drawing.Color.White
+        Me.ButtonShootingSession.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ButtonShootingSession.FlatAppearance.BorderSize = 0
+        Me.ButtonShootingSession.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonShootingSession.Image = CType(resources.GetObject("ButtonShootingSession.Image"), System.Drawing.Image)
+        Me.ButtonShootingSession.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButtonShootingSession.Location = New System.Drawing.Point(3, 166)
+        Me.ButtonShootingSession.Name = "ButtonShootingSession"
+        Me.ButtonShootingSession.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
+        Me.ButtonShootingSession.Size = New System.Drawing.Size(244, 157)
+        Me.ButtonShootingSession.TabIndex = 1
+        Me.ButtonShootingSession.Text = "Session de tir"
+        Me.ButtonShootingSession.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ButtonShootingSession.UseVisualStyleBackColor = False
         '
-        'RichTextBoxStatsComments
+        'ButtonUser
         '
-        Me.TableLayoutPanel6.SetColumnSpan(Me.RichTextBoxStatsComments, 2)
-        Me.RichTextBoxStatsComments.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RichTextBoxStatsComments.Location = New System.Drawing.Point(3, 74)
-        Me.RichTextBoxStatsComments.Margin = New System.Windows.Forms.Padding(3, 10, 3, 3)
-        Me.RichTextBoxStatsComments.Name = "RichTextBoxStatsComments"
-        Me.RichTextBoxStatsComments.Size = New System.Drawing.Size(484, 96)
-        Me.RichTextBoxStatsComments.TabIndex = 6
-        Me.RichTextBoxStatsComments.Text = ""
+        Me.ButtonUser.BackColor = System.Drawing.Color.White
+        Me.ButtonUser.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ButtonUser.FlatAppearance.BorderSize = 0
+        Me.ButtonUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonUser.Image = CType(resources.GetObject("ButtonUser.Image"), System.Drawing.Image)
+        Me.ButtonUser.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButtonUser.Location = New System.Drawing.Point(3, 3)
+        Me.ButtonUser.Name = "ButtonUser"
+        Me.ButtonUser.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
+        Me.ButtonUser.Size = New System.Drawing.Size(244, 157)
+        Me.ButtonUser.TabIndex = 0
+        Me.ButtonUser.Text = "Connexion"
+        Me.ButtonUser.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ButtonUser.UseVisualStyleBackColor = False
+        '
+        'ButtonSettings
+        '
+        Me.ButtonSettings.BackColor = System.Drawing.Color.White
+        Me.ButtonSettings.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ButtonSettings.FlatAppearance.BorderSize = 0
+        Me.ButtonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonSettings.Image = CType(resources.GetObject("ButtonSettings.Image"), System.Drawing.Image)
+        Me.ButtonSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButtonSettings.Location = New System.Drawing.Point(3, 492)
+        Me.ButtonSettings.Name = "ButtonSettings"
+        Me.ButtonSettings.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
+        Me.ButtonSettings.Size = New System.Drawing.Size(244, 157)
+        Me.ButtonSettings.TabIndex = 3
+        Me.ButtonSettings.Text = "Paramètres"
+        Me.ButtonSettings.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ButtonSettings.UseVisualStyleBackColor = False
+        '
+        'PictureBoxUserPicture
+        '
+        Me.PictureBoxUserPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TableLayoutPanel3.SetColumnSpan(Me.PictureBoxUserPicture, 3)
+        Me.PictureBoxUserPicture.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBoxUserPicture.Location = New System.Drawing.Point(52, 35)
+        Me.PictureBoxUserPicture.Name = "PictureBoxUserPicture"
+        Me.TableLayoutPanel3.SetRowSpan(Me.PictureBoxUserPicture, 5)
+        Me.PictureBoxUserPicture.Size = New System.Drawing.Size(141, 154)
+        Me.PictureBoxUserPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBoxUserPicture.TabIndex = 0
+        Me.PictureBoxUserPicture.TabStop = False
+        '
+        'PictureBoxTarget
+        '
+        Me.PictureBoxTarget.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.PictureBoxTarget.BackColor = System.Drawing.Color.Gray
+        Me.TableLayoutPanel4.SetColumnSpan(Me.PictureBoxTarget, 12)
+        Me.PictureBoxTarget.Location = New System.Drawing.Point(44, 29)
+        Me.PictureBoxTarget.Name = "PictureBoxTarget"
+        Me.TableLayoutPanel4.SetRowSpan(Me.PictureBoxTarget, 18)
+        Me.PictureBoxTarget.Size = New System.Drawing.Size(500, 500)
+        Me.PictureBoxTarget.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBoxTarget.TabIndex = 0
+        Me.PictureBoxTarget.TabStop = False
+        '
+        'PictureBoxStats
+        '
+        Me.PictureBoxStats.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBoxStats.Location = New System.Drawing.Point(493, 3)
+        Me.PictureBoxStats.Name = "PictureBoxStats"
+        Me.TableLayoutPanel6.SetRowSpan(Me.PictureBoxStats, 4)
+        Me.PictureBoxStats.Size = New System.Drawing.Size(484, 274)
+        Me.PictureBoxStats.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBoxStats.TabIndex = 0
+        Me.PictureBoxStats.TabStop = False
         '
         'FormMain
         '
@@ -1084,6 +1084,7 @@ Partial Class FormMain
         Me.Controls.Add(Me.TableLayoutPanel2)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
@@ -1098,11 +1099,9 @@ Partial Class FormMain
         Me.TabPageUserConnected.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
-        CType(Me.PictureBoxUserPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageShootingSession.ResumeLayout(False)
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.TableLayoutPanel4.PerformLayout()
-        CType(Me.PictureBoxTarget, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel7.ResumeLayout(False)
         Me.TableLayoutPanel7.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -1111,12 +1110,14 @@ Partial Class FormMain
         CType(Me.DataGridViewResults, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageStatistics.ResumeLayout(False)
         Me.TableLayoutPanel5.ResumeLayout(False)
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ChartStats, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.TableLayoutPanel6.ResumeLayout(False)
         Me.TableLayoutPanel6.PerformLayout()
-        CType(Me.PictureBoxStats, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageSettings.ResumeLayout(False)
+        CType(Me.PictureBoxUserPicture, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBoxTarget, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBoxStats, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1178,7 +1179,7 @@ Partial Class FormMain
     Friend WithEvents ComboBoxShotsCount As ComboBox
     Friend WithEvents ButtonStartShootingSession As Button
     Friend WithEvents ButtonCloseShootingSession As Button
-    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents ChartStats As DataVisualization.Charting.Chart
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents TableLayoutPanel6 As TableLayoutPanel
     Friend WithEvents PictureBoxStats As PictureBox

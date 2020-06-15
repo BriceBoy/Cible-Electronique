@@ -121,6 +121,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+        '''</summary>
+        Friend ReadOnly Property target1() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("target1", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property user() As System.Drawing.Bitmap

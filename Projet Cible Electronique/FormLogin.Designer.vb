@@ -348,7 +348,7 @@ Partial Class FormLogin
         Me.ComboBoxRegistrationCategory.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.SetColumnSpan(Me.ComboBoxRegistrationCategory, 4)
         Me.ComboBoxRegistrationCategory.FormattingEnabled = True
-        Me.ComboBoxRegistrationCategory.Location = New System.Drawing.Point(223, 149)
+        Me.ComboBoxRegistrationCategory.Location = New System.Drawing.Point(223, 148)
         Me.ComboBoxRegistrationCategory.Name = "ComboBoxRegistrationCategory"
         Me.ComboBoxRegistrationCategory.Size = New System.Drawing.Size(170, 28)
         Me.ComboBoxRegistrationCategory.TabIndex = 5

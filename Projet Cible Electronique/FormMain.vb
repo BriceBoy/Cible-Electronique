@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Windows.Forms.DataVisualization.Charting
 
 Public Class FormMain
 
@@ -65,6 +66,7 @@ Public Class FormMain
 
     Private Sub ButtonStatistics_Click(sender As Object, e As EventArgs) Handles ButtonStatistics.Click
         FillComboboxSessions()
+        LoadLastSessionsStats()
         Me.TabControlMain.SelectedIndex = 2
     End Sub
 
@@ -252,7 +254,6 @@ Public Class FormMain
 
     Private Sub ButtonCloseShootingSession_Click(sender As Object, e As EventArgs) Handles ButtonCloseShootingSession.Click
         If Not IsNothing(_currentShootingSession.User) Then
-            _currentShootingSession.FinalPicture = Me.PictureBoxTarget.Image
             Dim formEnd As New FormEndingShootingSession(_currentShootingSession)
             formEnd.ShowDialog()
             _currentShootingSession.SaveToDatabase()
@@ -359,5 +360,30 @@ Public Class FormMain
         Me.RichTextBoxStatsComments.Text = session.Comments()
         Me.RichTextBoxStatsAdvices.Text = stats.SmartSystem()
         Me.PictureBoxStats.Image = session.FinalPicture
+    End Sub
+
+    Private Sub LoadLastSessionsStats()
+        Dim serie1 As New Series()
+        _sessionsTableAdapter.FillByUsername(_dataSetElectronicTarget.shooting_sessions, _currentUser.Username)
+        Dim count As Integer = 0
+        If _dataSetElectronicTarget.shooting_sessions.Rows.Count > 10 Then
+            count = 10
+        Else
+            count = _dataSetElectronicTarget.shooting_sessions.Rows.Count
+        End If
+
+        For i As Integer = 0 To count - 1
+            Dim shootingSessionRow As DataSetElectronicTarget.shooting_sessionsRow = _dataSetElectronicTarget.shooting_sessions.Rows(i)
+            Dim id As Integer = shootingSessionRow.id
+            Dim sessionDate As String = shootingSessionRow.session_date
+            Dim shootingSession As New ShootingSession(id)
+            Dim stats As New Stats(shootingSession.StrShots, shootingSession.Target)
+            Dim point As New DataPoint
+            point.YValues = {stats.AverageScore}
+            point.Label = sessionDate.ToString
+            serie1.Points.Add(point)
+        Next
+        Me.ChartStats.Series.Clear()
+        Me.ChartStats.Series.Add(serie1)
     End Sub
 End Class
